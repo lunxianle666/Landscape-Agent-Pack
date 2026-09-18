@@ -48,7 +48,7 @@ AI模型可以是GPT、豆包、Claude、Gemini等符合所用Agent要求的模�
 2. **TRAE + 豆包 + Landscape Agent Pack + AutoCAD MCP Pro + AutoCAD**：如果当前TRAE版本确实提供兼容豆包模型、本地命令和MCP权限，可按此架构尝试；本RC未完成该组合的客户端运行验收，不能声称稳定支持。
 3. **其他支持本地MCP的Agent + 兼容模型 + Landscape Agent Pack**：目标是按实际能力适配；先完成连接与最小测试，再做正式任务副本。
 
-**架构兼容目标不等于已经实测。**本项目希望做到Agent-agnostic、Model-agnostic，即尽量不绑定某个Agent或模型，具体兼容性仍以[实际测试记录](TESTED_ENVIRONMENT.md)为准。
+架构兼容目标不等于已经实测。本项目希望做到Agent-agnostic、Model-agnostic，即尽量不绑定某个Agent或模型，具体兼容性仍以[实际测试记录](TESTED_ENVIRONMENT.md)为准。
 
 ## 正常使用的完整过程
 
