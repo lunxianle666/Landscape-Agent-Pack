@@ -1,0 +1,2414 @@
+{
+  "root_requirement": "autocad-mcp-pro[com]==1.5.1",
+  "ringo": {
+    "version": "1.3.2",
+    "commit": "2dd54d945b0e7a5d1843d58a94a33f5c8875df01",
+    "license": "MIT",
+    "policy": "manual official installation; no local patch"
+  },
+  "python_observed_graph": [
+    {
+      "name": "autocad-mcp-pro",
+      "version": "1.5.1",
+      "extras": [
+        "com"
+      ],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "autocad_mcp_pro-1.5.1.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "ezdxf",
+      "version": "1.4.4",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "ezdxf-1.4.4.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "fastmcp",
+      "version": "3.4.7",
+      "extras": [],
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_files": [
+        "fastmcp-3.4.7.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.13.5",
+      "extras": [
+        "email"
+      ],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "pydantic-2.13.5.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "pillow",
+      "version": "12.3.0",
+      "extras": [],
+      "license_expression": "MIT-CMU",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "pillow-12.3.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "pywin32",
+      "version": "312",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "PSF",
+      "license_classifiers": [
+        "License :: OSI Approved :: Python Software Foundation License"
+      ],
+      "license_files": [
+        "adodbapi/license.txt",
+        "pythonwin/License.txt",
+        "pythonwin/Scintilla-License.txt",
+        "pythonwin/pywin/idle/LICENSE.txt",
+        "pywin32-312.dist-info/licenses/adodbapi/license.txt",
+        "pywin32-312.dist-info/licenses/com/License.txt",
+        "pywin32-312.dist-info/licenses/com/win32comext/mapi/src/MAPIStubLibrary/LICENSE",
+        "pywin32-312.dist-info/licenses/isapi/README.txt",
+        "pywin32-312.dist-info/licenses/pythonwin/License.txt",
+        "pywin32-312.dist-info/licenses/pythonwin/Scintilla/License.txt",
+        "pywin32-312.dist-info/licenses/pythonwin/pywin/idle/LICENSE.txt",
+        "pywin32-312.dist-info/licenses/win32/License.txt",
+        "win32/License.txt",
+        "win32com/License.txt",
+        "win32comext/License.txt",
+        "win32comext/mapi/MAPIStubLibrary-License.txt"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "pyparsing",
+      "version": "3.3.2",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "pyparsing-3.3.2.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "extras": [],
+      "license_expression": "PSF-2.0",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "typing_extensions-4.16.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.3",
+      "extras": [],
+      "license_expression": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "numpy-2.5.3.dist-info/licenses/LICENSE.txt",
+        "numpy-2.5.3.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
+        "numpy-2.5.3.dist-info/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING",
+        "numpy-2.5.3.dist-info/licenses/numpy/_core/src/highway/LICENSE",
+        "numpy-2.5.3.dist-info/licenses/numpy/_core/src/multiarray/dragon4_LICENSE.txt",
+        "numpy-2.5.3.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/_core/src/umath/svml/LICENSE",
+        "numpy-2.5.3.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/linalg/lapack_lite/LICENSE.txt",
+        "numpy-2.5.3.dist-info/licenses/numpy/ma/LICENSE",
+        "numpy-2.5.3.dist-info/licenses/numpy/random/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/random/src/distributions/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/random/src/philox/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md",
+        "numpy/_core/include/numpy/random/LICENSE.txt",
+        "numpy/ma/LICENSE",
+        "numpy/random/LICENSE.md"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "fonttools",
+      "version": "4.65.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_classifiers": [],
+      "license_files": [
+        "fonttools-4.65.0.dist-info/licenses/LICENSE",
+        "fonttools-4.65.0.dist-info/licenses/LICENSE.external"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "fastmcp-slim",
+      "version": "3.4.7",
+      "extras": [
+        "client",
+        "server"
+      ],
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_files": [],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "annotated_types-0.8.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.46.5",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "pydantic_core-2.46.5.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "typing_inspection-0.4.4.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "platformdirs",
+      "version": "4.11.10",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "platformdirs-4.11.10.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "pydantic-settings",
+      "version": "2.15.0",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "pydantic_settings-2.15.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "python-dotenv",
+      "version": "1.2.3",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "BSD-3-Clause",
+      "license_classifiers": [],
+      "license_files": [
+        "python_dotenv-1.2.3.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "rich",
+      "version": "15.0.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "rich-15.0.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "Authlib",
+      "version": "1.8.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "BSD-3-Clause",
+      "license_classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "license_files": [
+        "authlib-1.8.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "exceptiongroup",
+      "version": "1.3.1",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "exceptiongroup-1.3.1.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "BSD-3-Clause",
+      "license_classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "license_files": [
+        "httpx-0.28.1.dist-info/licenses/LICENSE.md"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "mcp",
+      "version": "1.30.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "mcp-1.30.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "opentelemetry-api",
+      "version": "1.44.0",
+      "extras": [],
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "opentelemetry_api-1.44.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "py-key-value-aio",
+      "version": "0.4.5",
+      "extras": [
+        "filetree",
+        "keyring",
+        "memory"
+      ],
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "py_key_value_aio-0.4.5.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "starlette",
+      "version": "1.6.0",
+      "extras": [],
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "starlette-1.6.0.dist-info/licenses/LICENSE.md"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "cyclopts",
+      "version": "4.25.3",
+      "extras": [],
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_files": [
+        "cyclopts-4.25.3.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "griffelib",
+      "version": "2.3.0",
+      "extras": [],
+      "license_expression": "ISC",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "griffelib-2.3.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "joserfc",
+      "version": "1.7.5",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "BSD-3-Clause",
+      "license_classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "license_files": [
+        "joserfc-1.7.5.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "jsonref",
+      "version": "1.1.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_classifiers": [],
+      "license_files": [
+        "jsonref-1.1.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "jsonschema-path",
+      "version": "0.5.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "Apache-2.0",
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_files": [
+        "jsonschema_path-0.5.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "openapi-pydantic",
+      "version": "0.5.1",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "openapi_pydantic-0.5.1.dist-info/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "extras": [],
+      "license_expression": "Apache-2.0 OR BSD-2-Clause",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "packaging-26.3.dist-info/licenses/LICENSE",
+        "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+        "packaging-26.3.dist-info/licenses/LICENSE.BSD"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "pyperclip",
+      "version": "1.11.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "BSD",
+      "license_classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "license_files": [
+        "pyperclip-1.11.0.dist-info/licenses/AUTHORS.txt",
+        "pyperclip-1.11.0.dist-info/licenses/LICENSE.txt"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "python-multipart",
+      "version": "0.0.32",
+      "extras": [],
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_files": [
+        "python_multipart-0.0.32.dist-info/licenses/LICENSE.txt"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "pyyaml-6.0.3.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "uncalled-for",
+      "version": "0.4.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "uncalled_for-0.4.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.53.0",
+      "extras": [],
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "uvicorn-0.53.0.dist-info/licenses/LICENSE.md"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "watchfiles",
+      "version": "1.2.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "watchfiles-1.2.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "websockets",
+      "version": "17.1",
+      "extras": [],
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "websockets-17.1.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "email-validator",
+      "version": "2.3.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "Unlicense",
+      "license_classifiers": [
+        "License :: OSI Approved :: The Unlicense (Unlicense)"
+      ],
+      "license_files": [
+        "email_validator-2.3.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "markdown-it-py",
+      "version": "4.2.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "markdown_it_py-4.2.0.dist-info/licenses/LICENSE",
+        "markdown_it_py-4.2.0.dist-info/licenses/LICENSE.markdown-it"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0",
+      "extras": [],
+      "license_expression": "BSD-2-Clause",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "pygments-2.21.0.dist-info/licenses/AUTHORS",
+        "pygments-2.21.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "cryptography",
+      "version": "50.0.1",
+      "extras": [],
+      "license_expression": "Apache-2.0 OR BSD-3-Clause",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "cryptography-50.0.1.dist-info/licenses/LICENSE",
+        "cryptography-50.0.1.dist-info/licenses/LICENSE.APACHE",
+        "cryptography-50.0.1.dist-info/licenses/LICENSE.BSD"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "anyio-4.15.1.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.7.22",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "MPL-2.0",
+      "license_classifiers": [
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+      ],
+      "license_files": [
+        "certifi-2026.7.22.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9",
+      "extras": [],
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "license_files": [
+        "httpcore-1.0.9.dist-info/licenses/LICENSE.md"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "extras": [],
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "idna-3.20.dist-info/licenses/LICENSE.md"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "httpx-sse",
+      "version": "0.4.3",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_classifiers": [],
+      "license_files": [
+        "httpx_sse-0.4.3.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.26.0",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "jsonschema-4.26.0.dist-info/licenses/COPYING"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "PyJWT",
+      "version": "2.14.0",
+      "extras": [
+        "crypto"
+      ],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "pyjwt-2.14.0.dist-info/licenses/AUTHORS.rst",
+        "pyjwt-2.14.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "sse-starlette",
+      "version": "3.4.11",
+      "extras": [],
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "sse_starlette-3.4.11.dist-info/licenses/AUTHORS",
+        "sse_starlette-3.4.11.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "beartype",
+      "version": "0.22.9",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "beartype-0.22.9.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "aiofile",
+      "version": "3.12.3",
+      "extras": [],
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_files": [
+        "aiofile-3.12.3.dist-info/licenses/LICENCE",
+        "aiofile-3.12.3.dist-info/licenses/LICENCE.md"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "keyring",
+      "version": "25.7.0",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "keyring-25.7.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "cachetools",
+      "version": "7.2.0",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "cachetools-7.2.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "attrs-26.1.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "docstring_parser",
+      "version": "0.18.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "docstring_parser-0.18.0.dist-info/licenses/LICENSE.md"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "rich-rst",
+      "version": "2.1.0",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "rich_rst-2.1.0.dist-info/licenses/LICENSE",
+        "rich_rst-2.1.0.dist-info/licenses/rich_rst/_vendor/LICENSES.txt",
+        "rich_rst/_vendor/LICENSES.txt"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "pathable",
+      "version": "0.6.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "Apache-2.0",
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_files": [
+        "pathable-0.6.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "referencing",
+      "version": "0.37.0",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "referencing-0.37.0.dist-info/licenses/COPYING"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0",
+      "extras": [],
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "click-8.5.0.dist-info/licenses/LICENSE.txt"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "h11-0.16.0.dist-info/licenses/LICENSE.txt"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "dnspython",
+      "version": "2.8.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "ISC",
+      "license_classifiers": [
+        "License :: OSI Approved :: ISC License (ISCL)"
+      ],
+      "license_files": [
+        "dnspython-2.8.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "mdurl",
+      "version": "0.1.2",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "mdurl-0.1.2.dist-info/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1",
+      "extras": [],
+      "license_expression": "MIT-0",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "cffi-2.1.1.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "jsonschema_specifications-2025.9.1.dist-info/licenses/COPYING"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "rpds-py",
+      "version": "2026.6.3",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "rpds_py-2026.6.3.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "caio",
+      "version": "0.12.4",
+      "extras": [],
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "caio-0.12.4.dist-info/licenses/COPYING"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "pywin32-ctypes",
+      "version": "0.2.3",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": "BSD-3-Clause",
+      "license_classifiers": [],
+      "license_files": [
+        "pywin32_ctypes-0.2.3.dist-info/LICENSE.txt"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "jaraco.classes",
+      "version": "3.4.0",
+      "extras": [],
+      "license_expression": null,
+      "legacy_license": null,
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_files": [
+        "jaraco.classes-3.4.0.dist-info/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "jaraco.functools",
+      "version": "4.6.0",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "jaraco_functools-4.6.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "jaraco.context",
+      "version": "6.1.2",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "jaraco_context-6.1.2.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "pycparser",
+      "version": "3.0",
+      "extras": [],
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "pycparser-3.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    },
+    {
+      "name": "more-itertools",
+      "version": "11.1.0",
+      "extras": [],
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_classifiers": [],
+      "license_files": [
+        "more_itertools-11.1.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "metadata_or_license_file_observed"
+    }
+  ],
+  "python_missing": [],
+  "ringo_observed_packages": [
+    {
+      "name": "accepts",
+      "version": "2.0.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "ajv",
+      "version": "8.20.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "ajv-formats",
+      "version": "3.0.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "body-parser",
+      "version": "2.3.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "bytes",
+      "version": "3.1.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "call-bind-apply-helpers",
+      "version": "1.0.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "call-bound",
+      "version": "1.0.4",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "content-disposition",
+      "version": "1.1.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "content-type",
+      "version": "1.0.5",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "cookie",
+      "version": "0.7.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "cookie-signature",
+      "version": "1.2.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "cors",
+      "version": "2.8.6",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "cross-spawn",
+      "version": "7.0.6",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "debug",
+      "version": "4.4.3",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "depd",
+      "version": "2.0.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "dunder-proto",
+      "version": "1.0.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "ee-first",
+      "version": "1.1.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "encodeurl",
+      "version": "2.0.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "es-define-property",
+      "version": "1.0.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "es-errors",
+      "version": "1.3.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "es-object-atoms",
+      "version": "1.1.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "esbuild",
+      "version": "0.28.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "escape-html",
+      "version": "1.0.3",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "etag",
+      "version": "1.8.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "eventsource",
+      "version": "3.0.7",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "eventsource-parser",
+      "version": "3.1.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "express",
+      "version": "5.2.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "express-rate-limit",
+      "version": "8.7.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "fast-deep-equal",
+      "version": "3.1.3",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "fast-uri",
+      "version": "3.1.7",
+      "license": "BSD-3-Clause",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "fflate",
+      "version": "0.8.3",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "finalhandler",
+      "version": "2.1.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "forwarded",
+      "version": "0.2.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "fresh",
+      "version": "2.0.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "function-bind",
+      "version": "1.1.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "get-intrinsic",
+      "version": "1.3.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "get-proto",
+      "version": "1.0.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "gopd",
+      "version": "1.2.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "has-symbols",
+      "version": "1.1.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "hasown",
+      "version": "2.0.4",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "hono",
+      "version": "4.13.7",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "http-errors",
+      "version": "2.0.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "iconv-lite",
+      "version": "0.7.3",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "inherits",
+      "version": "2.0.4",
+      "license": "ISC",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "ip-address",
+      "version": "10.7.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "ipaddr.js",
+      "version": "1.9.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "is-promise",
+      "version": "4.0.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "isexe",
+      "version": "2.0.0",
+      "license": "ISC",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "jose",
+      "version": "6.2.12",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "json-schema-traverse",
+      "version": "1.0.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "json-schema-typed",
+      "version": "8.0.2",
+      "license": "BSD-2-Clause",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "math-intrinsics",
+      "version": "1.1.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "media-typer",
+      "version": "1.1.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "merge-descriptors",
+      "version": "2.0.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "mime-db",
+      "version": "1.54.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "mime-types",
+      "version": "3.0.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "ms",
+      "version": "2.1.3",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "negotiator",
+      "version": "1.1.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "object-assign",
+      "version": "4.1.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "object-inspect",
+      "version": "1.13.4",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "on-finished",
+      "version": "2.4.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "once",
+      "version": "1.4.0",
+      "license": "ISC",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "parseurl",
+      "version": "1.3.3",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "path-key",
+      "version": "3.1.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "path-to-regexp",
+      "version": "8.4.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "pkce-challenge",
+      "version": "5.0.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "proxy-addr",
+      "version": "2.0.7",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "qs",
+      "version": "6.16.0",
+      "license": "BSD-3-Clause",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "range-parser",
+      "version": "1.3.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "raw-body",
+      "version": "3.0.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "require-from-string",
+      "version": "2.0.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "router",
+      "version": "2.2.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "safer-buffer",
+      "version": "2.1.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "send",
+      "version": "1.2.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "serve-static",
+      "version": "2.2.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "setprototypeof",
+      "version": "1.2.0",
+      "license": "ISC",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "shebang-command",
+      "version": "2.0.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "shebang-regex",
+      "version": "3.0.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "side-channel",
+      "version": "1.1.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "side-channel-list",
+      "version": "1.0.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "side-channel-map",
+      "version": "1.0.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "side-channel-weakmap",
+      "version": "1.0.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "statuses",
+      "version": "2.0.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "toidentifier",
+      "version": "1.0.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "tsx",
+      "version": "4.23.13",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "type-is",
+      "version": "2.1.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "typescript",
+      "version": "5.9.3",
+      "license": "Apache-2.0",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "undici-types",
+      "version": "6.21.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "unpipe",
+      "version": "1.0.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "vary",
+      "version": "1.1.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "which",
+      "version": "2.0.2",
+      "license": "ISC",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "wrappy",
+      "version": "1.0.2",
+      "license": "ISC",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "zod",
+      "version": "3.25.76",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "zod-to-json-schema",
+      "version": "3.25.2",
+      "license": "ISC",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "@esbuild/win32-x64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "@hono/node-server",
+      "version": "2.1.1",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "@modelcontextprotocol/sdk",
+      "version": "1.30.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "@types/node",
+      "version": "22.20.2",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "content-type",
+      "version": "2.1.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "benchmark",
+      "version": "1.0.0",
+      "license": "ISC",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "content-type",
+      "version": "2.1.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    },
+    {
+      "name": "content-type",
+      "version": "2.1.0",
+      "license": "MIT",
+      "scope": "observed local Ringo build/runtime graph; not vendored"
+    }
+  ],
+  "status": "PARTIAL: metadata inventory is not a complete component license approval; resolver versions may drift",
+  "python_rc1_install_distributions": [
+    {
+      "name": "aiofile",
+      "version": "3.12.3",
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_files": [
+        "aiofile-3.12.3.dist-info/licenses/LICENCE",
+        "aiofile-3.12.3.dist-info/licenses/LICENCE.md"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "annotated_types-0.8.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "anyio-4.15.1.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "attrs-26.1.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "Authlib",
+      "version": "1.8.0",
+      "license_expression": null,
+      "legacy_license": "BSD-3-Clause",
+      "license_files": [
+        "authlib-1.8.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "autocad-mcp-pro",
+      "version": "1.5.1",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "autocad_mcp_pro-1.5.1.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "beartype",
+      "version": "0.22.9",
+      "license_expression": null,
+      "legacy_license": "See component license",
+      "license_files": [
+        "beartype-0.22.9.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "cachetools",
+      "version": "7.2.0",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "cachetools-7.2.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "caio",
+      "version": "0.12.4",
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_files": [
+        "caio-0.12.4.dist-info/licenses/COPYING"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.7.22",
+      "license_expression": null,
+      "legacy_license": "MPL-2.0",
+      "license_files": [
+        "certifi-2026.7.22.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1",
+      "license_expression": "MIT-0",
+      "legacy_license": null,
+      "license_files": [
+        "cffi-2.1.1.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0",
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_files": [
+        "click-8.5.0.dist-info/licenses/LICENSE.txt"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "cryptography",
+      "version": "50.0.1",
+      "license_expression": "Apache-2.0 OR BSD-3-Clause",
+      "legacy_license": null,
+      "license_files": [
+        "cryptography-50.0.1.dist-info/licenses/LICENSE",
+        "cryptography-50.0.1.dist-info/licenses/LICENSE.APACHE",
+        "cryptography-50.0.1.dist-info/licenses/LICENSE.BSD"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "cyclopts",
+      "version": "4.25.3",
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_files": [
+        "cyclopts-4.25.3.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "dnspython",
+      "version": "2.8.0",
+      "license_expression": null,
+      "legacy_license": "ISC",
+      "license_files": [
+        "dnspython-2.8.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "docstring_parser",
+      "version": "0.18.0",
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_files": [
+        "docstring_parser-0.18.0.dist-info/licenses/LICENSE.md"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "email-validator",
+      "version": "2.3.0",
+      "license_expression": null,
+      "legacy_license": "Unlicense",
+      "license_files": [
+        "email_validator-2.3.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "exceptiongroup",
+      "version": "1.3.1",
+      "license_expression": null,
+      "legacy_license": null,
+      "license_files": [
+        "exceptiongroup-1.3.1.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "ezdxf",
+      "version": "1.4.4",
+      "license_expression": null,
+      "legacy_license": null,
+      "license_files": [
+        "ezdxf-1.4.4.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "fastmcp",
+      "version": "3.4.7",
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_files": [
+        "fastmcp-3.4.7.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "fastmcp-slim",
+      "version": "3.4.7",
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_files": [],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "fonttools",
+      "version": "4.65.0",
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_files": [
+        "fonttools-4.65.0.dist-info/licenses/LICENSE",
+        "fonttools-4.65.0.dist-info/licenses/LICENSE.external"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "griffelib",
+      "version": "2.3.0",
+      "license_expression": "ISC",
+      "legacy_license": null,
+      "license_files": [
+        "griffelib-2.3.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0",
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_files": [
+        "h11-0.16.0.dist-info/licenses/LICENSE.txt"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9",
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_files": [
+        "httpcore-1.0.9.dist-info/licenses/LICENSE.md"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1",
+      "license_expression": null,
+      "legacy_license": "BSD-3-Clause",
+      "license_files": [
+        "httpx-0.28.1.dist-info/licenses/LICENSE.md"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "httpx-sse",
+      "version": "0.4.3",
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_files": [
+        "httpx_sse-0.4.3.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_files": [
+        "idna-3.20.dist-info/licenses/LICENSE.md"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "jaraco.classes",
+      "version": "3.4.0",
+      "license_expression": null,
+      "legacy_license": null,
+      "license_files": [
+        "jaraco.classes-3.4.0.dist-info/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "jaraco.context",
+      "version": "6.1.2",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "jaraco_context-6.1.2.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "jaraco.functools",
+      "version": "4.6.0",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "jaraco_functools-4.6.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "joserfc",
+      "version": "1.7.5",
+      "license_expression": null,
+      "legacy_license": "BSD-3-Clause",
+      "license_files": [
+        "joserfc-1.7.5.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "jsonref",
+      "version": "1.1.0",
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_files": [
+        "jsonref-1.1.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.26.0",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "jsonschema-4.26.0.dist-info/licenses/COPYING"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "jsonschema-path",
+      "version": "0.5.0",
+      "license_expression": null,
+      "legacy_license": "Apache-2.0",
+      "license_files": [
+        "jsonschema_path-0.5.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "jsonschema_specifications-2025.9.1.dist-info/licenses/COPYING"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "keyring",
+      "version": "25.7.0",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "keyring-25.7.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "markdown-it-py",
+      "version": "4.2.0",
+      "license_expression": null,
+      "legacy_license": null,
+      "license_files": [
+        "markdown_it_py-4.2.0.dist-info/licenses/LICENSE",
+        "markdown_it_py-4.2.0.dist-info/licenses/LICENSE.markdown-it"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "mcp",
+      "version": "1.30.0",
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_files": [
+        "mcp-1.30.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "mdurl",
+      "version": "0.1.2",
+      "license_expression": null,
+      "legacy_license": null,
+      "license_files": [
+        "mdurl-0.1.2.dist-info/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "more-itertools",
+      "version": "11.1.0",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "more_itertools-11.1.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.3",
+      "license_expression": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "legacy_license": null,
+      "license_files": [
+        "numpy-2.5.3.dist-info/licenses/LICENSE.txt",
+        "numpy-2.5.3.dist-info/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
+        "numpy-2.5.3.dist-info/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING",
+        "numpy-2.5.3.dist-info/licenses/numpy/_core/src/highway/LICENSE",
+        "numpy-2.5.3.dist-info/licenses/numpy/_core/src/multiarray/dragon4_LICENSE.txt",
+        "numpy-2.5.3.dist-info/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/_core/src/umath/svml/LICENSE",
+        "numpy-2.5.3.dist-info/licenses/numpy/fft/pocketfft/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/linalg/lapack_lite/LICENSE.txt",
+        "numpy-2.5.3.dist-info/licenses/numpy/ma/LICENSE",
+        "numpy-2.5.3.dist-info/licenses/numpy/random/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/random/src/distributions/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/random/src/mt19937/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/random/src/pcg64/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/random/src/philox/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/random/src/sfc64/LICENSE.md",
+        "numpy-2.5.3.dist-info/licenses/numpy/random/src/splitmix64/LICENSE.md"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "openapi-pydantic",
+      "version": "0.5.1",
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_files": [
+        "openapi_pydantic-0.5.1.dist-info/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "opentelemetry-api",
+      "version": "1.44.0",
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_files": [
+        "opentelemetry_api-1.44.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "license_expression": "Apache-2.0 OR BSD-2-Clause",
+      "legacy_license": null,
+      "license_files": [
+        "packaging-26.3.dist-info/licenses/LICENSE",
+        "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+        "packaging-26.3.dist-info/licenses/LICENSE.BSD"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "pathable",
+      "version": "0.6.0",
+      "license_expression": null,
+      "legacy_license": "Apache-2.0",
+      "license_files": [
+        "pathable-0.6.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "pillow",
+      "version": "12.3.0",
+      "license_expression": "MIT-CMU",
+      "legacy_license": null,
+      "license_files": [
+        "pillow-12.3.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "platformdirs",
+      "version": "4.11.10",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "platformdirs-4.11.10.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "py-key-value-aio",
+      "version": "0.4.5",
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_files": [
+        "py_key_value_aio-0.4.5.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "pycparser",
+      "version": "3.0",
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_files": [
+        "pycparser-3.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.13.5",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "pydantic-2.13.5.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "pydantic-settings",
+      "version": "2.15.0",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "pydantic_settings-2.15.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.46.5",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "pydantic_core-2.46.5.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0",
+      "license_expression": "BSD-2-Clause",
+      "legacy_license": null,
+      "license_files": [
+        "pygments-2.21.0.dist-info/licenses/AUTHORS",
+        "pygments-2.21.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "PyJWT",
+      "version": "2.14.0",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "pyjwt-2.14.0.dist-info/licenses/AUTHORS.rst",
+        "pyjwt-2.14.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "pyparsing",
+      "version": "3.3.2",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "pyparsing-3.3.2.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "pyperclip",
+      "version": "1.11.0",
+      "license_expression": null,
+      "legacy_license": "BSD",
+      "license_files": [
+        "pyperclip-1.11.0.dist-info/licenses/AUTHORS.txt",
+        "pyperclip-1.11.0.dist-info/licenses/LICENSE.txt"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "python-dotenv",
+      "version": "1.2.3",
+      "license_expression": null,
+      "legacy_license": "BSD-3-Clause",
+      "license_files": [
+        "python_dotenv-1.2.3.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "python-multipart",
+      "version": "0.0.32",
+      "license_expression": "Apache-2.0",
+      "legacy_license": null,
+      "license_files": [
+        "python_multipart-0.0.32.dist-info/licenses/LICENSE.txt"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "pywin32",
+      "version": "312",
+      "license_expression": null,
+      "legacy_license": "PSF",
+      "license_files": [
+        "pywin32-312.dist-info/licenses/adodbapi/license.txt",
+        "pywin32-312.dist-info/licenses/com/License.txt",
+        "pywin32-312.dist-info/licenses/com/win32comext/mapi/src/MAPIStubLibrary/LICENSE",
+        "pywin32-312.dist-info/licenses/isapi/README.txt",
+        "pywin32-312.dist-info/licenses/pythonwin/License.txt",
+        "pywin32-312.dist-info/licenses/pythonwin/Scintilla/License.txt",
+        "pywin32-312.dist-info/licenses/pythonwin/pywin/idle/LICENSE.txt",
+        "pywin32-312.dist-info/licenses/win32/License.txt"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "pywin32-ctypes",
+      "version": "0.2.3",
+      "license_expression": null,
+      "legacy_license": "BSD-3-Clause",
+      "license_files": [
+        "pywin32_ctypes-0.2.3.dist-info/LICENSE.txt"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3",
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_files": [
+        "pyyaml-6.0.3.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "referencing",
+      "version": "0.37.0",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "referencing-0.37.0.dist-info/licenses/COPYING"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "rich",
+      "version": "15.0.0",
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_files": [
+        "rich-15.0.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "rich-rst",
+      "version": "2.1.0",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "rich_rst-2.1.0.dist-info/licenses/LICENSE",
+        "rich_rst-2.1.0.dist-info/licenses/rich_rst/_vendor/LICENSES.txt"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "rpds-py",
+      "version": "2026.6.3",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "rpds_py-2026.6.3.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "sse-starlette",
+      "version": "3.4.11",
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_files": [
+        "sse_starlette-3.4.11.dist-info/licenses/AUTHORS",
+        "sse_starlette-3.4.11.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "starlette",
+      "version": "1.6.0",
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_files": [
+        "starlette-1.6.0.dist-info/licenses/LICENSE.md"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4",
+      "license_expression": "MIT",
+      "legacy_license": null,
+      "license_files": [
+        "typing_inspection-0.4.4.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "license_expression": "PSF-2.0",
+      "legacy_license": null,
+      "license_files": [
+        "typing_extensions-4.16.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "uncalled-for",
+      "version": "0.4.0",
+      "license_expression": null,
+      "legacy_license": "See component license",
+      "license_files": [
+        "uncalled_for-0.4.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.53.0",
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_files": [
+        "uvicorn-0.53.0.dist-info/licenses/LICENSE.md"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "watchfiles",
+      "version": "1.2.0",
+      "license_expression": null,
+      "legacy_license": "MIT",
+      "license_files": [
+        "watchfiles-1.2.0.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    },
+    {
+      "name": "websockets",
+      "version": "17.1",
+      "license_expression": "BSD-3-Clause",
+      "legacy_license": null,
+      "license_files": [
+        "websockets-17.1.dist-info/licenses/LICENSE"
+      ],
+      "status": "METADATA_OBSERVED_NOT_FULL_COMPONENT_APPROVAL"
+    }
+  ]
+}

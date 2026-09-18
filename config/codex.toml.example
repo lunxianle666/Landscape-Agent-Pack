@@ -1,0 +1,10 @@
+# Generate actual values with installer; merge only this service after review.
+[mcp_servers.autocad]
+command = "<PATH>/autocad-mcp.exe"
+startup_timeout_sec = 60
+tool_timeout_sec = 90
+[mcp_servers.autocad.env]
+AUTOCAD_MCP_BACKEND = "com"
+CAD_PROGID = "<PROGID>"
+DISCOVERY_MODE = "search"
+ALLOWED_PATHS = "<PATH>"

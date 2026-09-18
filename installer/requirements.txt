@@ -1,0 +1,1 @@
+autocad-mcp-pro[com]==1.5.1

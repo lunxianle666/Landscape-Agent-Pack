@@ -1,0 +1,158 @@
+{
+  "version": "0.1.0-rc1.1",
+  "verdict": "READY_FOR_GITHUB_REVIEW",
+  "fresh_venv_install": "PASS",
+  "dependency": "autocad-mcp-pro[com]==1.5.1",
+  "records": [
+    {
+      "name": "Python",
+      "status": "PASS"
+    },
+    {
+      "name": "COM_GetActiveObject",
+      "status": "PASS"
+    },
+    {
+      "name": "MCP_handshake",
+      "status": "PASS"
+    },
+    {
+      "name": "Discovery_Mode",
+      "status": "PASS"
+    },
+    {
+      "name": "Discovery_Search",
+      "status": "PASS"
+    },
+    {
+      "name": "MCP_system_status",
+      "status": "PASS"
+    },
+    {
+      "name": "MCP_drawing_new",
+      "status": "PASS"
+    },
+    {
+      "name": "Guard_entity_create_polyline",
+      "status": "SUCCESS_WITH_FALSE_ERROR"
+    },
+    {
+      "name": "Repeat_Prevention_entity_create_polyline",
+      "status": "PASS"
+    },
+    {
+      "name": "Guard_entity_create_circle",
+      "status": "SUCCESS_WITH_FALSE_ERROR"
+    },
+    {
+      "name": "Repeat_Prevention_entity_create_circle",
+      "status": "PASS"
+    },
+    {
+      "name": "Geometry_InMemory",
+      "status": "PASS",
+      "count": 2,
+      "types": [
+        "AcDbPolyline",
+        "AcDbCircle"
+      ],
+      "rectangle_coordinates": [
+        0.0,
+        0.0,
+        1000.0,
+        0.0,
+        1000.0,
+        500.0,
+        0.0,
+        500.0
+      ],
+      "rectangle_area_mm2": 500000.00000000006,
+      "rectangle_perimeter_mm": 3000.0,
+      "circle_center": [
+        1500.0,
+        250.0,
+        0.0
+      ],
+      "circle_diameter_mm": 200.0,
+      "insunits": 4
+    },
+    {
+      "name": "MCP_drawing_save",
+      "status": "PASS"
+    },
+    {
+      "name": "DWG_Save",
+      "status": "PASS",
+      "format": "AC1032",
+      "bytes": 15965
+    },
+    {
+      "name": "MCP_drawing_close",
+      "status": "SUCCESS_WITH_FALSE_ERROR",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Internal error: Error calling tool 'call_tool': Internal error: Error calling tool 'drawing_close': AutoCAD COM error (-0x7ffeffff): 被呼叫方拒绝接收呼叫。"
+          }
+        ],
+        "isError": true
+      },
+      "repeat_close_allowed": false
+    },
+    {
+      "name": "MCP_drawing_open",
+      "status": "PASS"
+    },
+    {
+      "name": "DWG_Reopen_Verification",
+      "status": "PASS",
+      "count": 2,
+      "types": [
+        "AcDbPolyline",
+        "AcDbCircle"
+      ],
+      "rectangle_coordinates": [
+        0.0,
+        0.0,
+        1000.0,
+        0.0,
+        1000.0,
+        500.0,
+        0.0,
+        500.0
+      ],
+      "rectangle_area_mm2": 500000.00000000006,
+      "rectangle_perimeter_mm": 3000.0,
+      "circle_center": [
+        1500.0,
+        250.0,
+        0.0
+      ],
+      "circle_diameter_mm": 200.0,
+      "insunits": 4,
+      "sha256": "4999925a2a1753127fa3badb23c6973576b02b85d8bee92e327a60c334891ec7"
+    },
+    {
+      "name": "Existing_Documents_Preserved",
+      "status": "PASS",
+      "checked": [
+        "names",
+        "paths",
+        "saved_state",
+        "entity_counts"
+      ],
+      "documents": 0
+    },
+    {
+      "name": "SketchUp_Bridge",
+      "status": "SKIPPED_NOT_RUNNING",
+      "reason": "Optional component; no startup or connection attempted"
+    }
+  ],
+  "creation_cases": 7,
+  "guard_tests_passed": 11,
+  "source_files_unchanged": 88,
+  "scope": "AutoCAD main chain only; no Layout/PDF/screenshots/complex landscape tests",
+  "privacy": "Public evidence excludes local logs, paths, generated configs and DWGs"
+}

@@ -1,0 +1,1 @@
+{"mcpServers":{"autocad":{"command":"<PATH>/autocad-mcp.exe","env":{"AUTOCAD_MCP_BACKEND":"com","CAD_PROGID":"<PROGID>","DISCOVERY_MODE":"search","ALLOWED_PATHS":"<PATH>"}}}}
