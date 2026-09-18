@@ -30,7 +30,9 @@ RC1.1 审核范围是 AutoCAD 主链：独立安装、MCP/Discovery、临时矩�
 
 第一次的顺序：下载 [Release](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.1.0-rc1) → 解压并运行 setup.bat → AI协助合并配置 → 最小 Smoke Test → 开始使用。安装器只生成配置片段，不自动完成客户端配置。
 
-**日常绘图不需要重复发送安装总提示词。**普通聊天AI不一定能操作本机；需要已配置本地 MCP 的 Agent。当前重点是 AutoCAD，SketchUp 为可选 / Experimental。
+**日常绘图不需要重复发送安装总提示词。**
+
+普通聊天AI不一定能操作本机；需要已配置本地 MCP 的 Agent。当前重点是 AutoCAD，SketchUp 为可选 / Experimental。
 解压完整目录，阅读 [Windows 安装说明](docs/INSTALL_WINDOWS.md)，再运行 setup.bat。已有同名 Skill 时拒绝覆盖。RC 演练请指定独立 Skill 目标目录。
 
 安装器建立独立本机虚拟环境，从 PyPI 安装 `autocad-mcp-pro[com]==1.5.1`。只生成配置片段，由用户检查后合并，不覆盖原配置。临时绘图需 `-RunGeometrySmoke` 且 AutoCAD 文档集合为空；不自动关闭用户图纸。
