@@ -16,6 +16,8 @@ Get-FileHash -Algorithm SHA256 -LiteralPath .\Landscape-Agent-Pack-v0.1.0-beta.z
 
 同版本复用并重新校验、smoke，不重复 Skill/MCP。不同版本或损坏规则保留并 FAIL，请选择独立目录；Beta 不做覆盖升级迁移。`-SkillsDirectory` 可选独立 Skill 目录，`-PythonExe` 指定实际 Python。`-UseExistingDependency` 是高级选项，要求该 Python 已具有固定依赖，不等于默认安装。
 
+独立 venv 安装根必须不超过120字符：本轮深层解压目录下的 pywin32 安装真实触发 WinError206。安装器现在在写入前拒绝过长目标并要求短路径，不修改 Windows 长路径策略。解压源可在深层目录，runtime 请用较短的 AppData 或用户有写权限的独立目录。
+
 现有同名 Skill 内容不同会保留并 WARN，新文件暂存在 InstallRoot/skills。此时人工比较，先备份再选择客户端搜索目录；不宣称 Agent 已发现。没有明确授权不要覆盖旧 Skill。
 
 ## 客户端人工配置（必须）

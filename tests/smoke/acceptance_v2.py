@@ -2,6 +2,7 @@
 import hashlib,json,os,subprocess,sys,zipfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'outputs';OUT.mkdir(exist_ok=True)
+INSTALL=Path(os.environ['TEMP'])/('LAP-beta-'+hashlib.sha256(str(ROOT).encode()).hexdigest()[:8])
 def run(name,args):
     r=subprocess.run(args,cwd=ROOT,capture_output=True,encoding='utf-8',errors='replace',env={**os.environ,'PYTHONIOENCODING':'utf-8'})
     (OUT/(name+'.log')).write_text(r.stdout+r.stderr,encoding='utf-8')
@@ -9,7 +10,7 @@ def run(name,args):
     return {'test':name,'exit':r.returncode,'log':name+'.log'}
 if len(sys.argv)>1 and sys.argv[1]=='independent':
     import win32com.client.dynamic as dynamic,win32com.client
-    paths=list(OUT.rglob('lap-smoke-*.dwg'))
+    paths=list(INSTALL.rglob('lap-smoke-*.dwg'))
     assert paths,'No newly produced DWG'
     path=max(paths,key=lambda p:p.stat().st_mtime)
     app=dynamic.Dispatch(win32com.client.GetActiveObject('AutoCAD.Application.25')._oleobj_)
@@ -30,14 +31,14 @@ for name,script in [('integrity','test_integrity.py'),('document-safety','test_d
     results.append(run(name,[sys.executable,'-B',str(ROOT/'tests/smoke'/script)]))
 results.append(run('environment',[sys.executable,'-B','installer/environment_probe.py']))
 # Default dependency creation and default Skill target, but isolated runtime root.
-base=['powershell.exe','-NoProfile','-ExecutionPolicy','Bypass','-File',str(ROOT/'installer/install.ps1'),'-InstallRoot',str(OUT/'default-install space')]
+base=['powershell.exe','-NoProfile','-ExecutionPolicy','Bypass','-File',str(ROOT/'installer/install.ps1'),'-InstallRoot',str(INSTALL)]
 results.append(run('default-install',base))
 results.append(run('second-install',base))
 results.append(run('geometry',base+['-RerunSmoke','-RunGeometrySmoke']))
 results.append(run('independent-read',[sys.executable,'-B',str(Path(__file__)),'independent']))
 results.append(run('diagnostic',base+['-DiagnosticOnly']))
 # Tampering checks on installed copy and actual diagnostic exit. Restore exact bytes after each test.
-rule=OUT/'default-install space/pack-rules/standards/autocad-safety-rules.md'
+rule=INSTALL/'pack-rules/standards/autocad-safety-rules.md'
 if rule.is_file():
     original=rule.read_bytes()
     for mode in ['delete','modify','empty']:

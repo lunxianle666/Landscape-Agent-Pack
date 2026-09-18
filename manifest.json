@@ -74,7 +74,7 @@
     },
     {
       "relative_path": "docs/INSTALL_WINDOWS.md",
-      "sha256": "8615e3fb57f3c49c3e12770de3e25be8a1bf59fbc9de80cd1bb7488bc65ddcc6",
+      "sha256": "a8090773317df54efee7aa3e638fe317a3cd7ed08ab8da26bf5240cceeb3c6bc",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.1.0-beta"
@@ -207,7 +207,7 @@
     },
     {
       "relative_path": "installer/install.ps1",
-      "sha256": "a86ca5071b75d027e5c41a854c18d5ae6a95aa21adbc129aa55b5f96baa05e81",
+      "sha256": "87094ef7f3c3165d3b8139cd589799be783c3df0361f076eb70ca9d2fb5fb8f1",
       "file_type": "ps1",
       "critical": true,
       "release_version": "v0.1.0-beta"
@@ -256,7 +256,7 @@
     },
     {
       "relative_path": "README.md",
-      "sha256": "dde92fb0356e3d7caec2c75b57c377363ca63123b2b5933e9161fbb2483345dc",
+      "sha256": "11f532b3d2347cedef2008565d3438652f1dd987fe7ca34aa7765876868db267",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.1.0-beta"
@@ -354,7 +354,7 @@
     },
     {
       "relative_path": "tests/smoke/acceptance_v2.py",
-      "sha256": "fdc8b75e73ce1128321c949e1d91b98cabe801455fe6e2a4d396311cb6ebfdd2",
+      "sha256": "5f77799c020ae79eb5796528f02776f2b5a38805760fd922cdac048174acacf1",
       "file_type": "py",
       "critical": true,
       "release_version": "v0.1.0-beta"

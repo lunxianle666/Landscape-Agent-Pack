@@ -63,6 +63,9 @@ Add-Result 'Python' 'PASS' (($pyVer -split '\s+' | Where-Object {$_}) -join '.')
 & $PythonExe -B (Join-Path $PSScriptRoot 'verify-rules.py') --root $package
 if($LASTEXITCODE -ne 0){ Add-Result 'Release integrity' 'FAIL' 'See failed files above'; Show-Summary; exit 1 }
 $InstallRoot=[IO.Path]::GetFullPath($InstallRoot)
+if(-not $DiagnosticOnly -and -not $UseExistingDependency -and $InstallRoot.Length -gt 120){
+  throw 'Installation path too long for Windows pip/pywin32 without system long-path changes. Choose a short separate -InstallRoot (at most 120 characters); no files written.'
+}
 if($DiagnosticOnly -and (Test-Path -LiteralPath (Join-Path $InstallRoot 'runtime\Scripts\python.exe'))){
   $PythonExe=Join-Path $InstallRoot 'runtime\Scripts\python.exe'
 }

@@ -34,6 +34,8 @@ Verified 只代表本机最小回归范围，不是对所有机器的保证。
 
 必须有合法 AutoCAD 桌面版、Python 3.11+ x64（实测推荐 3.12）、联网 pip、目录写权限；Python WindowsApps 占位程序不可用。安装器固定 AutoCAD MCP Pro 1.5.1，传递依赖未全量锁定。SketchUp 可选，另需合法 Pro 2023、Node ≥22 和外部 Ringo；本包不自动安装/修改 SketchUp 插件，也不分发软件本体。
 
+Windows pip/pywin32 深层路径可能 WinError206；隔离 runtime 安装根限制120字符，过长时写入前 FAIL，请选择短路径。不会修改系统长路径策略。
+
 ## 最简单的首次使用
 
 先让 Agent 读取安装后的 `pack-rules/AGENT_CONTEXT.md`（或解压根文件），输出上下文确认块；随后真实调用 `system_status`，要求 `backend=com`、`connected=true`。仅有配置文件不算连接成功。Discovery search 模式可能只显示 `search_tools` / `call_tool`，先发现实际工具。
