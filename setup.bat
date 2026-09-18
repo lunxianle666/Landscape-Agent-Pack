@@ -9,7 +9,7 @@ echo.
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0installer\install.ps1" %*
 set RC=%ERRORLEVEL%
 echo.
-if "%RC%"=="0" ( echo Result: SUCCESS ) else ( echo Result: FAILED / WARNING  exit=%RC% )
+if "%RC%"=="0" ( echo Result: INSTALL CHECK COMPLETED - read Summary warnings and manual client reload requirements ) else ( echo Result: FAILED  exit=%RC% )
 echo Logs and runs: see the Summary block above (Runs/logs line).
 echo.
 pause

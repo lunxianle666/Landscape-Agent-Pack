@@ -1,4 +1,8 @@
-# Landscape Agent Pack · V0.1-RC2
+# Landscape Agent Pack · v0.1.0-beta-candidate.1 (not release-approved)
+
+本地稳定性候选版本，尚未达到稳定 Beta 发布门槛。本机既有 Ringo MCP 下的 SketchUp 长方体与简单 DWG→三维→SKP 重开闭环通过，不代表全新 Windows 安装、复杂景观或完整曲线支持。真实客户端重载为 MANUAL TEST REQUIRED。
+
+完整性检查：`python installer/verify-rules.py`。manifest 缺失、损坏、关键规则缺失或 hash 不匹配均返回非零。manifest 检测意外改动，不提供对 manifest 与文件同时被恶意替换的签名认证；请从可信发布渠道核对 ZIP hash。`build-manifest.py` 仅供维护者构建发布，不可用于修复校验失败。
 Landscape Agent Pack 是一个 Windows 风景园林 AI Agent 工作流包。学生可以通过支持 MCP 的 AI Agent（如 Codex / TRAE），用自然语言进行景观 CAD 基础工作，并复用统一的设计规则与安全检查。
 
 Landscape Agent Pack is a landscape architecture workflow layer between AI agents and professional design software.
@@ -46,7 +50,7 @@ RC1.1 审核范围是 AutoCAD 主链：独立安装、MCP/Discovery、临时矩�
 **日常绘图不需要重复发送安装总提示词。**
 
 普通聊天AI不一定能操作本机；需要已配置本地 MCP 的 Agent。当前重点是 AutoCAD，SketchUp 为可选 / Experimental。
-解压完整目录，阅读 [Windows 安装说明](docs/INSTALL_WINDOWS.md)，再运行 setup.bat。已有同名 Skill 时拒绝覆盖。RC 演练请指定独立 Skill 目标目录。
+解压完整目录，阅读 [Windows 安装说明](docs/INSTALL_WINDOWS.md)，再运行 setup.bat。相同 Skill 不重复复制；不同既有 Skill 保留，并把候选版本暂存到安装目录（不宣称客户端已加载）。不同已安装包版本不覆盖，需使用独立目录。失败时保留诊断产物并列出本次可能写入位置。配置仍只生成片段，不修改现有客户端；安全 merge、备份与真实重载自动化尚未验收。
 
 安装器建立独立本机虚拟环境，从 PyPI 安装 `autocad-mcp-pro[com]==1.5.1`。只生成配置片段，由用户检查后合并，不覆盖原配置。临时绘图需 `-RunGeometrySmoke` 且 AutoCAD 文档集合为空；不自动关闭用户图纸。
 

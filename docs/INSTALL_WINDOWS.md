@@ -23,11 +23,11 @@ Windows ZIP 的最终 SHA256 请以 GitHub Release 页面公布的 SHA256 / Asse
 .\setup.bat -RunGeometrySmoke
 ```
 
-已有同名 Skill 时拒绝覆盖，不要删除原 Skill 或反复运行。让 AI 根据下面的独立演练参数选一个新目标。测试完成后，按生成片段合并客户端配置、重载客户端，并发送[连接检查提示词](../prompts/QUICK_PROMPTS_CN.md#1-检查连接)。不能因 SketchUp 的可选跳过认定 AutoCAD 失败。
+本地 beta-candidate.1 不覆盖同名 Skill：内容一致时复用；内容不同时保留原件，候选 Skill 暂存于安装目录并报告 WARN，不宣称客户端已发现。安装同版本可重复运行并重做 smoke；已安装规则损坏时 FAIL，不静默重写；不同版本使用独立 InstallRoot。测试完成后，先备份客户端配置，再仅合并生成的服务片段、重载客户端，并发送[连接检查提示词](../prompts/QUICK_PROMPTS_CN.md#1-检查连接)。客户端真实重载尚未验收。上方 RC2 下载链接仍指旧版，候选尚未上传。
 
 安装完成后看[小白使用手册](BEGINNER_USAGE_CN.md)。日常绘图不必重新运行安装器或安装总指令。
 
-双击 `setup.bat` 默认安装依赖并尝试安装 SketchUp Landscape Skill。已有同名 Skill 时会拒绝覆盖，保留原件。当前 `autocad-dwg-redraw` 授权未确认，不安装。
+双击 `setup.bat` 默认建立独立依赖运行时并检查 Skill、规则及 MCP；同名 Skill 的安全处理如上。当前 `autocad-dwg-redraw` 授权未确认，不安装。先启动合法 AutoCAD（与安装器同权限级别）；未运行时实际 smoke 失败，不强制成功。失败时保留本次运行时/规则/暂存 Skill/日志以供诊断并列出写入位置，不自动删除已有文件。无 Python、版本不符、pip 安装失败或 COM 故障均需按错误修复后复验。
 
 RC 独立演练命令：
 ```powershell

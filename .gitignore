@@ -26,4 +26,5 @@ installation.json
 bridge.log
 runs/
 _review/
+outputs/
 artifacts/
