@@ -26,7 +26,7 @@ Verified 只代表本机最小回归范围，不是对所有机器的保证。
 | --- | --- | --- |
 | Windows 11 / Python 3.12.10 x64 / PowerShell 5.1 | Verified | 现有本机；中文与空格目录，C/D 测试目标 |
 | AutoCAD 2025 / AutoCAD MCP Pro 1.5.1 COM | Verified | MCP、Guard、真实 DWG 保存关闭重开、独立 Python COM 几何回读 |
-| SketchUp Pro 2023 23.0.367 | Limited / Experimental | 本机既有 Ringo 1.3.2 兼容修改下的 box 和简单 DWG→基础三维→SKP 重开；不是原版上游所有组合验证 |
+| SketchUp Pro 2023 23.0.367 | Experimental | 本轮 box 创建/保存/关闭模型/重开回读通过；简单 DWG 原生导入未产生可验收参考实体，本轮 FAIL / REVIEW REQUIRED，不宣称 DWG→SKP Verified；本机 Ringo 1.3.2 有既有兼容修改 |
 | Codex | Manual Setup | 既有 Agent 调用 SU MCP 已生成文件；新安装后的 Skill/MCP 重载仍 MANUAL TEST REQUIRED |
 | TRAE / 其他 Agent | Not Tested | 提供 stdio 示例，不保证客户端兼容 |
 | 完整复杂景观 / 曲线精度 / 任意 DWG 自动建模 | Experimental | 本次只验证简单线性基础模型 |

@@ -18,7 +18,7 @@
     },
     {
       "relative_path": "CHANGELOG.md",
-      "sha256": "62d1a517e99babe5177dac0756a30aaeeda0c40cc23b9b93e04d548388e6ab80",
+      "sha256": "f17d7a3dd3f2e388da80a8512764095a9513a075501c1fabd4d1971fdb110e3a",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.1.0-beta"
@@ -53,7 +53,7 @@
     },
     {
       "relative_path": "docs/BETA_ACCEPTANCE.md",
-      "sha256": "0eac9000eeaec2009121feb782b5876a20b875cff72dc8e0389ef3cb899f06c3",
+      "sha256": "e017bb3c1198164a83fa0cfae2971b75a04f4a7ec99cf02045e4b0e427731c2f",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.1.0-beta"
@@ -256,7 +256,7 @@
     },
     {
       "relative_path": "README.md",
-      "sha256": "11f532b3d2347cedef2008565d3438652f1dd987fe7ca34aa7765876868db267",
+      "sha256": "a67e329481da45866aa055b72d88ec282ac979b38f3497d4ab72a556b0547b6d",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.1.0-beta"
