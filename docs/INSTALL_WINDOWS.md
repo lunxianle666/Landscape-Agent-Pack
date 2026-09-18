@@ -3,15 +3,15 @@
 
 ## 第一次下载安装
 
-1. 打开[RC1 Release下载页](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.1.0-rc1)。
-2. 在 Assets 中下载 `Landscape-Agent-Pack-v0.1.0-rc1.1-windows.zip`，不要误选 Source code。
+1. 打开[RC2 Release下载页](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.1.0-rc2)。
+2. 在 Assets 中下载 `Landscape-Agent-Pack-v0.1.0-rc2-windows.zip`，不要误选 Source code。
 3. 在下载文件夹空白处右键，打开终端 / PowerShell，输入以下命令；将文件名替换为你实际下载的文件名：
 
 ```powershell
-Get-FileHash -Algorithm SHA256 -LiteralPath ".\Landscape-Agent-Pack-v0.1.0-rc1.1-windows.zip"
+Get-FileHash -Algorithm SHA256 -LiteralPath ".\Landscape-Agent-Pack-v0.1.0-rc2-windows.zip"
 ```
 
-RC1附件的 SHA256 应为 `d1170bb66cf9284ae543b7d81e684a3ce7dbbb8c84ff3ec3ee0eaa4b81909104`，大小写不影响比较。与 Release 公布值不一致就停止，不运行安装器。
+Windows ZIP 的最终 SHA256 请以 GitHub Release 页面公布的 SHA256 / Asset digest 为准。大小写不影响比较。与 Release 公布值不一致就停止，不运行安装器。
 
 4. 右键 ZIP → 全部解压。打开解压后的 `Landscape-Agent-Pack` 文件夹，找到 `setup.bat`。不要在 ZIP 预览里直接运行。
 5. 正常权限打开 AutoCAD。首次做绘图测试前，先自己保存并关闭所有图纸，保留 AutoCAD 程序运行。
@@ -41,7 +41,7 @@ RC 独立演练命令：
 来源：https://github.com/Ringophilia/Ringo-Sketchup-MCP
 固定提交：`2dd54d945b0e7a5d1843d58a94a33f5c8875df01`（package 1.3.2）。在独立第三方工具目录中准备官方源码，按该提交 README 使用 `npm ci`、`npm run build`、`npm run setup -- --year 2023`。这些步骤不属于本 Pack 自动安装；已有扩展或 Ringo 配置先检查冲突，不覆盖。
 
-RC1.1 不自动安装 Ringo，不应用本机 schema 修改。启动 SketchUp 后，从扩展菜单启动已有桥。SketchUp 是可选组件。只有显式 -RunSketchUpSmoke / --sketchup 才进行 bridge_status / model_get_info；默认不连接、不启动，未运行输出 SKIPPED_NOT_RUNNING。明确测试时仍只连接既有实例，不修改模型。
+RC2 不自动安装 Ringo，不应用本机 schema 修改（此行为继承自 RC1.1 历史验证）。启动 SketchUp 后，从扩展菜单启动已有桥。SketchUp 是可选组件。只有显式 -RunSketchUpSmoke / --sketchup 才进行 bridge_status / model_get_info；默认不连接、不启动，未运行输出 SKIPPED_NOT_RUNNING。明确测试时仍只连接既有实例，不修改模型。
 
 ## Codex / TRAE
 安装器生成 `codex-autocad.toml` 和 `trae-autocad.json`。检查后仅合并 autocad 服务，不覆盖整个配置文件。Codex 使用 `[mcp_servers.autocad]`；官方说明：https://developers.openai.com/zh-Hans/docs/extend/mcp

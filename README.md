@@ -1,4 +1,4 @@
-# Landscape Agent Pack · V0.1-RC1.1
+# Landscape Agent Pack · V0.1-RC2
 Landscape Agent Pack 是一个 Windows 风景园林 AI Agent 工作流包。学生可以通过支持 MCP 的 AI Agent（如 Codex / TRAE），用自然语言进行景观 CAD 基础工作，并复用统一的设计规则与安全检查。
 
 Landscape Agent Pack is a landscape architecture workflow layer between AI agents and professional design software.
@@ -41,7 +41,7 @@ RC1.1 审核范围是 AutoCAD 主链：独立安装、MCP/Discovery、临时矩�
 - 已经安装？看[小白使用手册](docs/BEGINNER_USAGE_CN.md)。
 - 只想马上画图？打开[提示词速查表](prompts/QUICK_PROMPTS_CN.md)。
 
-第一次的顺序：下载 [Release](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.1.0-rc1) → 解压并运行 setup.bat → AI协助合并配置 → 最小 Smoke Test → 开始使用。安装器只生成配置片段，不自动完成客户端配置。
+第一次的顺序：下载 [Release](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.1.0-rc2) → 解压并运行 setup.bat → AI协助合并配置 → 最小 Smoke Test → 开始使用。安装器只生成配置片段，不自动完成客户端配置。
 
 **日常绘图不需要重复发送安装总提示词。**
 
@@ -58,6 +58,10 @@ RC1.1 审核范围是 AutoCAD 主链：独立安装、MCP/Discovery、临时矩�
 - [CAD → SketchUp（可选）](prompts/QUICK_PROMPTS_CN.md#11-cad--sketchup)
 
 出错看[故障排查](docs/TROUBLESHOOTING_CN.md)；开发者看[验证报告](docs/RC1_1_BUILD_REPORT.md)与[Guard规则](guards/README.md)。提示词是任务建议，完整景观绘图仍在实验阶段，不能把模板当作能力已验收的承诺。
+
+## Agent 规则入口
+
+你的 Agent 已经装好环境后，执行任何景观任务前，先让它读取 [AGENT_CONTEXT.md](AGENT_CONTEXT.md)。这是本 Pack 的唯一规则入口：里面说明了默认 AutoCAD-only 工作流、必读规则文件、Guard 的真实能力边界，以及 Agent 读完后必须输出的确认块。规则需要 Agent 实际读取并遵守，不会自动拦截工具调用。
 
 ## 已知创建假失败
 AutoCAD 2025 类型库生成包装暴露小写 color，上游返回值提取读取大写 Color，可能在对象已创建后报错。自有 [Creation Guard](guards/README.md) 检查句柄差集与关键几何，确认后返回 SUCCESS_WITH_FALSE_ERROR，保留原错误，同一操作 ID 禁止重复调用。它是明确使用的调用包装，不会自动拦截绕过 Guard 的原始 MCP 调用。
@@ -81,8 +85,6 @@ AutoCAD 2025 类型库生成包装暴露小写 color，上游返回值提取读�
 
 其他 AutoCAD 版本可能需要适配；未验证所有版本，也不承诺无人值守完整施工图流程已稳定。Guard 的重复操作凭据仅在当前进程内有效，重启后需重新核查句柄。
 
-[当前 RC1.1 验证报告](docs/RC1_1_BUILD_REPORT.md) · [匿名测试摘要](tests/evidence/rc1.1-summary.json) · [预发行版下载](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.1.0-rc1)
+[RC1.1 历史验证报告](docs/RC1_1_BUILD_REPORT.md) · [RC1.1 匿名测试摘要](tests/evidence/rc1.1-summary.json) · [预发行版下载](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.1.0-rc2)
 
-Release 附件保留已审核 RC1.1 ZIP，仓库的首次发布仅补充 README 并清理文档空白；附件 SHA256 以 Release Notes 为准。
-
-日常手册与提示词请阅读仓库最新文档。现有 Release 和 RC ZIP 不因文档增强而重打；根目录 SHA256SUMS.txt 保留首次发布源码快照的校验清单，请在 v0.1.0-rc1 Tag 下使用，不用于校验后续文档更新。
+当前候选为 v0.1.0-rc2。RC1.1 的 ZIP 与验证报告属于历史记录；当前应下载 v0.1.0-rc2 附件。日常手册与提示词请阅读仓库最新文档；根目录 SHA256SUMS.txt 对应当前 RC2 发布包文件，ZIP 自身 SHA256 以 GitHub Release Asset digest / Release Notes 为准（不写入 ZIP 内部，避免自引用）。
