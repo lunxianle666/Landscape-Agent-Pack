@@ -1,5 +1,31 @@
 # Windows 安装与演练
-前置：合法 AutoCAD 桌面版、SketchUp 2023；Python 3.11+ x64（优先已测 3.12）；SketchUp 接入需 Node ≥22。PowerShell 5.1 可运行。
+前置：合法 AutoCAD 桌面版；Python 3.11+ x64（优先已测 3.12.10）。SketchUp 是可选组件，使用时另需合法 SketchUp 2023 与 Node ≥22。PowerShell 5.1 可运行。
+
+## 第一次下载安装
+
+1. 打开[RC1 Release下载页](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.1.0-rc1)。
+2. 在 Assets 中下载 `Landscape-Agent-Pack-v0.1.0-rc1.1-windows.zip`，不要误选 Source code。
+3. 在下载文件夹空白处右键，打开终端 / PowerShell，输入以下命令；将文件名替换为你实际下载的文件名：
+
+```powershell
+Get-FileHash -Algorithm SHA256 -LiteralPath ".\Landscape-Agent-Pack-v0.1.0-rc1.1-windows.zip"
+```
+
+RC1附件的 SHA256 应为 `d1170bb66cf9284ae543b7d81e684a3ce7dbbb8c84ff3ec3ee0eaa4b81909104`，大小写不影响比较。与 Release 公布值不一致就停止，不运行安装器。
+
+4. 右键 ZIP → 全部解压。打开解压后的 `Landscape-Agent-Pack` 文件夹，找到 `setup.bat`。不要在 ZIP 预览里直接运行。
+5. 正常权限打开 AutoCAD。首次做绘图测试前，先自己保存并关闭所有图纸，保留 AutoCAD 程序运行。
+6. 双击 `setup.bat` 安装；不知道如何合并配置时，复制[AI安装与配置总指令](AI_INSTALL_ASSISTANT_CN.md)给能访问本机的 Agent。安装窗口关闭不代表全部成功，让 AI 从本机 `runs` 结果核实。
+
+若希望首次安装同时做最小绘图测试，可以在解压文件夹打开 PowerShell，以这个命令代替双击：
+
+```powershell
+.\setup.bat -RunGeometrySmoke
+```
+
+已有同名 Skill 时拒绝覆盖，不要删除原 Skill 或反复运行。让 AI 根据下面的独立演练参数选一个新目标。测试完成后，按生成片段合并客户端配置、重载客户端，并发送[连接检查提示词](../prompts/QUICK_PROMPTS_CN.md#1-检查连接)。不能因 SketchUp 的可选跳过认定 AutoCAD 失败。
+
+安装完成后看[小白使用手册](BEGINNER_USAGE_CN.md)。日常绘图不必重新运行安装器或安装总指令。
 
 双击 `setup.bat` 默认安装依赖并尝试安装 SketchUp Landscape Skill。已有同名 Skill 时会拒绝覆盖，保留原件。当前 `autocad-dwg-redraw` 授权未确认，不安装。
 
