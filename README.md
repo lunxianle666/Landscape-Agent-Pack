@@ -1,94 +1,76 @@
-# Landscape Agent Pack · v0.1.0-beta-candidate.1 (not release-approved)
+# Landscape Agent Pack v0.1.0-beta
 
-本地稳定性候选版本，尚未达到稳定 Beta 发布门槛。本机既有 Ringo MCP 下的 SketchUp 长方体与简单 DWG→三维→SKP 重开闭环通过，不代表全新 Windows 安装、复杂景观或完整曲线支持。真实客户端重载为 MANUAL TEST REQUIRED。
+Windows 景观 CAD / SketchUp 的 Agent 工作流包：安装器、规则、Skill、MCP 配置片段、重复执行守护和真实文件 smoke test。适合有合法桌面软件、愿意检查 Agent 输出的景观学习与设计用户。它不是自动景观设计软件，也不是生产级或任意 Agent 通用插件。
 
-完整性检查：`python installer/verify-rules.py`。manifest 缺失、损坏、关键规则缺失或 hash 不匹配均返回非零。manifest 检测意外改动，不提供对 manifest 与文件同时被恶意替换的签名认证；请从可信发布渠道核对 ZIP hash。`build-manifest.py` 仅供维护者构建发布，不可用于修复校验失败。
-Landscape Agent Pack 是一个 Windows 风景园林 AI Agent 工作流包。学生可以通过支持 MCP 的 AI Agent（如 Codex / TRAE），用自然语言进行景观 CAD 基础工作，并复用统一的设计规则与安全检查。
+## 第一步：下载、解压、运行 setup.bat
 
-Landscape Agent Pack is a landscape architecture workflow layer between AI agents and professional design software.
+在 [Beta Release](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.1.0-beta) 的 Assets 下载 `Landscape-Agent-Pack-v0.1.0-beta.zip` 和 `.zip.sha256`，不要误选 Source code。比较 ZIP 的 SHA-256，完整解压，再打开里面的同名文件夹。
 
-本项目位于AI / Agent与AutoCAD / SketchUp之间，让通用AI按景观专业工作流操作已有软件，不是另一个CAD应用。推荐支持本地MCP的Agent，不要求固定模型或客户端。
+先用普通用户权限启动 AutoCAD；安装器与 CAD 必须处于相同权限级别。双击 `setup.bat`，等待检测、独立 Python runtime 安装及 MCP smoke 结果。PowerShell 执行策略仅对本次进程使用 Bypass，不更改系统策略。没有 Python 或依赖下载失败时会明确 FAIL。
 
-```text
-用户
-↓
-AI Model：理解和设计
-↓
-Agent：执行
-↓
-Landscape Agent Pack：景观工作流与安全规则
-↓
-MCP
-↓
-AutoCAD / 可选 SketchUp
-↓
-实际结果
-↓
-AI检查和继续修改 ↔ 用户反馈与确认
+Beta 是“主体自动安装 + 客户端配置人工完成”，不是完全一键安装。默认目标为 `%LOCALAPPDATA%\Landscape-Agent-Pack`；既有不同版本或损坏规则不会被覆盖。旧版本用户请用独立目标安装，例如：
+
+```powershell
+.\setup.bat -InstallRoot "$env:LOCALAPPDATA\Landscape-Agent-Pack-v0.1.0-beta"
 ```
 
-在Codex / TRAE等客户端中，AI Model与Agent Runtime通常共同工作，用户不需要人为拆成两个软件。你提供想法并确认选择，AI规划，Agent执行，再根据实际图纸迭代。架构图表示职责分工，不表示Pack自动拦截工具调用。
+安装后从结果打印的 `runs\<本次运行>\config` 取片段，先备份客户端配置，再只合并一个 MCP 服务；同名服务已存在时先比较，不能追加重复节。完全重启客户端，确认 Skill 与 MCP 真实可发现、可调用。安装器不写客户端配置、不自动 reload、不宣称已加载成功。现有不同 Skill 保留，新 Skill 暂存在安装根的 `skills`，须人工检查并选择安装，不能盲目覆盖。
 
-[项目是怎么工作的？](docs/HOW_IT_WORKS_CN.md) · [最推荐的设计意图模板](prompts/QUICK_PROMPTS_CN.md#最推荐直接告诉ai你的想法)
+详细步骤：[Windows 安装](docs/INSTALL_WINDOWS.md) · [客户端配置](docs/CLIENT_CONFIG_CN.md) · [小白使用手册](docs/BEGINNER_USAGE_CN.md)。
 
-目标是Agent-agnostic / Model-agnostic（不绑定特定Agent或模型）；架构兼容目标与已经实测不同，兼容性以[测试记录](docs/TESTED_ENVIRONMENT.md)为准。
+## 状态与系统要求
 
+Verified 只代表本机最小回归范围，不是对所有机器的保证。
 
-你需要自行合法安装 AutoCAD；使用可选建模工作流时自行合法安装 SketchUp。本项目不包含 AutoCAD、SketchUp、破解软件、商业软件安装包、Python 环境或第三方 MCP 源码。
+| 软件 / 功能 | Beta 状态 | 范围 |
+| --- | --- | --- |
+| Windows 11 / Python 3.12.10 x64 / PowerShell 5.1 | Verified | 现有本机；中文与空格目录，C/D 测试目标 |
+| AutoCAD 2025 / AutoCAD MCP Pro 1.5.1 COM | Verified | MCP、Guard、真实 DWG 保存关闭重开、独立 Python COM 几何回读 |
+| SketchUp Pro 2023 23.0.367 | Limited / Experimental | 本机既有 Ringo 1.3.2 兼容修改下的 box 和简单 DWG→基础三维→SKP 重开；不是原版上游所有组合验证 |
+| Codex | Manual Setup | 既有 Agent 调用 SU MCP 已生成文件；新安装后的 Skill/MCP 重载仍 MANUAL TEST REQUIRED |
+| TRAE / 其他 Agent | Not Tested | 提供 stdio 示例，不保证客户端兼容 |
+| 完整复杂景观 / 曲线精度 / 任意 DWG 自动建模 | Experimental | 本次只验证简单线性基础模型 |
+| 全新 Windows / 中文 Windows 账户 / 全权限异常矩阵 | Not Tested | 中文文件夹不等于中文账户 |
 
-RC1.1 审核范围是 AutoCAD 主链：独立安装、MCP/Discovery、临时矩形和圆、保存关闭重开、真实几何复核。SketchUp 默认不连接、不启动；未运行记为 SKIPPED_NOT_RUNNING，不影响 AutoCAD 主链。第三方 autocad-dwg-redraw 缺少确认授权，继续排除，不是本版必需组件。
+必须有合法 AutoCAD 桌面版、Python 3.11+ x64（实测推荐 3.12）、联网 pip、目录写权限；Python WindowsApps 占位程序不可用。安装器固定 AutoCAD MCP Pro 1.5.1，传递依赖未全量锁定。SketchUp 可选，另需合法 Pro 2023、Node ≥22 和外部 Ringo；本包不自动安装/修改 SketchUp 插件，也不分发软件本体。
 
-## 👶 第一次使用
+## 最简单的首次使用
 
-- 还没安装？看[下载安装教程](docs/INSTALL_WINDOWS.md#第一次下载安装)。
-- 不知道怎么配置？复制[AI安装与配置总指令](docs/AI_INSTALL_ASSISTANT_CN.md)。
-- 已经安装？看[小白使用手册](docs/BEGINNER_USAGE_CN.md)。
-- 只想马上画图？打开[提示词速查表](prompts/QUICK_PROMPTS_CN.md)。
+先让 Agent 读取安装后的 `pack-rules/AGENT_CONTEXT.md`（或解压根文件），输出上下文确认块；随后真实调用 `system_status`，要求 `backend=com`、`connected=true`。仅有配置文件不算连接成功。Discovery search 模式可能只显示 `search_tools` / `call_tool`，先发现实际工具。
 
-第一次的顺序：下载 [Release](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.1.0-rc2) → 解压并运行 setup.bat → AI协助合并配置 → 最小 Smoke Test → 开始使用。安装器只生成配置片段，不自动完成客户端配置。
+AutoCAD 示例：先自行保存并关闭所有 CAD 图纸，保留程序运行；在解压目录运行：
 
-**日常绘图不需要重复发送安装总提示词。**
+```powershell
+.\setup.bat -InstallRoot "$env:LOCALAPPDATA\Landscape-Agent-Pack-v0.1.0-beta" -RunGeometrySmoke
+```
 
-普通聊天AI不一定能操作本机；需要已配置本地 MCP 的 Agent。当前重点是 AutoCAD，SketchUp 为可选 / Experimental。
-解压完整目录，阅读 [Windows 安装说明](docs/INSTALL_WINDOWS.md)，再运行 setup.bat。相同 Skill 不重复复制；不同既有 Skill 保留，并把候选版本暂存到安装目录（不宣称客户端已加载）。不同已安装包版本不覆盖，需使用独立目录。失败时保留诊断产物并列出本次可能写入位置。配置仍只生成片段，不修改现有客户端；安全 merge、备份与真实重载自动化尚未验收。
+这会在本项目允许目录创建 1000×500 mm 矩形和半径 100 mm 圆，Guard 拒绝重复执行，然后保存、关闭、重开 DWG 并核对几何。不会关闭用户图纸。有打开图纸时测试拒绝绘图。日常任务只在用户授权的新输出路径保存，不覆盖来源。
 
-安装器建立独立本机虚拟环境，从 PyPI 安装 `autocad-mcp-pro[com]==1.5.1`。只生成配置片段，由用户检查后合并，不覆盖原配置。临时绘图需 `-RunGeometrySmoke` 且 AutoCAD 文档集合为空；不自动关闭用户图纸。
+SketchUp 示例提示词：“先 bridge_status、model_get_info 确认目标是空白测试模型，再创建 1000×500×300 mm 长方体，保存到我授权的全新 SKP 路径；关闭该模型、重新打开并回读 bounds、solid 和实体数量。”基础 CAD→SU 应原生导入真实 DWG，保留 CAD_REFERENCE，并由实际矩形边推导三维边界；高度由用户提供，不猜设计参数。不得用固定 box 冒充真实 DWG 导入。
 
-## 已经装好了？
+## 诊断与常见错误
 
-- [新建景观图](prompts/QUICK_PROMPTS_CN.md#2-新建景观总平面)
-- [修改CAD](prompts/QUICK_PROMPTS_CN.md#3-修改现有dwg)
-- [检查CAD](prompts/QUICK_PROMPTS_CN.md#4-cad检查)
-- [CAD → SketchUp（可选）](prompts/QUICK_PROMPTS_CN.md#11-cad--sketchup)
+```powershell
+.\setup.bat -InstallRoot "$env:LOCALAPPDATA\Landscape-Agent-Pack-v0.1.0-beta" -DiagnosticOnly
+```
 
-出错看[故障排查](docs/TROUBLESHOOTING_CN.md)；开发者看[验证报告](docs/RC1_1_BUILD_REPORT.md)与[Guard规则](guards/README.md)。提示词是任务建议，完整景观绘图仍在实验阶段，不能把模板当作能力已验收的承诺。
+- Python 不存在/版本不符：安装 x64 Python，或显式 `-PythonExe` 指定真实解释器。
+- pip/网络/pywin32 失败：保留错误与 runtime，修复依赖后重试，不把失败改成成功。
+- COM 失败：确认 CAD 已启动并与安装器同权限；不默认提升权限或重启 CAD。
+- 完整性 FAIL：会打印具体相对路径、缺失原因或 expected/actual hash；停止使用，从可信 Release 重取，不运行 manifest 生成器“修复”。
+- SketchUp bridge 拒绝连接：进入模型后按外部 Ringo 文档启动既有 Server；先确认实例，不启用额外 Ruby 权限来掩盖问题。
+- Overall WARN / exit=0：安装主体与 smoke 通过仍不代表人工客户端配置完成。
 
-## Agent 规则入口
+更多：[排错](docs/TROUBLESHOOTING_CN.md) · [完整性](docs/INTEGRITY.md) · [限制](docs/LIMITATIONS.md)。
 
-你的 Agent 已经装好环境后，执行任何景观任务前，先让它读取 [AGENT_CONTEXT.md](AGENT_CONTEXT.md)。这是本 Pack 的唯一规则入口：里面说明了默认 AutoCAD-only 工作流、必读规则文件、Guard 的真实能力边界，以及 Agent 读完后必须输出的确认块。规则需要 Agent 实际读取并遵守，不会自动拦截工具调用。
+## 安全、卸载与失败恢复
 
-## 已知创建假失败
-AutoCAD 2025 类型库生成包装暴露小写 color，上游返回值提取读取大写 Color，可能在对象已创建后报错。自有 [Creation Guard](guards/README.md) 检查句柄差集与关键几何，确认后返回 SUCCESS_WITH_FALSE_ERROR，保留原错误，同一操作 ID 禁止重复调用。它是明确使用的调用包装，不会自动拦截绕过 Guard 的原始 MCP 调用。
+规则与关键文件由版本化 manifest 的 SHA-256 检查；缺失或篡改 FAIL。Guard 结合真实后置几何防止错误重放，原始 MCP 错误保留。manifest 不是数字签名，可信 Release ZIP hash 才是外部比较依据；协调替换 manifest/校验器不是其防护范围。
 
-实测版本：AutoCAD 2025、Python 3.12.10、AutoCAD MCP Pro 1.5.1；历史可选环境为 SketchUp 2023 / Ringo 1.3.2。模型空间为实验验证；Layout/PDF 为 Beta，截图不稳定，完整施工图仍在发展。本版不测试这些能力，不承诺一键万能。
+安装器不覆盖 Codex 设置、不删除现有 Skill、不修改 AutoCAD 配置或 SU 插件。失败时保留诊断文件并列出本次写入目录；无复杂事务式自动回滚。先备份需要保留的 DWG/SKP/runs，再手工删除确认属于本项目的独立安装目录。Skill 仅在确认由本次新建且没有个人修改时移除；客户端仅删除自己加入的服务节，保留其他设置；不要卸载共享 Python/Node/CAD/SU/Ringo。
 
-[快速开始](docs/QUICK_START_CN.md) · [限制](docs/LIMITATIONS.md) · [安全规则](standards/autocad-safety-rules.md) · [第三方声明](THIRD_PARTY_NOTICES.md)
+## License、验收与反馈
 
-## 当前成熟度
+自有代码 [MIT](LICENSE)，第三方见 [声明](THIRD_PARTY_NOTICES.md)。分发 SketchUp Skill 保留其 LICENSE；`autocad-dwg-redraw` 授权未确认，只保留来源声明、不分发代码。依赖包由用户安装时从上游获取，不能全部称为 MIT。
 
-这是 Release Candidate，不是稳定版。当前实测环境为 Windows、AutoCAD 2025、Python 3.12.10、AutoCAD MCP Pro 1.5.1（COM backend）。
-
-| 能力 | 当前状态 |
-|---|---|
-| AutoCAD 模型空间基础绘图 | 可用，实验验证通过 |
-| Guard Layer | 可用；必须通过 Guard 包装调用，不能自动拦截原始 MCP 调用 |
-| 保存 → 关闭 → 重开及几何复核 | 已验证 |
-| Landscape 绘图 | 实验阶段 |
-| Layout / PDF | Beta，当前 RC 未测试 |
-| SketchUp / Ringo | 可选组件，当前 RC 未完成运行时 Smoke Test |
-
-其他 AutoCAD 版本可能需要适配；未验证所有版本，也不承诺无人值守完整施工图流程已稳定。Guard 的重复操作凭据仅在当前进程内有效，重启后需重新核查句柄。
-
-[RC1.1 历史验证报告](docs/RC1_1_BUILD_REPORT.md) · [RC1.1 匿名测试摘要](tests/evidence/rc1.1-summary.json) · [预发行版下载](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.1.0-rc2)
-
-当前候选为 v0.1.0-rc2。RC1.1 的 ZIP 与验证报告属于历史记录；当前应下载 v0.1.0-rc2 附件。日常手册与提示词请阅读仓库最新文档；根目录 SHA256SUMS.txt 对应当前 RC2 发布包文件，ZIP 自身 SHA256 以 GitHub Release Asset digest / Release Notes 为准（不写入 ZIP 内部，避免自引用）。
+[CHANGELOG](CHANGELOG.md) · [验收范围](docs/BETA_ACCEPTANCE.md) · [Issues](https://github.com/lunxianle666/Landscape-Agent-Pack/issues)。反馈请附版本、软件版本、失败步骤与脱敏错误；不要上传 Token、私人配置、用户名路径或实际项目图纸。

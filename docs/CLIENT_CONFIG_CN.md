@@ -16,9 +16,9 @@ Agent 环境就绪后，第一步永远是让它读 `AGENT_CONTEXT.md`（仓库�
 
 1. **前置**：使用支持本地 MCP 的 Codex 版本。
 2. **安装器生成片段**：运行 `setup.bat` 后，在安装目录的 `runs\<时间戳>\config\` 下找到 `codex-autocad.toml`。里面 `command`、`CAD_PROGID`、`ALLOWED_PATHS` 已是你本机真实路径。
-3. **不覆盖原配置**：Codex 配置文件一般在 `%USERPROFILE%\.codex\config.toml`（或 `CODEX_HOME` 指定目录）。先备份，再**只把 `[mcp_servers.autocad]` 这一节**粘贴进去，不要替换整个文件。
+3. **不覆盖原配置**：Codex 配置文件一般在 `%USERPROFILE%\.codex\config.toml`（或 `CODEX_HOME` 指定目录）。先备份，再**只合并 `[mcp_servers.autocad]` 这一节**，不要替换整个文件。同名服务已存在先比较，不重复追加 TOML 节。不存在的目录由用户在确认目标后创建，不推测其他客户端路径。
 4. **让 Agent 读规则**：在对话里说"读取本仓库根目录的 `AGENT_CONTEXT.md`，按里面的格式输出确认块，先不绘图"。
-5. **重载**：完全退出 Codex 再打开（改配置后必须重启）。
+5. **重载**：完全退出 Codex 再打开。本 Beta 新安装后的客户端重载仍为 MANUAL TEST REQUIRED；依据：[官方技能文档](https://developers.openai.com/zh-Hans/docs/build-skills)、[MCP 配置](https://developers.openai.com/zh-Hans/docs/extend/mcp)。当前 Agent 的既有 MCP 调用成功不等于新配置重载通过。
 6. **确认 connected=true**：让 Agent 调用 `system_status`，要求实际回读 `backend=com`、`connected=true`。只看到"能调用工具"不算数。
 
 ---

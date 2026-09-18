@@ -192,6 +192,13 @@ if(-not(Test-Path -LiteralPath $target)){
     $written.Add($target)
     Copy-Item -LiteralPath $source -Destination $target -Recurse
 }
+foreach($file in Get-ChildItem -LiteralPath $source -Recurse -File){
+    $rel=$file.FullName.Substring($source.Length).TrimStart('\')
+    $other=Join-Path $target $rel
+    if(-not(Test-Path -LiteralPath $other) -or (Get-Item -LiteralPath $other -Force).Attributes -band [IO.FileAttributes]::ReparsePoint -or (Get-PackHash $file.FullName) -ne (Get-PackHash $other)){
+        throw ('Installed/staged Skill mismatch; existing content preserved: '+$rel)
+    }
+}
 Write-Warning 'autocad-dwg-redraw is withheld pending upstream licensing; not installed.'
 # --- Copy runtime rule set to <InstallRoot>\pack-rules (Phase 2, minimal increment) ---
 $packRules=Join-Path $InstallRoot 'pack-rules'

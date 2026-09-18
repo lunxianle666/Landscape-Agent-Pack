@@ -1,7 +1,7 @@
 """Release-time generator; never use to repair an installed integrity failure."""
 import hashlib,json
 from pathlib import Path
-root=Path(__file__).resolve().parents[1];version='v0.1.0-beta-candidate.1';files=[]
+root=Path(__file__).resolve().parents[1];version='v0.1.0-beta';files=[]
 for p in sorted(root.rglob('*')):
     rel=p.relative_to(root).as_posix()
     if not p.is_file() or rel in {'manifest.json','SHA256SUMS.txt'} or any(x in {'.git','__pycache__','outputs'} for x in p.relative_to(root).parts):continue

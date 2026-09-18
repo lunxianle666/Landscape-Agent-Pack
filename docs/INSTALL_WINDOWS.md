@@ -1,54 +1,41 @@
-# Windows 安装与演练
-前置：合法 AutoCAD 桌面版；Python 3.11+ x64（优先已测 3.12.10）。SketchUp 是可选组件，使用时另需合法 SketchUp 2023 与 Node ≥22。PowerShell 5.1 可运行。
+# Windows Beta 安装
 
-## 第一次下载安装
-
-1. 打开[RC2 Release下载页](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.1.0-rc2)。
-2. 在 Assets 中下载 `Landscape-Agent-Pack-v0.1.0-rc2-windows.zip`，不要误选 Source code。
-3. 在下载文件夹空白处右键，打开终端 / PowerShell，输入以下命令；将文件名替换为你实际下载的文件名：
+下载 [v0.1.0-beta Release](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.1.0-beta) 的 ZIP 和 `.zip.sha256`；不要使用旧 RC2 附件。比较校验值后右键全部解压，进入 `Landscape-Agent-Pack-v0.1.0-beta` 文件夹。目录可改名，setup 按自身位置找 installer；不要在 ZIP 预览中运行。
 
 ```powershell
-Get-FileHash -Algorithm SHA256 -LiteralPath ".\Landscape-Agent-Pack-v0.1.0-rc2-windows.zip"
+Get-FileHash -Algorithm SHA256 -LiteralPath .\Landscape-Agent-Pack-v0.1.0-beta.zip
 ```
 
-Windows ZIP 的最终 SHA256 请以 GitHub Release 页面公布的 SHA256 / Asset digest 为准。大小写不影响比较。与 Release 公布值不一致就停止，不运行安装器。
+先安装合法 AutoCAD 和 Python 3.11+ x64（实测 3.12.10），启动 CAD 并与安装器保持相同权限。普通用户双击 `setup.bat`；不需要修改全局 PowerShell 策略。默认安装独立 venv、固定 AutoCAD MCP Pro 1.5.1、Skill、六项规则并自动 smoke。SketchUp 不影响 AutoCAD 主链，使用时另需 Node ≥22 与外部 Ringo。
 
-4. 右键 ZIP → 全部解压。打开解压后的 `Landscape-Agent-Pack` 文件夹，找到 `setup.bat`。不要在 ZIP 预览里直接运行。
-5. 正常权限打开 AutoCAD。首次做绘图测试前，先自己保存并关闭所有图纸，保留 AutoCAD 程序运行。
-6. 双击 `setup.bat` 安装；不知道如何合并配置时，复制[AI安装与配置总指令](AI_INSTALL_ASSISTANT_CN.md)给能访问本机的 Agent。安装窗口关闭不代表全部成功，让 AI 从本机 `runs` 结果核实。
-
-若希望首次安装同时做最小绘图测试，可以在解压文件夹打开 PowerShell，以这个命令代替双击：
+## 已安装版本 / 选择独立目录
 
 ```powershell
-.\setup.bat -RunGeometrySmoke
+.\setup.bat -InstallRoot "$env:LOCALAPPDATA\Landscape-Agent-Pack-v0.1.0-beta" -RunGeometrySmoke
 ```
 
-本地 beta-candidate.1 不覆盖同名 Skill：内容一致时复用；内容不同时保留原件，候选 Skill 暂存于安装目录并报告 WARN，不宣称客户端已发现。安装同版本可重复运行并重做 smoke；已安装规则损坏时 FAIL，不静默重写；不同版本使用独立 InstallRoot。测试完成后，先备份客户端配置，再仅合并生成的服务片段、重载客户端，并发送[连接检查提示词](../prompts/QUICK_PROMPTS_CN.md#1-检查连接)。客户端真实重载尚未验收。上方 RC2 下载链接仍指旧版，候选尚未上传。
+同版本复用并重新校验、smoke，不重复 Skill/MCP。不同版本或损坏规则保留并 FAIL，请选择独立目录；Beta 不做覆盖升级迁移。`-SkillsDirectory` 可选独立 Skill 目录，`-PythonExe` 指定实际 Python。`-UseExistingDependency` 是高级选项，要求该 Python 已具有固定依赖，不等于默认安装。
 
-安装完成后看[小白使用手册](BEGINNER_USAGE_CN.md)。日常绘图不必重新运行安装器或安装总指令。
+现有同名 Skill 内容不同会保留并 WARN，新文件暂存在 InstallRoot/skills。此时人工比较，先备份再选择客户端搜索目录；不宣称 Agent 已发现。没有明确授权不要覆盖旧 Skill。
 
-双击 `setup.bat` 默认建立独立依赖运行时并检查 Skill、规则及 MCP；同名 Skill 的安全处理如上。当前 `autocad-dwg-redraw` 授权未确认，不安装。先启动合法 AutoCAD（与安装器同权限级别）；未运行时实际 smoke 失败，不强制成功。失败时保留本次运行时/规则/暂存 Skill/日志以供诊断并列出写入位置，不自动删除已有文件。无 Python、版本不符、pip 安装失败或 COM 故障均需按错误修复后复验。
+## 客户端人工配置（必须）
 
-RC 独立演练命令：
+结果打印本次 runs 路径。配置片段在其中 `config/codex-autocad.toml` / `trae-autocad.json`，路径已按本机生成。备份客户端配置，只合并 autocad 服务；同名节已有时先比较，不产生重复 TOML 节或 JSON key。不覆盖整文件。保留已有 env，允许输出路径限用户明确授权目录。
+
+按 [客户端说明](CLIENT_CONFIG_CN.md) 完全退出/重启客户端，再确认 Skill、MCP 可发现；让 Agent 读 pack-rules/AGENT_CONTEXT.md、实际调用 system_status，再创建真实测试文件。**MANUAL TEST REQUIRED**：新安装后的客户端重载尚未本轮自动验证。依据：[官方 MCP 配置](https://developers.openai.com/zh-Hans/docs/extend/mcp)、[技能发现与重启](https://developers.openai.com/zh-Hans/docs/build-skills)。
+
+安装器从不写客户端配置；Overview WARN 不等于完整端到端 ready。缺依赖、COM或完整性故障均真实退出失败。失败保留 runtime、规则、Skill 暂存、runs 并打印写入范围，无自动事务回滚；保留日志诊断，别删除共享软件。
+
+## 诊断 / 卸载
+
 ```powershell
-.\setup.bat -InstallRoot "<PATH>" -SkillsDirectory "<PATH>" -RunGeometrySmoke
+.\setup.bat -InstallRoot "$env:LOCALAPPDATA\Landscape-Agent-Pack-v0.1.0-beta" -DiagnosticOnly
 ```
-必须替换占位符为独立目录。可传 `-PythonExe`、`-NodeExe`、`-RingoDirectory`。`-UseExistingDependency` 只验证当前 Python 中的固定依赖版本，避免重新安装；默认是独立 venv 安装。
 
-安装结果在 InstallRoot 的 runs 下。配置文件、日志和 DWG 都是本机数据，不可上传。允许目录默认只有本轮临时绘图目录；开展实际项目时由用户明确选择新的项目目录。
+此模式不安装、不修复损坏文件。规则缺失/变动最终 FAIL。绘图 smoke 要求 CAD 文档为空，请自行保存关闭；程序仍保持运行，不由安装器关闭用户图纸。
 
-## Ringo 固定官方版本
-来源：https://github.com/Ringophilia/Ringo-Sketchup-MCP
-固定提交：`2dd54d945b0e7a5d1843d58a94a33f5c8875df01`（package 1.3.2）。在独立第三方工具目录中准备官方源码，按该提交 README 使用 `npm ci`、`npm run build`、`npm run setup -- --year 2023`。这些步骤不属于本 Pack 自动安装；已有扩展或 Ringo 配置先检查冲突，不覆盖。
+卸载前备份生成图纸。只移除确认由本项目创建的独立安装根、新建且未修改的 Skill、自己合并的 MCP 节；不删现有 Skill、共享依赖或 SU 插件。
 
-RC2 不自动安装 Ringo，不应用本机 schema 修改（此行为继承自 RC1.1 历史验证）。启动 SketchUp 后，从扩展菜单启动已有桥。SketchUp 是可选组件。只有显式 -RunSketchUpSmoke / --sketchup 才进行 bridge_status / model_get_info；默认不连接、不启动，未运行输出 SKIPPED_NOT_RUNNING。明确测试时仍只连接既有实例，不修改模型。
+## SketchUp 可选项
 
-## Codex / TRAE
-安装器生成 `codex-autocad.toml` 和 `trae-autocad.json`。检查后仅合并 autocad 服务，不覆盖整个配置文件。Codex 使用 `[mcp_servers.autocad]`；官方说明：https://developers.openai.com/zh-Hans/docs/extend/mcp
-TRAE 的 JSON 模板提供标准 stdio 片段，当前未完成 TRAE 客户端验收。
-
-AutoCAD 服务固定 COM backend 和 Discovery search，不静默使用 ezdxf 替代真实 DWG 控制。不要以管理员身份运行整个安装器来掩盖 COM 权限冲突。
-
-临时绘图要求 AutoCAD 文档集合为空。若有任何打开的图纸，测试拒绝绘图；请自行保存并关闭，不由安装器关闭。
-
-AutoCAD 绘图测试通过自有 Creation Guard 包装；原始 MCP 错误仍保留为证据。所有保存重开和实体复核代码为本 Pack 自有实现，未复制无许可证重绘 Skill。
+[Ringo](https://github.com/Ringophilia/Ringo-Sketchup-MCP) 1.3.2 官方固定提交 `2dd54d945b0e7a5d1843d58a94a33f5c8875df01`，按上游 README 手动安装，不覆盖已有扩展。本机验证使用既有兼容修改，详见 RINGO_LOCAL_PATCH_REPORT.md；Beta 不自动应用该补丁，不保证原版组合。`-RunSketchUpSmoke` 仅检测既有 bridge/info，不做 box / DWG 导入完整验收。Ruby eval 本次没有开启。

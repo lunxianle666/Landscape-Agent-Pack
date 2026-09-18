@@ -48,7 +48,5 @@ if rule.is_file():
             result=run('diagnostic-'+mode,base+['-DiagnosticOnly'])
             result['expected_exit']=1;results.append(result)
         finally:rule.write_bytes(original)
-with zipfile.ZipFile(OUT/'anonymous-baseline.zip') as z:
-    inventory=[n for n in z.namelist() if not n.endswith('/')]
-    results.append({'test':'anonymous-baseline','status':'PASS','files':len(inventory),'commit':'107a400e6d934c4d61eeb4fa8fd51ceb8188b15f','zip_sha256':hashlib.sha256((OUT/'anonymous-baseline.zip').read_bytes()).hexdigest(),'scope':'baseline only; candidate is not published'})
 (OUT/'acceptance-v2.json').write_text(json.dumps(results,indent=2),encoding='utf-8')
+raise SystemExit(any(r['exit'] != r.get('expected_exit',0) for r in results))
