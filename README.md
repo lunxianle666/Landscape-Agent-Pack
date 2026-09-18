@@ -1,21 +1,34 @@
 # Landscape Agent Pack · V0.1-RC1.1
 Landscape Agent Pack 是一个 Windows 风景园林 AI Agent 工作流包。学生可以通过支持 MCP 的 AI Agent（如 Codex / TRAE），用自然语言进行景观 CAD 基础工作，并复用统一的设计规则与安全检查。
 
+Landscape Agent Pack is a landscape architecture workflow layer between AI agents and professional design software.
+
+本项目位于AI / Agent与AutoCAD / SketchUp之间，让通用AI按景观专业工作流操作已有软件，不是另一个CAD应用。推荐支持本地MCP的Agent，不要求固定模型或客户端。
+
 ```text
-AI Agent
+用户
 ↓
-Landscape Agent Pack（工作流规则、安装器与 Guard）
+AI Model：理解和设计
 ↓
-AutoCAD MCP Pro
+Agent：执行
 ↓
-AutoCAD
-可选组件：
-AI Agent
+Landscape Agent Pack：景观工作流与安全规则
 ↓
-Ringo SketchUp MCP
+MCP
 ↓
-SketchUp
+AutoCAD / 可选 SketchUp
+↓
+实际结果
+↓
+AI检查和继续修改 ↔ 用户反馈与确认
 ```
+
+在Codex / TRAE等客户端中，AI Model与Agent Runtime通常共同工作，用户不需要人为拆成两个软件。你提供想法并确认选择，AI规划，Agent执行，再根据实际图纸迭代。架构图表示职责分工，不表示Pack自动拦截工具调用。
+
+[项目是怎么工作的？](docs/HOW_IT_WORKS_CN.md) · [最推荐的设计意图模板](prompts/QUICK_PROMPTS_CN.md#最推荐直接告诉ai你的想法)
+
+目标是Agent-agnostic / Model-agnostic（不绑定特定Agent或模型）；架构兼容目标与已经实测不同，兼容性以[测试记录](docs/TESTED_ENVIRONMENT.md)为准。
+
 
 你需要自行合法安装 AutoCAD；使用可选建模工作流时自行合法安装 SketchUp。本项目不包含 AutoCAD、SketchUp、破解软件、商业软件安装包、Python 环境或第三方 MCP 源码。
 
