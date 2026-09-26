@@ -1,0 +1,4 @@
+# Development branch only. The v0.1.0-beta installer manifest is unchanged.
+pywin32==312; platform_system == "Windows"
+ezdxf==1.4.4
+PyMuPDF==1.28.2
