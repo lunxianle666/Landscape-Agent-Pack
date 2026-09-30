@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.2.0-rc3 — local ownership safety candidate, unpublished
+
+- Remove inferred ownership and default-document dismissal from the CAD fixture.
+- Record the fixture-created document reference and pre-test COM identities;
+  close only the proven owned document and verify existing references survive.
+- Retain uncertain or dirty documents with cleanup warnings. Attaching to or
+  launching AutoCAD grants no document ownership; no application shutdown added.
+- Add ten ownership regressions and an isolated live create/save/close/reopen
+  check, including preservation of an existing PaperSpace document.
+- Preserve RC1/RC2 archives; generate an independently verified deterministic
+  RC3 package. Bridge and production validation implementations are unchanged.
+- RC2 production evidence and its capability/fresh-environment limitations remain
+  valid. No main merge, push, tag or release publication.
+
 ## v0.2.0-rc1 — local review candidate, unpublished
 
 - Add bounded authenticated Ringo protocol 3 client; submitted mutation failures

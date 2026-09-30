@@ -6,12 +6,13 @@ import argparse
 import hashlib
 import json
 import sys
+import warnings
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-from landscape_agent_pack.cad.core import DocumentSession, connect
+from landscape_agent_pack.cad.core import DocumentSession, connect, OwnershipError
 from landscape_agent_pack.cad.retry import read_with_retry
 
 
@@ -19,19 +20,100 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def document_references(app):
+    """Enumeration indices are used only to capture references, never ownership."""
+    count = int(read_with_retry(lambda: app.Documents.Count))
+    return tuple(read_with_retry(lambda i=i: app.Documents.Item(i)) for i in range(count))
+
+
+def same_document(a, b):
+    # COM wrappers can be reacquired after SaveAs; compare their COM identity.
+    # In non-COM test doubles, require the identical object, not its name/path.
+    if hasattr(a, '_oleobj_') and hasattr(b, '_oleobj_'):
+        return a._oleobj_ == b._oleobj_
+    return a is b
+
+
+class FixtureDocuments:
+    """Invocation-scoped creation record. Process attachment grants no ownership."""
+    def __init__(self, app):
+        self.app = app
+        self.baseline = document_references(app)
+        self.session = None
+        self.owned_document = None
+        self.closed = False
+
+    def create(self, run):
+        session = DocumentSession.create(self.app, workspace_root=run)
+        # Record the exact factory result immediately, before any fixture writes.
+        self.session = session
+        self.owned_document = session.document_object
+        self._prove_owned()
+        return session
+
+    def _prove_owned(self):
+        if self.session is None or self.owned_document is None:
+            raise OwnershipError('No successful fixture creation record')
+        if self.session.app is not self.app or not self.session.opened_by_automation:
+            raise OwnershipError('Fixture session identity/ownership changed')
+        if any(same_document(self.owned_document, doc) for doc in self.baseline):
+            raise OwnershipError('Factory returned a pre-existing document')
+        if not same_document(self.session.document_object, self.owned_document):
+            raise OwnershipError('Fixture document reference changed')
+        if not any(same_document(self.owned_document, doc) for doc in document_references(self.app)):
+            raise OwnershipError('Created fixture document is no longer present')
+
+    def verify_baseline(self):
+        current = document_references(self.app)
+        if not all(any(same_document(old, doc) for doc in current) for old in self.baseline):
+            raise OwnershipError('Existing pre-test documents did not survive fixture teardown')
+
+    def close_owned(self):
+        self._prove_owned()
+        self.session.refresh()
+        self._prove_owned()
+        if self.session.dirty:
+            raise OwnershipError('Owned fixture document is dirty; retained for inspection')
+        self.session.close()
+        self.closed = True
+        self.verify_baseline()
+
+    def cleanup(self):
+        issues = []
+        if self.session is not None and not self.closed:
+            try:
+                self.close_owned()
+            except Exception as exc:
+                issues.append(str(exc))  # Do not discard or guess a different target.
+        baseline_survived = False
+        try:
+            self.verify_baseline()
+            baseline_survived = True
+        except Exception as exc:
+            issues.append(str(exc))
+        if self.owned_document is None:
+            try:
+                if any(not any(same_document(doc, old) for old in self.baseline)
+                       for doc in document_references(self.app)):
+                    issues.append('Unrecorded documents present; ownership unknown; retained')
+            except Exception as exc:
+                issues.append('Document inventory unavailable: ' + str(exc))
+        return {'baseline_documents': len(self.baseline),
+                'creation_recorded': self.owned_document is not None,
+                'owned_document_closed': self.closed,
+                'baseline_survived': baseline_survived,
+                'cleanup_warnings': issues}
+
+
 def build(run):
     run = Path(run).resolve(strict=True)
     app = connect(allow_launch=True)
-    if int(read_with_retry(lambda: app.Documents.Count)) == 1:
-        doc = app.Documents.Item(0)
-        # A newly launched, empty Drawing1 is owned by this invocation. Any
-        # saved or nonempty document belongs to someone else and blocks work.
-        if not str(doc.FullName) and int(doc.ModelSpace.Count) == 0 and str(doc.Name).lower().startswith("drawing"):
-            doc.Close(False)
-    if int(read_with_retry(lambda: app.Documents.Count)):
-        raise RuntimeError("AutoCAD contains an existing document; fixture creation refused")
-    session = DocumentSession.create(app, workspace_root=run)
+    documents = FixtureDocuments(app)
     try:
+        # Even a newly launched application's default document is unowned.
+        if documents.baseline:
+            raise OwnershipError('AutoCAD contains an existing document; fixture creation refused')
+        session = documents.create(run)
         session.set_units_mm()
         for name in ("L-CONTROL", "L-HARDSCAPE", "L-PLANT", "L-WATER"):
             session.ensure_layer(name)
@@ -55,8 +137,7 @@ def build(run):
         session.save()
         dwg_snapshot = session.snapshot()
         session.save_as(dxf, format="dxf")
-        session.close()
-        session = None
+        documents.close_owned()
         import ezdxf
         offline = ezdxf.readfile(dxf)
         facts = {"dwg": str(dwg), "dxf": str(dxf), "insunits": int(offline.header.get("$INSUNITS", -1)),
@@ -77,11 +158,14 @@ def build(run):
         target.write_text(json.dumps(facts, ensure_ascii=False, indent=2), encoding="utf-8")
         return facts
     finally:
-        if session is not None and session.opened_by_automation:
-            session.refresh()
-            if session.dirty:
-                raise RuntimeError("Automation drawing left dirty; inspect before close")
-            session.close()
+        audit = documents.cleanup()
+        try:
+            with (run / 'ownership-audit.json').open('x', encoding='utf-8') as file:
+                json.dump(audit, file, indent=2)
+        except Exception as exc:
+            warnings.warn('Ownership audit could not be written: ' + str(exc), RuntimeWarning)
+        for issue in audit['cleanup_warnings']:
+            warnings.warn('Fixture cleanup: ' + issue, RuntimeWarning)
 
 
 if __name__ == "__main__":

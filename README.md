@@ -7,6 +7,7 @@
 - [现场恢复审计](docs/V02_RECOVERY_AUDIT.md)
 - [WorkBuddy 准入状态](docs/WORKBUDDY_V02_REVIEW.md)
 - [候选发行说明](docs/V02_RELEASE_NOTES_DRAFT.md)
+- [RC3 document ownership 修复与验证](docs/V02_RC3_OWNERSHIP.md)：移除 fixture 默认图纸推断式关闭；RC2 生产验收证据保持有效，RC3 为独立候选包。
 
 v0.2 源码使用 `requirements-v02-dev.txt` 和独立运行目录。旧安装器仍提供规则/MCP 安装；本次没有验收其全新机器上的 v0.2 Core 安装与客户端重载。以下下载与 Beta 状态说明保留为已发布 v0.1.0-beta 的历史使用入口，不能作为当前 v0.2 验收结论。
 
