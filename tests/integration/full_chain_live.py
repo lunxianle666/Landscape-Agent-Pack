@@ -20,7 +20,7 @@ from landscape_agent_pack.result import Result
 
 def main(startup,config=None):
     run=ROOT/'runs'/('全链路-'+uuid.uuid4().hex[:12])
-    run.mkdir(exist_ok=False)
+    run.mkdir(parents=True, exist_ok=False)
     startup=Path(startup).resolve(strict=True)
     import shutil
     shutil.copy2(startup,run/'startup.skp')

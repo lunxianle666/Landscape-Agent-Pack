@@ -627,7 +627,7 @@
     },
     {
       "relative_path": "tests/integration/full_chain_live.py",
-      "sha256": "65f7cbb0f86ddbd44abe20ea89fdcf5de3ec403c8ba89fe4cccaf444642d264d",
+      "sha256": "db0c8e92b292bc79eda7ba170f027d0647922053d517578c372fd4edda88389b",
       "file_type": "py",
       "critical": true,
       "release_version": "v0.2.0-rc2"
