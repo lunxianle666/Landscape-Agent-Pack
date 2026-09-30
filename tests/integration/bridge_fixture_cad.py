@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 from landscape_agent_pack.cad.core import DocumentSession, connect
+from landscape_agent_pack.cad.retry import read_with_retry
 
 
 def sha(path):
@@ -21,13 +22,13 @@ def sha(path):
 def build(run):
     run = Path(run).resolve(strict=True)
     app = connect(allow_launch=True)
-    if int(app.Documents.Count) == 1:
+    if int(read_with_retry(lambda: app.Documents.Count)) == 1:
         doc = app.Documents.Item(0)
         # A newly launched, empty Drawing1 is owned by this invocation. Any
         # saved or nonempty document belongs to someone else and blocks work.
         if not str(doc.FullName) and int(doc.ModelSpace.Count) == 0 and str(doc.Name).lower().startswith("drawing"):
             doc.Close(False)
-    if int(app.Documents.Count):
+    if int(read_with_retry(lambda: app.Documents.Count)):
         raise RuntimeError("AutoCAD contains an existing document; fixture creation refused")
     session = DocumentSession.create(app, workspace_root=run)
     try:

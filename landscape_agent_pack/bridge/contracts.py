@@ -2,6 +2,7 @@
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 import hashlib
+import math
 
 
 @dataclass(frozen=True)
@@ -47,8 +48,9 @@ class BridgeRequest:
             raise ValueError("Bridge mode must explicitly describe Z support")
         if self.tag_handling != "PRESERVE_CAD_LAYERS" or not self.preserve_origin:
             raise ValueError("Phase 4 requires preserved CAD layers and origin")
-        if min(self.coordinate_tolerance_mm, self.bbox_tolerance_mm, self.curve_tolerance_mm) <= 0:
-            raise ValueError("Tolerances must be positive")
+        if not all(math.isfinite(v) and v > 0 for v in (
+                self.coordinate_tolerance_mm, self.bbox_tolerance_mm, self.curve_tolerance_mm)):
+            raise ValueError("Tolerances must be finite and positive")
         digest = hashlib.sha256(source.read_bytes()).hexdigest()
         if digest.casefold() != self.source_sha256.casefold():
             raise ValueError("CAD source hash mismatch")
