@@ -1,4 +1,16 @@
-# Landscape Agent Pack v0.1.0-beta
+# Landscape Agent Pack — v0.2 integration candidate
+
+当前分支状态：**PASS_WITH_WARNINGS，正式发布 NOT READY**。2026-09-30 在 Windows + AutoCAD 2025 + SketchUp Pro 2023 上完成真实 CAD→PDF→原生 SU→SKP 保存、关闭模型、重开与数值回读。验证范围为 8 实体 fixture；WorkBuddy 指定交接包缺失，审核 DEFER。尚未合并 main、创建 tag 或发布 v0.2。
+
+- [本轮验收与限制](docs/V02_ACCEPTANCE_REPORT.md)
+- [v0.2 安装、架构、工作流和排错](docs/V02_BRIDGE.md)
+- [现场恢复审计](docs/V02_RECOVERY_AUDIT.md)
+- [WorkBuddy 准入状态](docs/WORKBUDDY_V02_REVIEW.md)
+- [候选发行说明](docs/V02_RELEASE_NOTES_DRAFT.md)
+
+v0.2 源码使用 `requirements-v02-dev.txt` 和独立运行目录。旧安装器仍提供规则/MCP 安装；本次没有验收其全新机器上的 v0.2 Core 安装与客户端重载。以下下载与 Beta 状态说明保留为已发布 v0.1.0-beta 的历史使用入口，不能作为当前 v0.2 验收结论。
+
+## 已发布 v0.1.0-beta
 
 Windows 景观 CAD / SketchUp 的 Agent 工作流包：安装器、规则、Skill、MCP 配置片段、重复执行守护和真实文件 smoke test。适合有合法桌面软件、愿意检查 Agent 输出的景观学习与设计用户。它不是自动景观设计软件，也不是生产级或任意 Agent 通用插件。
 

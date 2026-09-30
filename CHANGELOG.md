@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.2.0-rc1 — local review candidate, unpublished
+
+- Add bounded authenticated Ringo protocol 3 client; submitted mutation failures
+  retain unknown outcomes and are never replayed automatically.
+- Complete real native DWG import, Chinese SKP save, File New, disk reopen and
+  numerical readback; verify 147 edges, units, tags, coordinates and curves.
+- Replace Model-ID closure assumptions with actual path/reference checks for
+  SketchUp 2023; run Save/Close/Open outside Ruby transactions.
+- Add same-source CAD geometry QA/PDF/SU persistence regression, real server
+  rejection/timeout tests and failure-only unit transport tests.
+- Require finite bridge tolerances and bounded COM read retry in fixture
+  preflight. Phase 2/3 implementation remains unchanged.
+- Add explicit-version tracked-file manifest generation and deterministic,
+  independently extracted candidate packaging. Runtime evidence is excluded.
+- WorkBuddy review DEFER: handoff source absent. Formal design review,
+  cross-machine installation and arbitrary production CAD remain unverified.
+- No main merge, tag, push or release publication.
+
 ## v0.1.0-beta
 
 ### Added
