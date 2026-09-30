@@ -39,7 +39,7 @@
     },
     {
       "relative_path": "README.md",
-      "sha256": "00ec411bae768a622b510474db259521381b602f96075de0d2f1a4dcba7013f2",
+      "sha256": "acdac719386c49da5149372f58732b9ada1cc2bff818a92334d13579a6e9474e",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.2.0-rc2"
@@ -221,7 +221,14 @@
     },
     {
       "relative_path": "docs/V02_BRIDGE.md",
-      "sha256": "660d11791959bd652d91a1eb9dd0e239129089684f4173b6faa7ef2c83083b38",
+      "sha256": "cd81b34f2d49bc47088cfe38e749766a754c7ef1a4d12bd320dd14c4ac9b58c9",
+      "file_type": "md",
+      "critical": true,
+      "release_version": "v0.2.0-rc2"
+    },
+    {
+      "relative_path": "docs/V02_RC2_ACCEPTANCE.md",
+      "sha256": "27c710e49a77cbaabda9265acfa01e4bc9244ecfdf49cd7d7a304475f5392b06",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.2.0-rc2"

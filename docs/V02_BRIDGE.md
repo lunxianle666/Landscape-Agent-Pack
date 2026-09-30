@@ -74,10 +74,13 @@ Circle/arc chord bounds are calculated for circular fixture segments; this is
 not arbitrary spline, topology, global Hausdorff, nested-instance or structural
 verification. CAD_REFERENCE is native imported edge geometry. No building
 extrusion or inferred landscape design was added. DXF native import, arbitrary
-large DWGs, cross-version/client matrices and A/B/C production regressions are
-Experimental / NOT TESTED. Formal design visual review remains NOT_EXECUTED.
+large DWGs and cross-version/client matrices remain Experimental / NOT TESTED.
+A/B/C production reference imports and technical visual transfer review are
+accepted with semantic warnings in V02_RC2_ACCEPTANCE.md; this is not independent
+design approval or complete topology verification.
 
-Clean reopen is model-level File New plus disk open, not a process restart.
+Normal reopen is model-level File New plus disk open. A separate RC2 process
+restart passed with a new SketchUp PID, listener and Bridge instance.
 AutoCAD's same-process COM calls and native import can still block internally;
 client timeout bounds waiting and retains uncertain outcomes, not safe force
 termination. Other AutoCAD ProgIDs can be supplied to core.connect; the current

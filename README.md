@@ -1,6 +1,6 @@
 # Landscape Agent Pack — v0.2 integration candidate
 
-当前分支状态：**PASS_WITH_WARNINGS，正式发布 NOT READY**。2026-09-30 在 Windows + AutoCAD 2025 + SketchUp Pro 2023 上完成真实 CAD→PDF→原生 SU→SKP 保存、关闭模型、重开与数值回读。验证范围为 8 实体 fixture；WorkBuddy 指定交接包缺失，审核 DEFER。尚未合并 main、创建 tag 或发布 v0.2。
+当前分支状态：**PASS_WITH_WARNINGS / MERGE_READY candidate**。2026-09-30 已补充 A/B/C 真实 DWG、数值与视觉 QA、SketchUp 进程冷重启和隔离 venv/clone 验证。原生 CAD_REFERENCE 的标注、Hatch、曲线离散及宽线语义限制仍保留；隔离环境为 PARTIAL_FRESH_ENV。WorkBuddy 归档源码已恢复审核。详见 [RC2 验收](docs/V02_RC2_ACCEPTANCE.md)。尚未合并 main、推送、创建 tag 或发布 v0.2。
 
 - [本轮验收与限制](docs/V02_ACCEPTANCE_REPORT.md)
 - [v0.2 安装、架构、工作流和排错](docs/V02_BRIDGE.md)
