@@ -12,9 +12,15 @@ import unittest
 from landscape_agent_pack.bridge.client import RingoClient
 from landscape_agent_pack.bridge.contracts import BridgeRequest
 from landscape_agent_pack.bridge.errors import BridgeError, OutcomeUnknown
+from landscape_agent_pack.bridge.validation import compare_persistence
 
 
 class BridgeTests(unittest.TestCase):
+    def test_persistence_rejects_missing_records_before_zip_comparison(self):
+        snapshot={'edges':[], 'edge_count':1}
+        with self.assertRaises(ValueError):
+            compare_persistence(snapshot,snapshot)
+
     def test_contract_hash_paths_overwrite_and_nonfinite(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp); source=root/'source.dwg'; source.write_bytes(b'contract test only')

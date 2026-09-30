@@ -50,6 +50,8 @@ def check_fixture(snapshot, facts, request):
     return {'edges': len(edges), 'coordinate_error_mm': coordinate_error, 'curves': deviations, 'bbox_mm': snapshot['bbox_mm']}
 
 def compare_persistence(before, after, tolerance=1e-06):
+    require(len(before['edges']) == before['edge_count'] and len(after['edges']) == after['edge_count'],
+            'Snapshot edge count does not match actual edge records')
     for key in ('edge_count', 'edges_by_tag', 'tags', 'reference_transform', 'reference_markers', 'root_entities', 'model_units_code'):
         require(before[key] == after[key], f'Persistence mismatch: {key}')
 
