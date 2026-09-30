@@ -43,4 +43,33 @@ Get-FileHash -Algorithm SHA256 -LiteralPath .\Landscape-Agent-Pack-v0.1.0-beta.z
 [Ringo](https://github.com/Ringophilia/Ringo-Sketchup-MCP) 1.3.2 官方固定提交 `2dd54d945b0e7a5d1843d58a94a33f5c8875df01`，按上游 README 手动安装，不覆盖已有扩展。本机验证使用既有兼容修改，详见 RINGO_LOCAL_PATCH_REPORT.md；Beta 不自动应用该补丁，不保证原版组合。`-RunSketchUpSmoke` 仅检测既有 bridge/info，不做 box / DWG 导入完整验收。Ruby eval 本次没有开启。
 
 ## v0.2 integration source
-See V02_BRIDGE.md for development dependencies and the current source workflow. The instructions above remain the released beta installer history; fresh v0.2 installation/client reload has not been accepted.
+The instructions above remain the released beta installer history. For the v0.2 candidate source workflow, use a new short directory and a separate virtual environment:
+
+```powershell
+git clone --branch codex/v0.2-integration <repository-url> D:\lap-v02\checkout
+cd D:\lap-v02\checkout
+py -3.12 -m venv D:\lap-v02\venv
+& D:\lap-v02\venv\Scripts\python.exe -m pip install -r requirements-v02-dev.txt -r installer/requirements.txt
+& D:\lap-v02\venv\Scripts\python.exe installer/verify-rules.py --root .
+& D:\lap-v02\venv\Scripts\python.exe -m unittest discover -s tests/unit -v
+& D:\lap-v02\venv\Scripts\python.exe -m unittest discover -s tests/smoke -v
+```
+
+Use the actual repository URL and an available Python 3.12 installation. The
+candidate `.gitattributes` preserves exact committed bytes; integrity checks
+continue to reject altered files. Never regenerate a downloaded manifest to
+make a damaged install pass. `installer/requirements.txt` supplies AutoCAD MCP
+for the existing installer/smoke path; the development requirements also pin
+the smoke transport and production geometry dependencies.
+
+AutoCAD must have no open user documents. Existing licensed AutoCAD/SketchUp
+and the configured Ringo plugin are prerequisites, not installed by these
+commands. Copy a saved blank SKP into a unique owned `runs/` workspace and use
+the minimum E2E instructions in [V02_BRIDGE.md](V02_BRIDGE.md). Pass `--config`
+for an isolated Ringo config, preserve authentication and enable trusted Ruby
+only in the intended SketchUp process environment. Do not publish that config.
+
+The RC2 test uses a new venv, clean local clone, temporary config and new Python
+client processes on this existing workstation: **PARTIAL_FRESH_ENV**. It does
+not prove installation on a new machine or installation of an unmodified
+upstream Ringo plugin. See V02_RC2_ACCEPTANCE.md for actual evidence.

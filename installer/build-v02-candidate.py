@@ -16,8 +16,8 @@ def main(destination):
         raise FileExistsError(destination)
     destination.mkdir(parents=True)
     manifest=json.loads((ROOT/'manifest.json').read_text(encoding='utf-8'))
-    if manifest['release_version'] != 'v0.2.0-rc1':
-        raise ValueError('Expected explicitly generated v0.2.0-rc1 manifest')
+    if manifest['release_version'] not in {'v0.2.0-rc1', 'v0.2.0-rc2'}:
+        raise ValueError('Expected explicitly generated v0.2 RC manifest')
     spec=importlib.util.spec_from_file_location('verify',ROOT/'installer/verify-rules.py')
     verifier=importlib.util.module_from_spec(spec); spec.loader.exec_module(verifier)
     errors=verifier.verify(ROOT)
