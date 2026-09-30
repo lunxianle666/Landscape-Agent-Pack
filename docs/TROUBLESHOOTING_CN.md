@@ -10,3 +10,6 @@
 - PDF 空白或截图异常：按限制报告 PARTIAL，检查真实页面和保存重开结果，不以 OK 返回值认定完成。
 
 - 创建报 Color 属性不存在：可能是返回值序列化假失败，不能重复创建。必须用 Creation Guard 检查新增句柄和关键几何；仅匹配时 SUCCESS_WITH_FALSE_ERROR，保留上游报错。
+
+## v0.2 Bridge
+See V02_BRIDGE.md for current profile, listener, timeout, Unicode path and SketchUp 2023 model-reopen behavior. Earlier troubleshooting above is preserved as beta history.

@@ -1,0 +1,2 @@
+# Integrity checks use exact committed bytes. Disable checkout EOL conversion.
+* -text

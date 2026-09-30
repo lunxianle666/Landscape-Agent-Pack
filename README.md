@@ -1,4 +1,17 @@
-# Landscape Agent Pack v0.1.0-beta
+# Landscape Agent Pack — v0.2 integration candidate
+
+当前分支状态：**PASS_WITH_WARNINGS / MERGE_READY candidate**。2026-09-30 已补充 A/B/C 真实 DWG、数值与视觉 QA、SketchUp 进程冷重启和隔离 venv/clone 验证。原生 CAD_REFERENCE 的标注、Hatch、曲线离散及宽线语义限制仍保留；隔离环境为 PARTIAL_FRESH_ENV。WorkBuddy 归档源码已恢复审核。详见 [RC2 验收](docs/V02_RC2_ACCEPTANCE.md)。尚未合并 main、推送、创建 tag 或发布 v0.2。
+
+- [本轮验收与限制](docs/V02_ACCEPTANCE_REPORT.md)
+- [v0.2 安装、架构、工作流和排错](docs/V02_BRIDGE.md)
+- [现场恢复审计](docs/V02_RECOVERY_AUDIT.md)
+- [WorkBuddy 准入状态](docs/WORKBUDDY_V02_REVIEW.md)
+- [候选发行说明](docs/V02_RELEASE_NOTES_DRAFT.md)
+- [RC3 document ownership 修复与验证](docs/V02_RC3_OWNERSHIP.md)：移除 fixture 默认图纸推断式关闭；RC2 生产验收证据保持有效，RC3 为独立候选包。
+
+v0.2 源码使用 `requirements-v02-dev.txt` 和独立运行目录。旧安装器仍提供规则/MCP 安装；本次没有验收其全新机器上的 v0.2 Core 安装与客户端重载。以下下载与 Beta 状态说明保留为已发布 v0.1.0-beta 的历史使用入口，不能作为当前 v0.2 验收结论。
+
+## 已发布 v0.1.0-beta
 
 Windows 景观 CAD / SketchUp 的 Agent 工作流包：安装器、规则、Skill、MCP 配置片段、重复执行守护和真实文件 smoke test。适合有合法桌面软件、愿意检查 Agent 输出的景观学习与设计用户。它不是自动景观设计软件，也不是生产级或任意 Agent 通用插件。
 
