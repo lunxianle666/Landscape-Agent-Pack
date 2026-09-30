@@ -1,741 +1,741 @@
 {
   "schema_version": 1,
-  "release_version": "v0.2.0-rc3",
+  "release_version": "v0.2.0",
   "files": [
     {
       "relative_path": ".gitattributes",
       "sha256": "831794540497b0b76a82666ce90497140d3496f8e2233a4a665395aa281fd676",
       "file_type": "text",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": ".gitignore",
       "sha256": "77dd6b9052bc7f9701542b5fd13c4d8ea2cfbd01abdd242b6cb296c05fdf1361",
       "file_type": "text",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "AGENT_CONTEXT.md",
       "sha256": "1c1f2daf9b93a6d206ff9e6626ac454ad95cbf24e37d49e6aa698d6addafb6e9",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "CHANGELOG.md",
-      "sha256": "24ed9cc42a1095751f3af027310940e5993a2919229f8954e9419d46c967f54b",
+      "sha256": "1692648502160233a66ae0e4f74cd8a98e62cf5060799dab70555cf986739047",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "LICENSE",
       "sha256": "9c79dd58b7f997ed1522b136dffd002a98016db8ba5a734f0c5cf20a77412985",
       "file_type": "text",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "README.md",
-      "sha256": "1581a36d2d0c09b325cd27964ed9a6e97df35b0377bbfa55d3874f7548acc479",
+      "sha256": "6d32901430ffc2440fe16034ffb2b088cb8947322c788c6027a264714b43d4dc",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "THIRD_PARTY_NOTICES.md",
       "sha256": "c49e9353dde2843c153f9aff5298373d75d25b73165d9f9b2894a049bc507a71",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "config/codex.toml.example",
       "sha256": "7767b57665683680f4b19eef616c6870bda0378412406e360d001b5067565373",
       "file_type": "example",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "config/trae-mcp.json.example",
       "sha256": "a47d0f7a11c595fea22811d00f589ffb6f85dc925adbdc5c7f95fcc0364fc4e3",
       "file_type": "example",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/AI_INSTALL_ASSISTANT_CN.md",
       "sha256": "e0c2b8d1c3bdeb5f2b282002390a574bd7793d8ee087bf5ec15e6fc241ca7c9d",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/BEGINNER_USAGE_CN.md",
       "sha256": "46c188f6c8089790073f094b9144896114ec5b456b74cab11f86be1bddf2d651",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/BETA_ACCEPTANCE.md",
       "sha256": "e017bb3c1198164a83fa0cfae2971b75a04f4a7ec99cf02045e4b0e427731c2f",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/CLIENT_CONFIG_CN.md",
       "sha256": "9664ef32302ac154106d073efa58143bd5c856cebae005fa133cc2e27d2e195c",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/HOW_IT_WORKS_CN.md",
       "sha256": "dac13250bbe60316f727b6171965dcbe7138d307e94e95adb4f921493dbb45bf",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/INSTALL_WINDOWS.md",
-      "sha256": "a204922da8c8149c1f3e62463fea46755fc7aaf6bb8a7093305b50d9184c47cb",
+      "sha256": "f46c417959eebb646b2e2ebbab3b82ba5083df9fada1687f7ced9fffcaa44cf8",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/INTEGRITY.md",
       "sha256": "509ce55ce4d95750fd3119f996d2afbfc7e3073644ad50dcce08ef047863f851",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/LIMITATIONS.md",
       "sha256": "1d7bb97d33cea06da2b509f92fa46507ebc7f887c829344176bbbe630d1a752a",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/PHASE2_ACCEPTANCE_REPORT.md",
       "sha256": "079716354e7ad8d7f725ac1bc785be870149dcbe901eab0b93e5f3a2aead7542",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/PHASE2_AUTOCAD_CORE.md",
       "sha256": "5206150f6fb2d38f44745ac96270410315b4dc9b5ea861cbc8bf8eb5fb6615c7",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/PHASE3_ACCEPTANCE_REPORT.md",
       "sha256": "94ef1d1f69da81b11a2d541d85301d45a52fb7ff827dbdfc9637d7425b154417",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/PHASE3_CAD_DELIVERY.md",
       "sha256": "1c3500379f31aa6a1a5216a5adc9a9184573f8c0bd08d4dbf1336b7a005c77c5",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/PHASE4_BRIDGE_WIP.md",
       "sha256": "c5a7ca477ccefc2113462538651dc2bc6469a819e39dceeb1f833bf7509f0af5",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/QUICK_START_CN.md",
       "sha256": "887aec42a5fe6e4e45a81c76878b1102b495cd11c6f39edf6676a12a3361042c",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/RC1_1_BUILD_REPORT.md",
       "sha256": "df5fd09b9b32ce0c6c7eaf7502c1f2dc6cff8e25e362b4b0a808df32c37bc25d",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/RINGO_LOCAL_PATCH_REPORT.md",
       "sha256": "d52e8d4bcbcec2276a1ab2fa4c1c4dbed22e468f085cb21db89337e54b05c5a4",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/SECURITY.md",
       "sha256": "022689c1124698cbb0678f7f6e86357857de1ec747fb10967f6a000fc796b54d",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/SKILL_BASELINE_REPORT.md",
       "sha256": "332e9a64c6c39ab4b7d14f0ce0351d1e532d976b862d6c8b9edb4d158b36d2c4",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/TESTED_ENVIRONMENT.md",
-      "sha256": "3c0c2618945fcb2b88db40273f9b85e03278c8647bb7751bac66c99ba76c8ebe",
+      "sha256": "3dfb9168aa80e9c7ba6596dbd71fd6237e1f140f97682559a8ebd9801ec926ea",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/THREE_STEP_CHECK_CN.md",
       "sha256": "b387ec74dc5ea4cf988c0adc8ce72409bb28cd77edec1286ae80f4ed2102cdfc",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/TROUBLESHOOTING_CN.md",
       "sha256": "f650f8a3333147eb7635a7a9899eb8a30e37ada8e87ea6a7b24981bf811ae9d7",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/V02_ACCEPTANCE_REPORT.md",
       "sha256": "653d6ceb628c2f0ccaff1c07679d33f48cfe671b8adda21f8e18d1591d9c8531",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/V02_BRIDGE.md",
       "sha256": "cd81b34f2d49bc47088cfe38e749766a754c7ef1a4d12bd320dd14c4ac9b58c9",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/V02_RC2_ACCEPTANCE.md",
       "sha256": "27c710e49a77cbaabda9265acfa01e4bc9244ecfdf49cd7d7a304475f5392b06",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/V02_RC3_OWNERSHIP.md",
       "sha256": "57d249fecb3345e920f0780e6d60ec4ed2f8cad04d58608ac31a5d9125cea001",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/V02_RECOVERY_AUDIT.md",
       "sha256": "fd9e31e041286c97ab3f6745143a4d8b95482aedc14b6499203b3b87c5064fd5",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/V02_RELEASE_NOTES_DRAFT.md",
-      "sha256": "b5cce1138f3c701aa474831cb2ce8f6887230cc602dbbd449dd89c168ada76ea",
+      "sha256": "cc8f41c2285f3e25598bec2078d19bbd7f6af334ca525baa7087cce7bdb9e396",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/V02_WORKBUDDY_REVIEW.md",
-      "sha256": "fc7abd8a62c5046691b71df0d12c4b0d9f064abb256249cabf882d7c7e98d2ae",
+      "sha256": "47e79b8fd768af9c144d726ed0df493e283ea1bb3fc6de4cd936dae5f1c4f4ab",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/WORKBUDDY_V02_REVIEW.md",
-      "sha256": "5515b9053c125ea0550aa39bd0d51c6540c9623178d9f4bda7e913e8e7478b93",
+      "sha256": "04448bf5f7e2ae45d10601d6f171ed217c0dd2a8b8fda66270dfac14fb9be717",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "guards/README.md",
       "sha256": "f2c23221b8e58b02ccbc2539d311ff3ef3cc42fb7c7cfc906a896aef8b95bd80",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "guards/creation_guard.py",
       "sha256": "1e4795c5686864686e906b2df389ea44adbbc1ded325e6479488b7371ade8ff8",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "guards/document-state-check.py",
       "sha256": "9325d045258915b77aa3a80acb00e41142bb391456a6ad0ef6dd7ec954720ebb",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "installer/build-manifest.py",
       "sha256": "2cd4578377062dc1a67cce1bfc43f9c8c51c2e74657f442bdfaaadc893a9037a",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "installer/build-v02-candidate.py",
-      "sha256": "f0a1bc1449a5775b124a845f384c5e02b1e1ae0b016874d62e80956295152597",
+      "sha256": "bc68c7403fc7221bcc3531c3c836a2516ad055fed0b454fec9e92902b03f1d75",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "installer/check-environment.ps1",
       "sha256": "c7f1c787d4082be89bfeb98628bf8f3f3c31bf9b677a1f572ad6d92a7a0a3933",
       "file_type": "ps1",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "installer/dependency-manifest.json",
       "sha256": "b861f37de7cbd3a4da475db4a9c00ee9601481e8107c0f3ba9a6e0c66d1c1722",
       "file_type": "json",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "installer/environment_probe.py",
       "sha256": "75e1d0c7762bc8fd2c7ac1fa44288376d6518739ea956b6f671c8a0fcacfc954",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "installer/generate-mcp-config.ps1",
       "sha256": "df9a521614f2cd216e8f81643391373c86ffcb59a69158712d7ad8c531bdd6a7",
       "file_type": "ps1",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "installer/install.ps1",
       "sha256": "87094ef7f3c3165d3b8139cd589799be783c3df0361f076eb70ca9d2fb5fb8f1",
       "file_type": "ps1",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "installer/package-candidate.py",
       "sha256": "5e9bea7cb7af1fe30cfb1e4ecef8b6ca15930999475d7657e0a31743aea03cc8",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "installer/requirements.txt",
       "sha256": "b06c8688bb0a7818a114db16865d6951b1352d0b0323e3da1f5bc7874ae0256f",
       "file_type": "txt",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "installer/verify-dependency.py",
       "sha256": "e81ed0f487e18c8db6d5fced89d58b687a3b9a80aebc6e68e697254862a6230e",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "installer/verify-rules.py",
       "sha256": "47fd3b5eab786ba62bb2a9422976e680b886b7b1e63460ba8a7f1d78cbfab4e9",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/__init__.py",
       "sha256": "fdab1eb9fb0d6d7ba13163f1e2aa5d8eee31a6607b5480fdb6e533c190b5478e",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/bridge/__init__.py",
       "sha256": "6e012f0aeb7a91d39e16812e1990d8b881473c0dbbb9a2adf74fa483c7a61c55",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/bridge/client.py",
       "sha256": "49176b4905b663771044d28f5a1700c7fc72d162e5b4195f1ab4e9b432bf08ce",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/bridge/contracts.py",
       "sha256": "b6d4905ca47c9c43f23371a277a91db54a0b1e00c2958b13456d573d07b78063",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/bridge/errors.py",
       "sha256": "08e7de8177d3c3d4ba25a0c7c196d88e4bf4e888ef94ce4c40cc9b1b9a890009",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/bridge/native_import.rb",
       "sha256": "3c83094ed22786155403df4f76817d06c316997637021cb9e6968d25b5b52d7f",
       "file_type": "rb",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/bridge/persistence.rb",
       "sha256": "27312d66890b207ee7ba5a577e6933271b62c92eb17eb8d0b0400180cb40e92b",
       "file_type": "rb",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/bridge/sketchup_session.rb",
       "sha256": "6d6047b6a3ddb15283a479c71f7881e56347be44319ac8678bd0d14055882b22",
       "file_type": "rb",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/bridge/validation.py",
       "sha256": "fc51d533fe45d53eff2812bdd55e179323a1879e740518edfd0f50e7dc56b258",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/cad/__init__.py",
       "sha256": "957f7426eed635299431ccd28b9574889ba4e78152dd9340c98d298f6f5a8c3c",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/cad/angles.py",
       "sha256": "2250fd79bd07620ef975b948c06b50453adeafeaa47cd24dd3207bee5f70d1f0",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/cad/annotation.py",
       "sha256": "2d49c947913432783214634696adf91d5d5463c40a2b412a04fb60e320d2f724",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/cad/core.py",
       "sha256": "3e5637efa1f409f2dd55c84c0cb0881d05f5078325b616e164b6f17af35551c9",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/cad/delivery.py",
       "sha256": "590d2676034549c18239c211166b3043d33d8398aa43fc86ff9239e9497b6376",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/cad/geometry_qa.py",
       "sha256": "6971abc01b7cc1f9d63fd1b588ddc5ad32133475ec899a4c5601f6e83d45bd58",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/cad/pdf_qa.py",
       "sha256": "ed1e5ac188e298686df075d20948be9e50a806a61ba66ea6d1601f418912f03f",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/cad/plot.py",
       "sha256": "39e4e2dbf081c923e257924872ce1e5f56a3741bf9cdf8f515ebc6fd9235d9c0",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/cad/retry.py",
       "sha256": "b898f6ad447e8f9ddcd5c2d4e62d65d9849ef258ec0d675d3dc1546835e3bd6c",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/cad/visual_qa.py",
       "sha256": "7b8d7c0659db1573ae272c673e2cd71468726d82c6f307d8eefb6330e83df577",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "landscape_agent_pack/result.py",
       "sha256": "5b91140ad5a7a9cb63664ba5535f223f7e1746f50d327af5d7221ecefbc30b49",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "prompts/QUICK_PROMPTS_CN.md",
       "sha256": "c4e10a490bb46f9b161eead3788aaefe31ed6d4861c12fb300b6286a8c1ca9bd",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "requirements-v02-dev.txt",
       "sha256": "799f982e78e3a1f4fd5d08242b77f169e64ebd7f6da7b8fcffb71441c872aa97",
       "file_type": "txt",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "setup.bat",
       "sha256": "a117a177c4bcd2afacb931decfe1aeda51866a42ad4db19ee53142db411c98ad",
       "file_type": "bat",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "skills/autocad-dwg-redraw/PROVENANCE.md",
       "sha256": "c4117e94e3610745e958b7715585316735383163fe2eb0417e4fdc7b9095dbde",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "skills/sketchup-from-cad-landscape/LICENSE",
       "sha256": "2585a02537d0e962fd74b1323c123e651f201754d7f97c7a5bdf40cbeeb657a3",
       "file_type": "text",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "skills/sketchup-from-cad-landscape/SKILL.md",
       "sha256": "cef941dbf6488b7ae42b8672637f0644359dd200fc8fafaa43448d445a8d4f25",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "skills/sketchup-from-cad-landscape/docs/LIMITATIONS.md",
       "sha256": "707a6b593bb273d51bb07ea8965e487d6824dc12991c0a96c37ce46d63961bd5",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "skills/sketchup-from-cad-landscape/docs/TESTED_ENVIRONMENT.md",
       "sha256": "84d46e3cb122338f0bfd0b946bb7c57787b090dcca4f2159d5b5c97adffb19a2",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "standards/autocad-safety-rules.md",
       "sha256": "86749e4bcca4ca59791f79f6f8e823832f129bb75cc2928c342587950ddfec6c",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "standards/landscape-workflow.md",
       "sha256": "0c9970782e31119b4c84202449a018189b88c26268aa4e0d69ae294a137dbdde",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "templates/acceptance-report.md",
       "sha256": "26f75a8a5000ca9a4e1a7ff1cb203f09fc7b52a97429f97c9134a681fd49f841",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "templates/project-brief.md",
       "sha256": "90bf143bbd37feb806a84d35e6c654c618379f445b9e824e097d3484ce9b71b8",
       "file_type": "md",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/evidence/creation-reproduction.json",
       "sha256": "4856e95f1c80e009942817f4d30791754513e8cb94197f775d885c7a9a8fc643",
       "file_type": "json",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/evidence/rc1.1-summary.json",
       "sha256": "566782fdb4c71a012c9cd898755f1d5fc56479c51055784d059af50fc15992b4",
       "file_type": "json",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/fixtures/smoke-geometry.json",
       "sha256": "9ea218da717a80ed5d367313973cd908b3e26c9a3c1c6c6961dd77b17c70b3fa",
       "file_type": "json",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/integration/autocad_core_live.py",
       "sha256": "27a61f254519d0efda24c2a293cdb987f4c7f5803f19b03275d6d16ce9301aef",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/integration/bridge_fixture_cad.py",
       "sha256": "2cfe8d1831110f2dac99c9610ce8c10852191e0d331b840c3af7f9130736b6b2",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/integration/bridge_live.py",
       "sha256": "fae4c3a2d4d7210ec0701932c8be6ba1c99af0c4cdfc58c1d7cbfdeb90a423f5",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/integration/cad_delivery_live.py",
       "sha256": "251a5c2fd92d8a2c89632ba28ed337a6b92b7053d2e59d2385b029c844741408",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/integration/full_chain_live.py",
       "sha256": "db0c8e92b292bc79eda7ba170f027d0647922053d517578c372fd4edda88389b",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/integration/production_cad_live.py",
       "sha256": "d9dc29e25abe626e8ab72911f32a246ae15cef1441ba87f611ef5aec045d03d0",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/integration/production_types.rb",
       "sha256": "65d93d4461bfbf4b6385bf66f875c511ad187c848eff1ebae0fd236fea147108",
       "file_type": "rb",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/smoke/acceptance_v2.py",
       "sha256": "5f77799c020ae79eb5796528f02776f2b5a38805760fd922cdac048174acacf1",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/smoke/reproduce_creations.py",
       "sha256": "6de5483ad4d9955754777902a3c4ab4debfe5f3fafc0c16fbf0f4c5af903154b",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/smoke/smoke_test.py",
       "sha256": "a286dfec0c58bd0546817d1da777e11686b462060fd98e987e24c631eee2c037",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/smoke/test_creation_guard.py",
       "sha256": "37c5dfd0e42fe9ee1ae50a31c25ba40c70ed17367ac276d9582907c8ef7246eb",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/smoke/test_document_guards.py",
       "sha256": "348a0f5f706a280c38033377a5721391152732191cebda68949fa898ccdb13e8",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/smoke/test_integrity.py",
       "sha256": "a4bfa06fd713969e4d5b2d1bc1be637d8b0ef23cb2e42f178f75f8e56d14d5d0",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/unit/test_fixture_ownership.py",
       "sha256": "f15ad487e5f47a1813b5bb403a8b18bf0bcccc530f602de69316d5b30503d4f1",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/unit/test_v02_core.py",
       "sha256": "ec8c4291dc5e3403ac3e9a8b88aaf425b02720a64ae72493d89f48eb3e3718dd",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/unit/test_v03_delivery.py",
       "sha256": "ee79485153f800440abb918fa7241617298ee29baa97d6ad3ad0c3438ac38263",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/unit/test_v04_bridge.py",
       "sha256": "e1aa14975dfc70b13ac137e600f6c137bb2fdf47c52f95e469bb13dd171cac18",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     },
     {
       "relative_path": "tests/unit/test_visual_evidence.py",
       "sha256": "f14fff4e5eee1b6510fa2e7efa5d0d0d9c95b9c352c73e493329736ad1921697",
       "file_type": "py",
       "critical": true,
-      "release_version": "v0.2.0-rc3"
+      "release_version": "v0.2.0"
     }
   ],
   "required_directories": [

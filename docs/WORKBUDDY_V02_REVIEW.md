@@ -1,20 +1,20 @@
-# WorkBuddy candidate review — 2026-09-30
+# WorkBuddy v0.2.0 final review status
 
-The specified `LAP-Integration-Inputs/WorkBuddy-Integration-Candidate` and
-`HANDOFF_TO_CODEX.md` are absent from the current disk. No candidate source was
-available to review or test. Prior audit recommendations were treated only as
-historical context. No candidate code or Skill was copied into LAP.
+The candidate source review is complete. The earlier missing-source/DEFER report
+has been superseded by the [recovered source review](V02_WORKBUDDY_REVIEW.md).
+The original requested directory and usable HANDOFF_TO_CODEX.md were absent;
+source was subsequently recovered from an archive and reviewed with provenance.
+These missing handoff files remain historical audit information.
 
-| Candidate | Current decision | Reason |
-|---|---|---|
-| autocad-com-automation | DEFER | Current source/handoff unavailable |
-| cad-geometry-qa | DEFER | Current source/handoff unavailable |
-| landscape-sheetset-pipeline | DEFER | Current source/handoff unavailable |
-| landscape-visual-qa | DEFER | Current source/handoff unavailable |
-| Other candidate entries | DEFER | Current inventory cannot be established |
+| Candidate | Final decision |
+|---|---|
+| autocad-com-automation | DUPLICATE |
+| cad-geometry-qa | REJECT |
+| landscape-sheetset-pipeline | DEFER |
+| landscape-visual-qa | ACCEPT_WITH_CHANGES |
 
-ACCEPT / ACCEPT_WITH_CHANGES / DUPLICATE / REJECT were not assigned without
-current source evidence. This deferral does not invalidate the native LAP
-fixture acceptance, but the requested candidate integration review remains
-unfinished until its actual handoff files are restored. Sheetset automation
-and general visual judgement are not newly supported by this work.
+No whole WorkBuddy Skill was copied into the pack. Existing COM capabilities
+already cover acceptable recipes. Unsafe/project-specific QA code was rejected;
+sheetset implementation remains deferred. Visual QA uses source-bound evidence,
+explicit observations and independent visual results without arbitrary scores.
+See the recovered source review for per-candidate reasons and archive hashes.

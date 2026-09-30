@@ -1,4 +1,4 @@
-# Recovered WorkBuddy candidate source review — 2026-09-30
+# WorkBuddy v0.2.0 final source review — 2026-09-30
 
 The requested Documents/GitHub/LAP-Integration-Inputs path and usable
 HANDOFF_TO_CODEX.md are absent. The WorkBuddy session backup names exist but

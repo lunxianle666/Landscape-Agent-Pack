@@ -42,11 +42,15 @@ Get-FileHash -Algorithm SHA256 -LiteralPath .\Landscape-Agent-Pack-v0.1.0-beta.z
 
 [Ringo](https://github.com/Ringophilia/Ringo-Sketchup-MCP) 1.3.2 官方固定提交 `2dd54d945b0e7a5d1843d58a94a33f5c8875df01`，按上游 README 手动安装，不覆盖已有扩展。本机验证使用既有兼容修改，详见 RINGO_LOCAL_PATCH_REPORT.md；Beta 不自动应用该补丁，不保证原版组合。`-RunSketchUpSmoke` 仅检测既有 bridge/info，不做 box / DWG 导入完整验收。Ruby eval 本次没有开启。
 
-## v0.2 integration source
-The instructions above remain the released beta installer history. For the v0.2 candidate source workflow, use a new short directory and a separate virtual environment:
+## v0.2.0 source installation
+Use the official ZIP for the exact release snapshot; the main clone command below
+requires the release-prep commit to have been published. Local preparation alone
+does not update remote main.
+
+The instructions above remain the released beta installer history. For the v0.2.0 source workflow, use a new short directory and a separate virtual environment:
 
 ```powershell
-git clone --branch codex/v0.2-integration <repository-url> D:\lap-v02\checkout
+git clone --branch main <repository-url> D:\lap-v02\checkout
 cd D:\lap-v02\checkout
 py -3.12 -m venv D:\lap-v02\venv
 & D:\lap-v02\venv\Scripts\python.exe -m pip install -r requirements-v02-dev.txt -r installer/requirements.txt
@@ -56,7 +60,7 @@ py -3.12 -m venv D:\lap-v02\venv
 ```
 
 Use the actual repository URL and an available Python 3.12 installation. The
-candidate `.gitattributes` preserves exact committed bytes; integrity checks
+release `.gitattributes` preserves exact committed bytes; integrity checks
 continue to reject altered files. Never regenerate a downloaded manifest to
 make a damaged install pass. `installer/requirements.txt` supplies AutoCAD MCP
 for the existing installer/smoke path; the development requirements also pin

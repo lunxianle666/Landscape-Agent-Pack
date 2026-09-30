@@ -1,5 +1,31 @@
 # Changelog
 
+## v0.2.0 — release preparation, 2026-09-30
+
+- Verified AutoCAD Core, Geometry QA, PDF plotting, CAD→SketchUp Bridge,
+  SKP persistence and save/close/reopen/readback on the tested workstation.
+- A/B/C real landscape production chains and numeric/visual QA passed with
+  explicit semantic warnings; clean SketchUp restart and Bridge reconnect passed.
+- Fixture ownership is based on explicit creation records and COM identity;
+  existing pre-test documents survive teardown. Ownership regressions: 10 PASS.
+- Windows clean checkout / isolated venv validation: PARTIAL_FRESH_ENV.
+- WorkBuddy source review complete: autocad-com-automation DUPLICATE,
+  cad-geometry-qa REJECT, landscape-sheetset-pipeline DEFER,
+  landscape-visual-qa ACCEPT_WITH_CHANGES. No whole Skill was copied.
+- TEXT/MTEXT/DIMENSION/HATCH semantics are not fully preserved. Circle/Arc/bulged
+  polyline support is tessellated/partial; wide-line centerlines do not preserve
+  full width semantics. SPLINE/ELLIPSE/XREF/arbitrary 3D remain unverified.
+- No full lossless CAD conversion, finished 3D landscape generation, pristine
+  machine installation or all-version AutoCAD/SketchUp compatibility claim.
+- Deterministic official v0.2.0 package is rebuilt from the release-prep commit.
+  RC1/RC2/RC3 and their historical evidence remain intact. No remote publication.
+
+### Historical prerelease records
+
+The entries below describe their original checkpoints; later source recovery
+and production acceptance are recorded above and in the final release notes.
+
+
 ## v0.2.0-rc3 — local ownership safety candidate, unpublished
 
 - Remove inferred ownership and default-document dismissal from the CAD fixture.

@@ -1,15 +1,17 @@
-# Landscape Agent Pack — v0.2 integration candidate
+# Landscape Agent Pack — v0.2.0
 
-当前分支状态：**PASS_WITH_WARNINGS / MERGE_READY candidate**。2026-09-30 已补充 A/B/C 真实 DWG、数值与视觉 QA、SketchUp 进程冷重启和隔离 venv/clone 验证。原生 CAD_REFERENCE 的标注、Hatch、曲线离散及宽线语义限制仍保留；隔离环境为 PARTIAL_FRESH_ENV。WorkBuddy 归档源码已恢复审核。详见 [RC2 验收](docs/V02_RC2_ACCEPTANCE.md)。尚未合并 main、推送、创建 tag 或发布 v0.2。
+v0.2.0 正式发行文档与本地发布准备。已在本机验证 AutoCAD Core、Geometry QA、PDF plotting、CAD→SketchUp Bridge、SKP persistence 与 save/close/reopen/readback；A/B/C 三个真实景观项目生产链、数值及视觉 QA、SketchUp clean restart、Bridge reconnect 和 fixture document ownership safety 均有验收证据。生产链结果仍为 PASS_WITH_WARNINGS；Windows clean checkout / venv 验证为 **PARTIAL_FRESH_ENV**。本地 main 已合并；本轮仅准备正式包，尚未 push、创建 v0.2.0 tag 或 GitHub Release。
 
-- [本轮验收与限制](docs/V02_ACCEPTANCE_REPORT.md)
-- [v0.2 安装、架构、工作流和排错](docs/V02_BRIDGE.md)
-- [现场恢复审计](docs/V02_RECOVERY_AUDIT.md)
-- [WorkBuddy 准入状态](docs/WORKBUDDY_V02_REVIEW.md)
-- [候选发行说明](docs/V02_RELEASE_NOTES_DRAFT.md)
-- [RC3 document ownership 修复与验证](docs/V02_RC3_OWNERSHIP.md)：移除 fixture 默认图纸推断式关闭；RC2 生产验收证据保持有效，RC3 为独立候选包。
+- [v0.2.0 正式发行说明](docs/V02_RELEASE_NOTES_DRAFT.md)（沿用原文件名，内容已定稿）
+- [Windows 安装](docs/INSTALL_WINDOWS.md) · [已测环境](docs/TESTED_ENVIRONMENT.md)
+- [安装、架构、工作流和排错](docs/V02_BRIDGE.md)
+- [RC2 生产验收证据](docs/V02_RC2_ACCEPTANCE.md) · [RC3 ownership safety](docs/V02_RC3_OWNERSHIP.md)
+- [WorkBuddy 最终源码审核](docs/V02_WORKBUDDY_REVIEW.md)：DUPLICATE / REJECT / DEFER / ACCEPT_WITH_CHANGES；未直接复制整个 Skill。
+- [早期验收](docs/V02_ACCEPTANCE_REPORT.md) · [现场恢复审计](docs/V02_RECOVERY_AUDIT.md)
 
-v0.2 源码使用 `requirements-v02-dev.txt` 和独立运行目录。旧安装器仍提供规则/MCP 安装；本次没有验收其全新机器上的 v0.2 Core 安装与客户端重载。以下下载与 Beta 状态说明保留为已发布 v0.1.0-beta 的历史使用入口，不能作为当前 v0.2 验收结论。
+能力边界：TEXT / MTEXT / DIMENSION / HATCH 不保证 CAD 语义完整保留；Circle / Arc / bulged polyline 为 tessellated / partial semantic support；宽线的中心线表示不完整保留 width semantics。SPLINE / ELLIPSE / XREF / arbitrary 3D 未验证。原生 CAD_REFERENCE 是基础参考几何，不是 finished 3D landscape generation；不宣称完整 CAD 无损转换、全新机器测试完成或所有 AutoCAD / SketchUp 版本兼容。技术视觉 QA 不替代独立设计审批。
+
+v0.2.0 源码使用 `requirements-v02-dev.txt` 和独立运行目录，依赖既有合法 AutoCAD / SketchUp 与配置好的兼容 Ringo。旧安装器仍提供规则/MCP 安装，本次未验证其全新机器 Core 安装、原版 Ringo 安装或 Codex desktop discovery/config reload。下方 v0.1.0-beta 下载与状态说明仅为历史版本入口，不是 v0.2.0 能力结论。
 
 ## 已发布 v0.1.0-beta
 
