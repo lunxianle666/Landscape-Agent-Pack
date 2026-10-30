@@ -1,7 +1,9 @@
 # Landscape Agent Pack v0.2.0 — final release notes
 
-Status: local release preparation; remote publication not performed. The file
-name is retained for existing links; this document supersedes the RC1 draft.
+Status: published v0.2.0 on 2026-09-30. The file name is retained for existing
+links; this document supersedes the RC1 draft. The [published Release](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.2.0)
+and tag identify commit `ac378d84ce4bbb9489ee4664b0db3e498e0359fa`.
+Later documentation maintenance does not replace that snapshot or its assets.
 
 ## Verified scope
 
@@ -82,4 +84,18 @@ unchanged and tied to their original snapshots.
 
 Manifest generation is a release-author operation, never a repair for downloaded
 integrity failures. ZIP excludes runs, private credentials and production files.
-Local preparation does not push, create a tag or publish a GitHub Release.
+The commands above describe the original release-author process, not an install
+repair or instructions to republish later main. For current documentation-only
+manifest maintenance, see [integrity contract](INTEGRITY.md).
+
+## Published artifact identity
+
+Official ZIP SHA256:
+
+```text
+71f4899bb1bc88f75558ab6dff065931a34f0ef05995c6a4b47ecf9b93013422
+```
+
+Download the ZIP and checksum sidecar from the Release linked above. Historical
+RC acceptance documents retain their checkpoint-time publication status; use
+[the history index](HISTORY.md) to interpret their relationship to v0.2.0.

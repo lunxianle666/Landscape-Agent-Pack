@@ -4,7 +4,7 @@
 
 你只需要会 AutoCAD / SketchUp 的基本操作，并能向 AI 说明要求。不需要先学 Python、MCP 或 COM。如果还没安装，先看[安装教程](INSTALL_WINDOWS.md)或复制[AI安装与配置总指令](AI_INSTALL_ASSISTANT_CN.md)。日常绘图不需要重复发送安装总提示词。
 
-> 当前为 Release Candidate。模型空间 DWG 是重点；Layout / PDF / 截图、部分 Dimension 和不同 AutoCAD 版本仍可能有兼容问题。模型空间已正确时，优先保存结果，不要为了自动出图长时间调试。SketchUp 是可选 / Experimental，当前 RC 未完成运行时测试。
+> 本手册以早期规则/MCP 安装器的日常使用为主，不能作为完整 v0.2.0 Core/QA/Bridge 安装说明。当前正式版、分流安装步骤与实际验收范围见 [首页](../README.md)、[安装指南](INSTALL_WINDOWS.md) 和 [案例](CASES.md)。SketchUp 可选；v0.2.0 的本机验收不代表全新机器、原版插件或其他客户端均已验证。
 
 ## 你负责想法，AI和Agent负责实现
 
@@ -39,7 +39,7 @@ AI理解 → 设计 → 确定参数 → 你确认方案 → Agent执行 → 检
 
 AI 实际回读报告 `backend=com`、`connected=true` 后再开始。连接成功只说明能通信，不代表图纸已验收。失败时打开[故障排查](TROUBLESHOOTING_CN.md)，先保留错误原文。
 
-**AI模型和能操作本机的 Agent 不是一回事。**普通聊天豆包可能只能给建议，不能直接控制本机 AutoCAD。Codex / TRAE 等也要先配置工具，才能实际画图；不能只凭 AI 说“画好了”认定完成。TRAE 的配置模板已提供，当前 RC 未完成该客户端验收。
+**AI模型和能操作本机的 Agent 不是一回事。**普通聊天豆包可能只能给建议，不能直接控制本机 AutoCAD。Codex / TRAE 等也要先配置工具，才能实际画图；不能只凭 AI 说“画好了”认定完成。TRAE 的配置模板已提供，仍未完成该客户端验收。
 
 ## 2. 第一次画图
 
@@ -97,7 +97,7 @@ AI 实际回读报告 `backend=com`、`connected=true` 后再开始。连接成�
 
 ## 7. CAD → SketchUp
 
-**可选 / Experimental。**只有你明确要用 SketchUp，并且 AutoCAD、SketchUp / Ringo 已通过你当前机器的环境测试后，才发送下面模板。需要配置时看[可选 Ringo 安装说明](INSTALL_WINDOWS.md#ringo-固定官方版本)。
+**可选，需逐项目验证。**只有你明确要用 SketchUp，并且 AutoCAD、SketchUp / Ringo 已通过你当前机器的环境测试后，才发送下面模板。需要配置时看 [v0.2.0 源码工作流](INSTALL_WINDOWS.md#b-v020-python-源码工作流) 和 [Bridge 环境要求](V02_BRIDGE.md#tested-installation)。此模板描述的是目标流程，不能视为任意 DWG 自动建模的支持承诺。
 
 ```text
 使用 Landscape Agent Pack，把【测试DWG与建模要求】转换为SketchUp基础模型。

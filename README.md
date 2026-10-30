@@ -1,93 +1,56 @@
-# Landscape Agent Pack — v0.2.0
+# Landscape Agent Pack
 
-v0.2.0 正式发行文档与本地发布准备。已在本机验证 AutoCAD Core、Geometry QA、PDF plotting、CAD→SketchUp Bridge、SKP persistence 与 save/close/reopen/readback；A/B/C 三个真实景观项目生产链、数值及视觉 QA、SketchUp clean restart、Bridge reconnect 和 fixture document ownership safety 均有验收证据。生产链结果仍为 PASS_WITH_WARNINGS；Windows clean checkout / venv 验证为 **PARTIAL_FRESH_ENV**。本地 main 已合并；本轮仅准备正式包，尚未 push、创建 v0.2.0 tag 或 GitHub Release。
+Windows 景观 CAD / SketchUp 的 Agent 工作流包：保护原图和用户文档，以真实几何、文件保存重开和数值/视觉 QA 检查自动化结果。适合已有合法桌面软件、愿意审核输出的景观学生、设计人员和自动化维护者。
 
-- [v0.2.0 正式发行说明](docs/V02_RELEASE_NOTES_DRAFT.md)（沿用原文件名，内容已定稿）
-- [Windows 安装](docs/INSTALL_WINDOWS.md) · [已测环境](docs/TESTED_ENVIRONMENT.md)
-- [安装、架构、工作流和排错](docs/V02_BRIDGE.md)
-- [RC2 生产验收证据](docs/V02_RC2_ACCEPTANCE.md) · [RC3 ownership safety](docs/V02_RC3_OWNERSHIP.md)
-- [WorkBuddy 最终源码审核](docs/V02_WORKBUDDY_REVIEW.md)：DUPLICATE / REJECT / DEFER / ACCEPT_WITH_CHANGES；未直接复制整个 Skill。
-- [早期验收](docs/V02_ACCEPTANCE_REPORT.md) · [现场恢复审计](docs/V02_RECOVERY_AUDIT.md)
+**当前正式版：[v0.2.0](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.2.0)**（2026-09-30，提交 [`ac378d8`](https://github.com/lunxianle666/Landscape-Agent-Pack/commit/ac378d84ce4bbb9489ee4664b0db3e498e0359fa)）。
 
-能力边界：TEXT / MTEXT / DIMENSION / HATCH 不保证 CAD 语义完整保留；Circle / Arc / bulged polyline 为 tessellated / partial semantic support；宽线的中心线表示不完整保留 width semantics。SPLINE / ELLIPSE / XREF / arbitrary 3D 未验证。原生 CAD_REFERENCE 是基础参考几何，不是 finished 3D landscape generation；不宣称完整 CAD 无损转换、全新机器测试完成或所有 AutoCAD / SketchUp 版本兼容。技术视觉 QA 不替代独立设计审批。
+[下载正式 ZIP](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/download/v0.2.0/Landscape-Agent-Pack-v0.2.0.zip) · [SHA-256 校验文件](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/download/v0.2.0/Landscape-Agent-Pack-v0.2.0.zip.sha256) · [Windows 安装与开始](docs/INSTALL_WINDOWS.md)
 
-v0.2.0 源码使用 `requirements-v02-dev.txt` 和独立运行目录，依赖既有合法 AutoCAD / SketchUp 与配置好的兼容 Ringo。旧安装器仍提供规则/MCP 安装，本次未验证其全新机器 Core 安装、原版 Ringo 安装或 Codex desktop discovery/config reload。下方 v0.1.0-beta 下载与状态说明仅为历史版本入口，不是 v0.2.0 能力结论。
+## 解决什么问题
 
-## 已发布 v0.1.0-beta
+- AutoCAD 调用报错后，先验证实际新增实体，避免盲目重放写入；Guard 必须显式使用。
+- CAD→SketchUp 原生导入后，保留 `CAD_REFERENCE`，核对单位、边界、采样几何和保存重开结果。
+- 将数值 QA、技术视觉 QA 和待审事项分别记录，让“调用成功”有可检查的文件与几何依据。
 
-Windows 景观 CAD / SketchUp 的 Agent 工作流包：安装器、规则、Skill、MCP 配置片段、重复执行守护和真实文件 smoke test。适合有合法桌面软件、愿意检查 Agent 输出的景观学习与设计用户。它不是自动景观设计软件，也不是生产级或任意 Agent 通用插件。
+它提供受约束的自动化和验收流程；设计参数、缺失语义与最终设计审批仍需人工判断。
 
-## 第一步：下载、解压、运行 setup.bat
+## 如何开始
 
-在 [Beta Release](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.1.0-beta) 的 Assets 下载 `Landscape-Agent-Pack-v0.1.0-beta.zip` 和 `.zip.sha256`，不要误选 Source code。比较 ZIP 的 SHA-256，完整解压，再打开里面的同名文件夹。
+1. 从上方正式 Release 下载 ZIP 与校验文件，校验后完整解压；不要在 ZIP 预览中运行。
+2. 按 [安装指南](docs/INSTALL_WINDOWS.md) 选择路径：只安装规则/MCP 用 `setup.bat`；运行 v0.2.0 Python Core、QA 和 Bridge 则使用独立 venv 与源码工作流。安装器不会自动配置完整 Core/Bridge 环境。
+3. 先做只读环境/实例确认，再在新建、明确归属的测试目录运行最小流程。已有图纸自行保存关闭，不能把配置文件存在当作客户端已连接。
 
-先用普通用户权限启动 AutoCAD；安装器与 CAD 必须处于相同权限级别。双击 `setup.bat`，等待检测、独立 Python runtime 安装及 MCP smoke 结果。PowerShell 执行策略仅对本次进程使用 Bypass，不更改系统策略。没有 Python 或依赖下载失败时会明确 FAIL。
+已测组合为 Windows、Python 3.12.10、AutoCAD 2025、SketchUp Pro 2023 23.0.367 与既有兼容 Ringo 1.3.2。软件、插件和客户端配置需自行准备。详见 [工作流与排错](docs/V02_BRIDGE.md)、[客户端配置](docs/CLIENT_CONFIG_CN.md)。旧 Beta/RC 安装入口见 [历史版本说明](docs/HISTORY.md)。
 
-Beta 是“主体自动安装 + 客户端配置人工完成”，不是完全一键安装。默认目标为 `%LOCALAPPDATA%\Landscape-Agent-Pack`；既有不同版本或损坏规则不会被覆盖。旧版本用户请用独立目标安装，例如：
+## 实际验证了什么
 
-```powershell
-.\setup.bat -InstallRoot "$env:LOCALAPPDATA\Landscape-Agent-Pack-v0.1.0-beta"
-```
+以下是 v0.2.0 所依据的历史本机验收，未在本次文档维护中重跑 CAD/SU：
 
-安装后从结果打印的 `runs\<本次运行>\config` 取片段，先备份客户端配置，再只合并一个 MCP 服务；同名服务已存在时先比较，不能追加重复节。完全重启客户端，确认 Skill 与 MCP 真实可发现、可调用。安装器不写客户端配置、不自动 reload、不宣称已加载成功。现有不同 Skill 保留，新 Skill 暂存在安装根的 `skills`，须人工检查并选择安装，不能盲目覆盖。
-
-详细步骤：[Windows 安装](docs/INSTALL_WINDOWS.md) · [客户端配置](docs/CLIENT_CONFIG_CN.md) · [小白使用手册](docs/BEGINNER_USAGE_CN.md)。
-
-## 状态与系统要求
-
-Verified 只代表本机最小回归范围，不是对所有机器的保证。
-
-| 软件 / 功能 | Beta 状态 | 范围 |
+| 范围 | 公开记录的结果 | 证据 |
 | --- | --- | --- |
-| Windows 11 / Python 3.12.10 x64 / PowerShell 5.1 | Verified | 现有本机；中文与空格目录，C/D 测试目标 |
-| AutoCAD 2025 / AutoCAD MCP Pro 1.5.1 COM | Verified | MCP、Guard、真实 DWG 保存关闭重开、独立 Python COM 几何回读 |
-| SketchUp Pro 2023 23.0.367 | Experimental | 本轮 box 创建/保存/关闭模型/重开回读通过；简单 DWG 原生导入未产生可验收参考实体，本轮 FAIL / REVIEW REQUIRED，不宣称 DWG→SKP Verified；本机 Ringo 1.3.2 有既有兼容修改 |
-| Codex | Manual Setup | 既有 Agent 调用 SU MCP 已生成文件；新安装后的 Skill/MCP 重载仍 MANUAL TEST REQUIRED |
-| TRAE / 其他 Agent | Not Tested | 提供 stdio 示例，不保证客户端兼容 |
-| 完整复杂景观 / 曲线精度 / 任意 DWG 自动建模 | Experimental | 本次只验证简单线性基础模型 |
-| 全新 Windows / 中文 Windows 账户 / 全权限异常矩阵 | Not Tested | 中文文件夹不等于中文账户 |
+| AutoCAD Core、Geometry QA、PDF plotting、原生 DWG→SU、SKP 保存/关闭/磁盘重开回读 | 本机限定范围通过；数值与视觉 QA 分开记录 | [验收案例](docs/CASES.md)、[RC2 验收](docs/V02_RC2_ACCEPTANCE.md) |
+| A/B/C 三个真实景观项目参考几何链 | **PASS_WITH_WARNINGS**，保留注释、填充、曲线和宽线语义限制 | [案例与方法](docs/CASES.md) |
+| SketchUp 进程冷启动、Bridge 重连、文档归属保护 | 限定测试通过；不证明 Codex 桌面重载/发现 | [RC2](docs/V02_RC2_ACCEPTANCE.md)、[RC3 ownership](docs/V02_RC3_OWNERSHIP.md) |
+| 干净 checkout、独立 venv、临时配置 | **PARTIAL_FRESH_ENV**，仍使用本机既有软件和兼容插件 | [已测环境](docs/TESTED_ENVIRONMENT.md) |
 
-必须有合法 AutoCAD 桌面版、Python 3.11+ x64（实测推荐 3.12）、联网 pip、目录写权限；Python WindowsApps 占位程序不可用。安装器固定 AutoCAD MCP Pro 1.5.1，传递依赖未全量锁定。SketchUp 可选，另需合法 Pro 2023、Node ≥22 和外部 Ringo；本包不自动安装/修改 SketchUp 插件，也不分发软件本体。
+公开仓库提供验收摘要和部分测试代码；真实项目 DWG/SKP、运行报告、截图和演示未随正式包公开，不能凭摘要完整复现历史项目。案例页标明输入、操作、输出、验证方法和证据缺口。
 
-Windows pip/pywin32 深层路径可能 WinError206；隔离 runtime 安装根限制120字符，过长时写入前 FAIL，请选择短路径。不会修改系统长路径策略。
+## 限制
 
-## 最简单的首次使用
+- `CAD_REFERENCE` 是参考几何，不是完成的三维景观模型；不保证完整 CAD 无损转换。
+- TEXT / MTEXT / DIMENSION / HATCH 不保证语义保留；Circle / Arc / bulged polyline 为离散几何与部分语义支持；宽线不完整保留中心线/宽度语义。
+- SPLINE / ELLIPSE / XREF / 任意 3D 尚未验证；采样检查不构成全局曲线、拓扑或设计正确性证明。
+- 本机 Ringo 有既有兼容调整，未分发补丁。原版插件安装、另一台机器、其他 CAD/SU 版本、Codex 桌面发现/配置重载仍待实测。
+- 规则安装器需人工备份、合并客户端配置并重启；传递依赖未全量锁定。Manifest 是完整性校验，不是数字签名。
 
-先让 Agent 读取安装后的 `pack-rules/AGENT_CONTEXT.md`（或解压根文件），输出上下文确认块；随后真实调用 `system_status`，要求 `backend=com`、`connected=true`。仅有配置文件不算连接成功。Discovery search 模式可能只显示 `search_tools` / `call_tool`，先发现实际工具。
+参阅 [完整限制](docs/LIMITATIONS.md)、[Ringo 兼容记录](docs/RINGO_LOCAL_PATCH_REPORT.md)、[完整性约定](docs/INTEGRITY.md)。
 
-AutoCAD 示例：先自行保存并关闭所有 CAD 图纸，保留程序运行；在解压目录运行：
+## 维护范围与组件关系
 
-```powershell
-.\setup.bat -InstallRoot "$env:LOCALAPPDATA\Landscape-Agent-Pack-v0.1.0-beta" -RunGeometrySmoke
-```
+本仓库是继续维护的主项目，优先处理文档准确性、兼容性和有明确输入/步骤/证据的可复现缺陷，不承诺新增设计能力或扩大兼容矩阵。
 
-这会在本项目允许目录创建 1000×500 mm 矩形和半径 100 mm 圆，Guard 拒绝重复执行，然后保存、关闭、重开 DWG 并核对几何。不会关闭用户图纸。有打开图纸时测试拒绝绘图。日常任务只在用户授权的新输出路径保存，不覆盖来源。
+[sketchup-from-cad-landscape](https://github.com/lunxianle666/sketchup-from-cad-landscape) 保留为冻结的历史独立指令型 Skill。本 Pack 已纳入其固定公开基线 `cc28ffd4b9daea890fbe78fd3737c9669d042446` 的 Skill、必要文档与 LICENSE；不是运行时追踪独立仓库 main。适配范围见 [基线报告](docs/SKILL_BASELINE_REPORT.md)。新用户需要规则、Core/QA/Bridge 和集中维护入口时选择本 Pack；已有完整工具栈、只需历史 Skill 时仍可使用独立组件，避免重复安装同名 Skill。
 
-SketchUp 示例提示词：“先 bridge_status、model_get_info 确认目标是空白测试模型，再创建 1000×500×300 mm 长方体，保存到我授权的全新 SKP 路径；关闭该模型、重新打开并回读 bounds、solid 和实体数量。”基础 CAD→SU 应原生导入真实 DWG，保留 CAD_REFERENCE，并由实际矩形边推导三维边界；高度由用户提供，不猜设计参数。不得用固定 box 冒充真实 DWG 导入。
+[正式发行说明](docs/V02_RELEASE_NOTES_DRAFT.md)（保留旧文件名） · [CHANGELOG](CHANGELOG.md) · [历史验收入口](docs/HISTORY.md) · [WorkBuddy 源码审核](docs/V02_WORKBUDDY_REVIEW.md)
 
-## 诊断与常见错误
-
-```powershell
-.\setup.bat -InstallRoot "$env:LOCALAPPDATA\Landscape-Agent-Pack-v0.1.0-beta" -DiagnosticOnly
-```
-
-- Python 不存在/版本不符：安装 x64 Python，或显式 `-PythonExe` 指定真实解释器。
-- pip/网络/pywin32 失败：保留错误与 runtime，修复依赖后重试，不把失败改成成功。
-- COM 失败：确认 CAD 已启动并与安装器同权限；不默认提升权限或重启 CAD。
-- 完整性 FAIL：会打印具体相对路径、缺失原因或 expected/actual hash；停止使用，从可信 Release 重取，不运行 manifest 生成器“修复”。
-- SketchUp bridge 拒绝连接：进入模型后按外部 Ringo 文档启动既有 Server；先确认实例，不启用额外 Ruby 权限来掩盖问题。
-- Overall WARN / exit=0：安装主体与 smoke 通过仍不代表人工客户端配置完成。
-
-更多：[排错](docs/TROUBLESHOOTING_CN.md) · [完整性](docs/INTEGRITY.md) · [限制](docs/LIMITATIONS.md)。
-
-## 安全、卸载与失败恢复
-
-规则与关键文件由版本化 manifest 的 SHA-256 检查；缺失或篡改 FAIL。Guard 结合真实后置几何防止错误重放，原始 MCP 错误保留。manifest 不是数字签名，可信 Release ZIP hash 才是外部比较依据；协调替换 manifest/校验器不是其防护范围。
-
-安装器不覆盖 Codex 设置、不删除现有 Skill、不修改 AutoCAD 配置或 SU 插件。失败时保留诊断文件并列出本次写入目录；无复杂事务式自动回滚。先备份需要保留的 DWG/SKP/runs，再手工删除确认属于本项目的独立安装目录。Skill 仅在确认由本次新建且没有个人修改时移除；客户端仅删除自己加入的服务节，保留其他设置；不要卸载共享 Python/Node/CAD/SU/Ringo。
-
-## License、验收与反馈
-
-自有代码 [MIT](LICENSE)，第三方见 [声明](THIRD_PARTY_NOTICES.md)。分发 SketchUp Skill 保留其 LICENSE；`autocad-dwg-redraw` 授权未确认，只保留来源声明、不分发代码。依赖包由用户安装时从上游获取，不能全部称为 MIT。
-
-[CHANGELOG](CHANGELOG.md) · [验收范围](docs/BETA_ACCEPTANCE.md) · [Issues](https://github.com/lunxianle666/Landscape-Agent-Pack/issues)。反馈请附版本、软件版本、失败步骤与脱敏错误；不要上传 Token、私人配置、用户名路径或实际项目图纸。
+自有代码采用 [MIT](LICENSE)，第三方见 [声明](THIRD_PARTY_NOTICES.md)。反馈请使用 [Issues](https://github.com/lunxianle666/Landscape-Agent-Pack/issues)，提供版本、软件组合、复现步骤和脱敏错误；不要上传凭据、私人配置或未获授权的项目图纸。

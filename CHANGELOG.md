@@ -1,6 +1,21 @@
 # Changelog
 
-## v0.2.0 — release preparation, 2026-09-30
+## Unreleased — documentation maintenance, 2026-10-30
+
+- Make the published v0.2.0 Release, fixed tag/commit and official ZIP the primary
+  entry; distinguish the rule/MCP installer from the Python Core/QA/Bridge workflow.
+- Add concise evidence cases and a historical Beta/RC index without changing
+  historical acceptance conclusions or distributing private artifacts.
+- Document the maintained Pack and frozen standalone SketchUp Skill relationship,
+  prioritizing documentation, compatibility and reproducible defects.
+- Refresh source manifest/checksum hashes using the existing maintainer generator;
+  retain v0.2.0 baseline metadata. This is an unreleased documentation snapshot,
+  not a replacement official ZIP or a new release. Published assets are unchanged.
+
+## v0.2.0 — released, 2026-09-30
+
+Published [Release](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.2.0)
+and tag resolve to `ac378d84ce4bbb9489ee4664b0db3e498e0359fa`.
 
 - Verified AutoCAD Core, Geometry QA, PDF plotting, CAD→SketchUp Bridge,
   SKP persistence and save/close/reopen/readback on the tested workstation.
@@ -17,8 +32,8 @@
   full width semantics. SPLINE/ELLIPSE/XREF/arbitrary 3D remain unverified.
 - No full lossless CAD conversion, finished 3D landscape generation, pristine
   machine installation or all-version AutoCAD/SketchUp compatibility claim.
-- Deterministic official v0.2.0 package is rebuilt from the release-prep commit.
-  RC1/RC2/RC3 and their historical evidence remain intact. No remote publication.
+- Official v0.2.0 package was published from the release-prep commit above.
+  RC1/RC2/RC3 and their historical evidence remain intact.
 
 ### Historical prerelease records
 
