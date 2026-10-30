@@ -1,4 +1,14 @@
-# RC2 限制
+# 能力限制与历史范围
+
+## 当前正式版 v0.2.0
+
+正式发行与固定提交见 [首页](https://github.com/lunxianle666/Landscape-Agent-Pack)，具体证据见 [案例](https://github.com/lunxianle666/Landscape-Agent-Pack/blob/main/docs/CASES.md) 与 [已测环境](https://github.com/lunxianle666/Landscape-Agent-Pack/blob/main/docs/TESTED_ENVIRONMENT.md)。生产参考几何链仍为 **PASS_WITH_WARNINGS**；干净 checkout/venv 仍为 **PARTIAL_FRESH_ENV**，依赖既有合法软件及带兼容调整的本机 Ringo。原版插件安装、跨机器/跨版本与 Codex 桌面发现/配置重载尚待实测。
+
+TEXT / MTEXT / DIMENSION / HATCH 不保证 CAD 语义保留；Circle / Arc / bulged polyline 仅离散几何与部分语义支持；宽线不完整保留中心线/宽度语义。SPLINE / ELLIPSE / XREF / 任意 3D 未验证。采样不构成完整拓扑或全局曲线证明，CAD_REFERENCE 不是完成的三维景观模型，技术视觉 QA 不替代设计审批。
+
+规则/MCP 安装器与 Python Core/QA/Bridge 源码环境范围不同，见 [安装指南](https://github.com/lunxianle666/Landscape-Agent-Pack/blob/main/docs/INSTALL_WINDOWS.md)。本页也会安装到仅含六项规则的 pack-rules，因此上述链接指向完整在线仓库，不假设安装副本含所有文档。Guard 仍须显式使用，传递依赖未全量锁定，manifest 不是签名。下面保留早期 RC2 的限定说明，不能覆盖 v0.2.0 的后续验收，也不能把后续结果写回历史记录。
+
+## 历史 v0.1.0-rc2 限制（原范围）
 
 RC2 已独立验证 AutoCAD 主链：空文档集合下新建临时 DWG、闭合矩形 1000×500 mm、圆直径 200 mm、Creation Guard 后验、保存为 AC1032、关闭、重开并几何复核一致。Python 3.12.10、AutoCAD 2025（ProgID AutoCAD.Application.25）、AutoCAD MCP Pro 1.5.1 COM backend 为本机实测版本；其他 AutoCAD 版本与其他 Windows 机器尚未跨机器验证。
 

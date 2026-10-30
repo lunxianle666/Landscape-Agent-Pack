@@ -25,7 +25,7 @@
     },
     {
       "relative_path": "CHANGELOG.md",
-      "sha256": "1692648502160233a66ae0e4f74cd8a98e62cf5060799dab70555cf986739047",
+      "sha256": "d7053e9320a7985d93d57374050b04afaa73061e3901bf3aef7de27c93b98897",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.2.0"
@@ -39,7 +39,7 @@
     },
     {
       "relative_path": "README.md",
-      "sha256": "6d32901430ffc2440fe16034ffb2b088cb8947322c788c6027a264714b43d4dc",
+      "sha256": "283ffdffa03f191447b710605b41c8b9c034a7e37709b627f53382cb7ed721b3",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.2.0"
@@ -67,14 +67,14 @@
     },
     {
       "relative_path": "docs/AI_INSTALL_ASSISTANT_CN.md",
-      "sha256": "e0c2b8d1c3bdeb5f2b282002390a574bd7793d8ee087bf5ec15e6fc241ca7c9d",
+      "sha256": "b1a7637a42a89dd2c61b2f24f98e7dc6d8cec1fb9e84d993fd5c4b7455e0aae0",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/BEGINNER_USAGE_CN.md",
-      "sha256": "46c188f6c8089790073f094b9144896114ec5b456b74cab11f86be1bddf2d651",
+      "sha256": "96a9d5389eebf4ffc1ff9ccdf22a8567ba821f30e1326d15a4696d1a1ade04e2",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.2.0"
@@ -87,36 +87,50 @@
       "release_version": "v0.2.0"
     },
     {
+      "relative_path": "docs/CASES.md",
+      "sha256": "3c66b707b4c974c1697c21dd4b14c4a5a604e6cf2319f16e08f64622f224cca8",
+      "file_type": "md",
+      "critical": true,
+      "release_version": "v0.2.0"
+    },
+    {
       "relative_path": "docs/CLIENT_CONFIG_CN.md",
-      "sha256": "9664ef32302ac154106d073efa58143bd5c856cebae005fa133cc2e27d2e195c",
+      "sha256": "ac197536255cc67aaca70a23ca3b2d61cb53970a9d0f5ab7fe3bee474514762f",
+      "file_type": "md",
+      "critical": true,
+      "release_version": "v0.2.0"
+    },
+    {
+      "relative_path": "docs/HISTORY.md",
+      "sha256": "4644b4502d1eb3f56e866d69339b6399baa6885e196fcc3da6c0ff9ee40d6983",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/HOW_IT_WORKS_CN.md",
-      "sha256": "dac13250bbe60316f727b6171965dcbe7138d307e94e95adb4f921493dbb45bf",
+      "sha256": "7e12256d9ed630f965f7d567ec48cde7c509356c03b3344d385a82fb1c2a2a1d",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/INSTALL_WINDOWS.md",
-      "sha256": "f46c417959eebb646b2e2ebbab3b82ba5083df9fada1687f7ced9fffcaa44cf8",
+      "sha256": "8cefb1c88a571a62a9ad9b6930855cc8786ffe48b2c6282776e5bef3ea9cf360",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/INTEGRITY.md",
-      "sha256": "509ce55ce4d95750fd3119f996d2afbfc7e3073644ad50dcce08ef047863f851",
+      "sha256": "ad63dfdc9b5e01d09aedebaa8aaaa14e8b97d10216f3f4c6bac2a780d0a9190d",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.2.0"
     },
     {
       "relative_path": "docs/LIMITATIONS.md",
-      "sha256": "1d7bb97d33cea06da2b509f92fa46507ebc7f887c829344176bbbe630d1a752a",
+      "sha256": "790991b45fcfde31c0adae5665f2afc4b4eccd159b78f7f8211c997976603677",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.2.0"
@@ -158,7 +172,7 @@
     },
     {
       "relative_path": "docs/QUICK_START_CN.md",
-      "sha256": "887aec42a5fe6e4e45a81c76878b1102b495cd11c6f39edf6676a12a3361042c",
+      "sha256": "3176ad6ef43a34d51d8cd268f48511dbccfc96f32cb69e0750a222a8df1d6afb",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.2.0"
@@ -200,7 +214,7 @@
     },
     {
       "relative_path": "docs/THREE_STEP_CHECK_CN.md",
-      "sha256": "b387ec74dc5ea4cf988c0adc8ce72409bb28cd77edec1286ae80f4ed2102cdfc",
+      "sha256": "945d75f7439a43e202651ca8635867028a063f6a399e2353b105f83e4769b3a1",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.2.0"
@@ -249,7 +263,7 @@
     },
     {
       "relative_path": "docs/V02_RELEASE_NOTES_DRAFT.md",
-      "sha256": "cc8f41c2285f3e25598bec2078d19bbd7f6af334ca525baa7087cce7bdb9e396",
+      "sha256": "2d0f6a83baa5a1de05ab51a2a413697838f8a0bd0cc1bfcea32c6da8dddfc566",
       "file_type": "md",
       "critical": true,
       "release_version": "v0.2.0"
