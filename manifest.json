@@ -746,7 +746,7 @@
     },
     {
       "relative_path": "tests/unit/test_delivery_evidence.py",
-      "sha256": "85ee5e6582c3209df096f16ecd04cd80a1b354cb205f0f7e196ab777b57a5ea7",
+      "sha256": "16a021ee3dcffc32fe08ec2caeae6d78adcc0ccb3c6dca711c92cf21287f8afb",
       "file_type": "py",
       "critical": true,
       "release_version": "v0.2.1-dev"

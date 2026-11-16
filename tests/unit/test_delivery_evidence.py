@@ -59,7 +59,8 @@ class DeliveryEvidenceTests(unittest.TestCase):
         result = self.validate()
         self.assertEqual(self.evidence.pdf_results[0].status, "PASS")
         self.assertEqual(result.status, "PASS_WITH_WARNINGS")
-        self.assertEqual(set(result.artifacts), set(map(str, (self.dwg, self.dxf, self.pdf))))
+        expected_artifacts = {str(path.resolve()) for path in (self.dwg, self.dxf, self.pdf)}
+        self.assertEqual(set(result.artifacts), expected_artifacts)
         self.assertIn("VISUAL_QA", {c.id for c in result.checks if c.status == "NOT_EXECUTED"})
 
     def test_external_pdf_never_counts_as_coverage_or_artifact(self):
@@ -70,7 +71,7 @@ class DeliveryEvidenceTests(unittest.TestCase):
                           plot_results=(self.plot(external),), pdf_results=(self.inspect(external),))
         result = self.assert_failed(changed, "PDF_COVERAGE")
         self.assertIn("OUTPUT_SCOPE", {c.id for c in result.checks if c.status == "FAIL"})
-        self.assertNotIn(str(external), result.artifacts)
+        self.assertNotIn(str(external.resolve()), result.artifacts)
 
     def test_duplicate_or_missing_result_rows_do_not_cover_two_plots(self):
         for extra in (self.plot(self.pdf), Result("missing-path", "Plot", checks=self.plot(self.pdf).checks)):
