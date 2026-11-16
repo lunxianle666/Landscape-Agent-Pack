@@ -1,7 +1,7 @@
 # Landscape Agent Pack v0.2.0 — final release notes
 
-Status: local release preparation; remote publication not performed. The file
-name is retained for existing links; this document supersedes the RC1 draft.
+Status: [published v0.2.0](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.2.0).
+The file name is retained for existing links; this document supersedes the RC1 draft.
 
 ## Verified scope
 

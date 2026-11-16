@@ -1,6 +1,19 @@
 # Changelog
 
-## v0.2.0 — release preparation, 2026-09-30
+## Unreleased
+
+- Fix DXF duplicate checks for different polyline bulges, widths and elevations;
+  reject invalid numerical input and compute reported bounds in a single pass.
+- Require scoped, unique plot/inspection pairs and complete DWG readback
+  evidence before the delivery gate can pass.
+- Reject malformed Ringo envelopes without replaying uncertain mutations;
+  reject nonfinite geometry and changed bounds in SKP persistence readback.
+- Add Windows offline CI, a synthetic Unicode-path geometry example, contributor
+  instructions and a five-candidate review. No new Skill or live capability claim.
+- Update the published-version entry, third-party notices and local artifact
+  exclusions. The maintenance snapshot is separate from the published v0.2.0 tag.
+
+## v0.2.0 — published, 2026-09-30
 
 - Verified AutoCAD Core, Geometry QA, PDF plotting, CAD→SketchUp Bridge,
   SKP persistence and save/close/reopen/readback on the tested workstation.
@@ -18,7 +31,7 @@
 - No full lossless CAD conversion, finished 3D landscape generation, pristine
   machine installation or all-version AutoCAD/SketchUp compatibility claim.
 - Deterministic official v0.2.0 package is rebuilt from the release-prep commit.
-  RC1/RC2/RC3 and their historical evidence remain intact. No remote publication.
+  RC1/RC2/RC3 and their historical evidence remain intact. The release-prep commit was subsequently published.
 
 ### Historical prerelease records
 

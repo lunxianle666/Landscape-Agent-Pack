@@ -28,3 +28,13 @@ runs/
 _review/
 outputs/
 artifacts/
+.pytest_cache/
+.coverage
+*.tmp
+*.pem
+*.key
+
+# Generated or private drawings and models. Prefer source generators for fixtures.
+*.[dD][wW][gG]
+*.[dD][xX][fF]
+*.[sS][kK][pP]

@@ -5,7 +5,7 @@ HANDOFF_TO_CODEX.md are absent. The WorkBuddy session backup names exist but
 the candidate ZIP and handoff backup are zero bytes. They are not source.
 
 Actual source was recovered from
-`D:/Project_Archive/Landscape-Agent-Pack/2026-09-26/legacy-workbuddy-landscape-tests-verified.zip`.
+the local archive `legacy-workbuddy-landscape-tests-verified.zip` (2026-09-26).
 Archive SHA256: `e7c9e97bb83f7d995925cef376c7f4edf53479dd925daf9c2b7c15cd81f56d70`.
 The candidate prefix is
 `C/WorkBuddy/2026-09-21-08-09-52/WorkBuddy-Integration-Candidate/`.

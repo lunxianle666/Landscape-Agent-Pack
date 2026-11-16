@@ -33,17 +33,27 @@ def _signature(e, tolerance):
         a, b = _rounded(e.dxf.start, tolerance), _rounded(e.dxf.end, tolerance)
         return kind, layer, *sorted((a, b))
     if kind == "CIRCLE":
-        return kind, layer, _rounded(e.dxf.center, tolerance), round(e.dxf.radius / tolerance)
+        return (kind, layer, _rounded(e.dxf.center, tolerance),
+                round(e.dxf.radius / tolerance), _rounded(e.dxf.extrusion, tolerance))
     if kind == "LWPOLYLINE":
-        points = tuple(_rounded(p, tolerance) for p in e.get_points("xy"))
-        return kind, layer, bool(e.closed), points
+        points = list(e.get_points("xyseb"))  # XY, start/end width, bulge
+        if points and not e.closed:
+            points[-1] = points[-1][:2]  # No outgoing segment from the last vertex.
+        return (kind, layer, bool(e.closed), tuple(_rounded(p, tolerance) for p in points),
+                _rounded((*e.dxf.extrusion, e.dxf.elevation, e.dxf.const_width), tolerance))
     return None
 
 
 def analyze_dxf(path, profile: GeometryProfile, *, task_id="geometry-qa"):
     result = Result(task_id, "CAD geometry QA", input={"dxf": str(path), "profile": vars(profile)}, software="ezdxf", software_version=ezdxf.__version__)
-    if profile.tiny_segment_threshold <= 0 or profile.duplicate_tolerance <= 0 or profile.empty_layer_policy not in {"PASS", "WARN", "FAIL"}:
+    if (not all(math.isfinite(v) and v > 0 for v in
+                (profile.tiny_segment_threshold, profile.duplicate_tolerance)) or
+            profile.empty_layer_policy not in {"PASS", "WARN", "FAIL"}):
         raise ValueError("Invalid geometry QA profile")
+    bounds = profile.allowed_bbox
+    if bounds is not None and (len(bounds) != 4 or not all(map(math.isfinite, bounds)) or
+                               bounds[0] > bounds[2] or bounds[1] > bounds[3]):
+        raise ValueError("Expected finite, ordered XY bounds")
     try:
         doc = ezdxf.readfile(str(path))
         entities = list(doc.modelspace())
@@ -58,11 +68,6 @@ def analyze_dxf(path, profile: GeometryProfile, *, task_id="geometry-qa"):
     result.metrics = {"entity_count": len(entities), "entity_types": dict(types), "layer_counts": dict(layers),
                       "open_polylines": sum(not e.closed for e in polylines),
                       "closed_polylines": sum(bool(e.closed) for e in polylines)}
-    if entities:
-        all_bounds = bbox.extents(entities)
-        if all_bounds.has_data:
-            result.metrics["model_bbox"] = [all_bounds.extmin.x, all_bounds.extmin.y,
-                                            all_bounds.extmax.x, all_bounds.extmax.y]
     if profile.expected_entity_count is None:
         result.add("ENTITY_COUNT", "Entity count", False, "PASS", actual=len(entities))
     else:
@@ -75,11 +80,17 @@ def analyze_dxf(path, profile: GeometryProfile, *, task_id="geometry-qa"):
     result.add("EMPTY_LAYERS", "Empty required layers", False, profile.empty_layer_policy if empty else "PASS", actual=empty)
     zero, tiny, degenerate, open_required, duplicates, bad_arcs, unbounded, unknown_extents = ([] for _ in range(8))
     seen = {}
-    bounds = profile.allowed_bbox
+    invalid_numeric = []
+    all_bounds = bbox.BoundingBox()
+    cache = bbox.Cache()
     for e in entities:
         kind = e.dxftype()
         handle = e.dxf.handle
-        signature = _signature(e, profile.duplicate_tolerance)
+        try:
+            signature = _signature(e, profile.duplicate_tolerance)
+        except (ValueError, OverflowError):
+            invalid_numeric.append(handle)
+            continue
         if signature is not None:
             if signature in seen:
                 duplicates.append({"handle": handle, "same_as": seen[signature]})
@@ -111,16 +122,27 @@ def analyze_dxf(path, profile: GeometryProfile, *, task_id="geometry-qa"):
                 bad_arcs.append(handle)
         elif kind == "CIRCLE" and (not math.isfinite(e.dxf.radius) or e.dxf.radius <= 0):
             bad_arcs.append(handle)
-        if bounds:
-            try:
-                ext = bbox.extents([e])
-                if not ext.has_data:
+        try:
+            ext = bbox.extents([e], cache=cache)
+            if not ext.has_data:
+                if bounds is not None:
                     unknown_extents.append(handle)
-                elif ext.extmin.x < bounds[0] or ext.extmin.y < bounds[1] or ext.extmax.x > bounds[2] or ext.extmax.y > bounds[3]:
-                    unbounded.append({"handle": handle, "bbox": [ext.extmin.x, ext.extmin.y, ext.extmax.x, ext.extmax.y]})
-            except Exception:
-                unknown_extents.append(handle)
+                continue
+            if not all(map(math.isfinite, (*ext.extmin, *ext.extmax))):
+                invalid_numeric.append(handle)
+                continue
+            all_bounds.extend((ext.extmin, ext.extmax))
+            if bounds is not None and (ext.extmin.x < bounds[0] or ext.extmin.y < bounds[1] or
+                                       ext.extmax.x > bounds[2] or ext.extmax.y > bounds[3]):
+                unbounded.append({"handle": handle, "bbox": [ext.extmin.x, ext.extmin.y,
+                                                           ext.extmax.x, ext.extmax.y]})
+        except Exception:
+            unknown_extents.append(handle)
+    if all_bounds.has_data:
+        result.metrics["model_bbox"] = [all_bounds.extmin.x, all_bounds.extmin.y,
+                                        all_bounds.extmax.x, all_bounds.extmax.y]
     for id, name, problems, mandatory in [
+        ("FINITE_GEOMETRY", "Finite geometry data", invalid_numeric, True),
         ("ZERO_LINE", "Zero length lines", zero, True),
         ("TINY_SEGMENT", "Tiny segments", tiny, True),
         ("DEGENERATE_POLYLINE", "Degenerate polylines", degenerate, True),

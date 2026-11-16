@@ -1,6 +1,8 @@
-# Development branch only. The v0.1.0-beta installer manifest is unchanged.
+# Python 3.12 source development, offline tests and opt-in live checks.
+# Installer/MCP setup uses installer/requirements.txt separately.
 pywin32==312; platform_system == "Windows"
 ezdxf==1.4.4
+# PDF QA only; see third-party terms before redistribution or hosted use.
 PyMuPDF==1.28.2
 mcp==1.30.0
 numpy==2.5.3

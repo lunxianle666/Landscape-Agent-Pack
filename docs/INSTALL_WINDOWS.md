@@ -1,4 +1,8 @@
-# Windows Beta 安装
+# Windows 安装
+
+[正式 v0.2.0 源码工作流](#v020-source-installation) · [维护分支离线示例](../README.md#先跑一个离线示例)
+
+## 历史 Beta 安装
 
 下载 [v0.1.0-beta Release](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.1.0-beta) 的 ZIP 和 `.zip.sha256`；不要使用旧 RC2 附件。比较校验值后右键全部解压，进入 `Landscape-Agent-Pack-v0.1.0-beta` 文件夹。目录可改名，setup 按自身位置找 installer；不要在 ZIP 预览中运行。
 
@@ -43,23 +47,25 @@ Get-FileHash -Algorithm SHA256 -LiteralPath .\Landscape-Agent-Pack-v0.1.0-beta.z
 [Ringo](https://github.com/Ringophilia/Ringo-Sketchup-MCP) 1.3.2 官方固定提交 `2dd54d945b0e7a5d1843d58a94a33f5c8875df01`，按上游 README 手动安装，不覆盖已有扩展。本机验证使用既有兼容修改，详见 RINGO_LOCAL_PATCH_REPORT.md；Beta 不自动应用该补丁，不保证原版组合。`-RunSketchUpSmoke` 仅检测既有 bridge/info，不做 box / DWG 导入完整验收。Ruby eval 本次没有开启。
 
 ## v0.2.0 source installation
-Use the official ZIP for the exact release snapshot; the main clone command below
-requires the release-prep commit to have been published. Local preparation alone
-does not update remote main.
+Use the [official v0.2.0 ZIP](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.2.0)
+and its SHA-256 file for the published snapshot, or clone by tag as shown below.
 
 The instructions above remain the released beta installer history. For the v0.2.0 source workflow, use a new short directory and a separate virtual environment:
 
 ```powershell
-git clone --branch main <repository-url> D:\lap-v02\checkout
-cd D:\lap-v02\checkout
-py -3.12 -m venv D:\lap-v02\venv
-& D:\lap-v02\venv\Scripts\python.exe -m pip install -r requirements-v02-dev.txt -r installer/requirements.txt
-& D:\lap-v02\venv\Scripts\python.exe installer/verify-rules.py --root .
-& D:\lap-v02\venv\Scripts\python.exe -m unittest discover -s tests/unit -v
-& D:\lap-v02\venv\Scripts\python.exe -m unittest discover -s tests/smoke -v
+git clone --branch v0.2.0 https://github.com/lunxianle666/Landscape-Agent-Pack.git lap-v02
+Set-Location lap-v02
+py -3.12 -m venv .venv
+$lapPython = '.\.venv\Scripts\python.exe'
+& $lapPython -m pip install -r requirements-v02-dev.txt
+& $lapPython installer/verify-rules.py --root .
+& $lapPython -m unittest discover -s tests/unit -v
+& $lapPython -m unittest discover -s tests/smoke -v
+# Only for the AutoCAD MCP installer/live smoke path:
+# & $lapPython -m pip install -r installer/requirements.txt
 ```
 
-Use the actual repository URL and an available Python 3.12 installation. The
+Use an available Python 3.12 installation. The
 release `.gitattributes` preserves exact committed bytes; integrity checks
 continue to reject altered files. Never regenerate a downloaded manifest to
 make a damaged install pass. `installer/requirements.txt` supplies AutoCAD MCP

@@ -1,4 +1,11 @@
-# RC2 限制
+# 已知限制
+
+v0.2.0 的 CAD/PDF 和可选 DWG→SketchUp 实测范围见 [v0.2 RC2 验收](V02_RC2_ACCEPTANCE.md)
+和 [Bridge 限制](V02_BRIDGE.md#supported-and-experimental-scope)。原生 SketchUp 导入是参考
+几何；不保证图纸语义、任意实体、拓扑、完整建模或其他软件版本。规则安装器和客户端仍需按
+[安装说明](INSTALL_WINDOWS.md) 验证。维护分支的离线测试不能替代真实软件重验。
+
+## 历史 v0.1 RC2 限制
 
 RC2 已独立验证 AutoCAD 主链：空文档集合下新建临时 DWG、闭合矩形 1000×500 mm、圆直径 200 mm、Creation Guard 后验、保存为 AC1032、关闭、重开并几何复核一致。Python 3.12.10、AutoCAD 2025（ProgID AutoCAD.Application.25）、AutoCAD MCP Pro 1.5.1 COM backend 为本机实测版本；其他 AutoCAD 版本与其他 Windows 机器尚未跨机器验证。
 

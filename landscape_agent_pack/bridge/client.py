@@ -21,7 +21,7 @@ class RingoClient:
             path = Path(os.environ.get("APPDATA", Path.home())) / "RingoSketchUpMCP" / "config.json"
         config = json.loads(Path(path).read_text(encoding="utf-8-sig"))
         self.host = config.get("host", "127.0.0.1")
-        self.port = int(os.environ.get("SKETCHUP_PORT", config["port"]))
+        self.port = int(os.environ.get("SKETCHUP_PORT", config.get("port", "")))
         self._token = os.environ.get("SKETCHUP_TOKEN", config.get("token", ""))
         if self.host != "127.0.0.1" or not 1 <= self.port <= 65535 or len(self._token) < 32:
             raise ValueError("Invalid local bridge configuration")
@@ -36,7 +36,7 @@ class RingoClient:
         try:
             self.sock = socket.create_connection((self.host, self.port), self.connect_timeout)
             hello = self.call("bridge.hello", {"protocol": 3})
-            if hello.get("protocol") != 3 or not isinstance(hello.get("capabilities"), dict):
+            if not isinstance(hello, dict) or hello.get("protocol") != 3 or not isinstance(hello.get("capabilities"), dict):
                 raise BridgeError("Incompatible or invalid bridge handshake")
             self.hello = hello
         except Exception:
@@ -80,11 +80,15 @@ class RingoClient:
                     raise BridgeError("Bridge response exceeds 4 MiB")
             line, self.buffer = self.buffer.split(b"\n", 1)
             response = json.loads(line.decode("utf-8"))
-            if response.get("jsonrpc") != "2.0" or response.get("id") != request_id or ("result" in response) == ("error" in response):
+            if (not isinstance(response, dict) or response.get("jsonrpc") != "2.0" or
+                    response.get("id") != request_id or ("result" in response) == ("error" in response)):
                 raise BridgeError("Invalid or mismatched bridge response")
             if "error" in response:
                 error = response["error"]
-                row.update(outcome="rejected", code=error.get("code"))
+                if (not isinstance(error, dict) or type(error.get("code")) is not int or
+                        not isinstance(error.get("message"), str)):
+                    raise BridgeError("Invalid bridge error response")
+                row.update(outcome="rejected", code=error["code"])
                 raise BridgeError(f"Bridge error {error.get('code')}: {error.get('message')}")
             row["outcome"] = "completed"
             return response["result"]
