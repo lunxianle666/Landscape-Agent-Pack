@@ -50,13 +50,25 @@ def check_fixture(snapshot, facts, request):
     return {'edges': len(edges), 'coordinate_error_mm': coordinate_error, 'curves': deviations, 'bbox_mm': snapshot['bbox_mm']}
 
 def compare_persistence(before, after, tolerance=1e-06):
+    require(math.isfinite(tolerance) and tolerance > 0, 'Invalid persistence tolerance')
     require(len(before['edges']) == before['edge_count'] and len(after['edges']) == after['edge_count'],
             'Snapshot edge count does not match actual edge records')
     for key in ('edge_count', 'edges_by_tag', 'tags', 'reference_transform', 'reference_markers', 'root_entities', 'model_units_code'):
         require(before[key] == after[key], f'Persistence mismatch: {key}')
 
+    def coordinates(values, size):
+        require(len(values) == size and all(math.isfinite(v) for v in values),
+                'Invalid coordinates in SKP readback')
+        return tuple(values)
+
     def ordered(s):
-        return sorted(((e['tag'], *sorted((tuple(e['a']), tuple(e['b'])))) for e in s['edges']))
+        return sorted((e['tag'], *sorted((coordinates(e['a'], 3), coordinates(e['b'], 3))))
+                      for e in s['edges'])
+
+    bounds_before = coordinates(before['bbox_mm'], 6)
+    bounds_after = coordinates(after['bbox_mm'], 6)
+    require(max(abs(a - b) for a, b in zip(bounds_before, bounds_after)) <= tolerance,
+            'Bounds changed after disk reopen')
     error = 0.0
     for a, b in zip(ordered(before), ordered(after)):
         require(a[0] == b[0], 'Bridge geometry validation failed')

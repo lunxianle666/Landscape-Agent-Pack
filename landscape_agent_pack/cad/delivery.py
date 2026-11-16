@@ -30,6 +30,10 @@ def validate_delivery(evidence: DeliveryEvidence, geometry_profile: GeometryProf
     result = Result(task_id, "CAD delivery validation", input={
         "workspace": str(root), "dwg": evidence.dwg_path, "dxf": evidence.dxf_path,
         "expected_outputs": list(evidence.expected_outputs)})
+    expected_files = {Path(p).resolve() for p in evidence.expected_outputs}
+    outside = sorted(str(p) for p in expected_files if not p.is_relative_to(root))
+    result.add("OUTPUT_SCOPE", "Declared outputs stay inside owned workspace", True,
+               "FAIL" if outside else "PASS", actual=outside)
     dwg = Path(evidence.dwg_path).resolve()
     scoped = dwg.is_relative_to(root)
     result.add("DWG_SCOPE", "DWG inside owned workspace", True, "PASS" if scoped else "FAIL", actual=str(dwg))
@@ -50,7 +54,10 @@ def validate_delivery(evidence: DeliveryEvidence, geometry_profile: GeometryProf
     result.add("REOPEN_IDENTITY", "DWG reopened from expected disk path", True,
                "PASS" if reopened else "NOT_EXECUTED", expected=str(dwg), actual=evidence.reopened_snapshot)
     if saved and reopened:
-        same = all(evidence.saved_snapshot.get(k) == evidence.reopened_snapshot.get(k)
+        same = all(type(evidence.saved_snapshot.get(k)) is int and
+                   type(evidence.reopened_snapshot.get(k)) is int and
+                   evidence.saved_snapshot[k] >= 0 and
+                   evidence.saved_snapshot[k] == evidence.reopened_snapshot[k]
                    for k in ("entities", "insunits"))
         result.add("REOPEN_CONTENT", "Entity count and units persisted", True,
                    "PASS" if same else "FAIL", expected=evidence.saved_snapshot,
@@ -68,13 +75,17 @@ def validate_delivery(evidence: DeliveryEvidence, geometry_profile: GeometryProf
                    actual=str(dxf))
     result.add("DIMSTYLE", "Persisted DIMSTYLE verified after reopen", True,
                "PASS" if evidence.dimstyle_verified else "NOT_EXECUTED")
+    required_files = {dwg, dxf}
     if evidence.pdf_required:
         plots_ok = bool(evidence.plot_results) and all(x.status == "PASS" for x in evidence.plot_results)
         pdfs_ok = len(evidence.pdf_results) == len(evidence.plot_results) and bool(evidence.pdf_results) and all(x.status in {"PASS", "PASS_WITH_WARNINGS"}
                                                    for x in evidence.pdf_results)
         plot_paths = {Path(x.output.get("pdf", "")).resolve() for x in evidence.plot_results if x.output.get("pdf")}
         qa_paths = {Path(x.input.get("path", "")).resolve() for x in evidence.pdf_results if x.input.get("path")}
-        coverage_ok = bool(plot_paths) and plot_paths == qa_paths and all(p.is_file() for p in plot_paths)
+        coverage_ok = (0 < len(plot_paths) == len(evidence.plot_results) == len(evidence.pdf_results) and
+                       plot_paths == qa_paths and
+                       all(p.is_relative_to(root) and p.is_file() for p in plot_paths))
+        required_files.update(plot_paths)
         result.add("PLOT", "Required PDF plots executed", True,
                    "PASS" if plots_ok else "NOT_EXECUTED" if not evidence.plot_results else "FAIL",
                    actual=[x.status for x in evidence.plot_results])
@@ -92,7 +103,9 @@ def validate_delivery(evidence: DeliveryEvidence, geometry_profile: GeometryProf
                "PASS" if evidence.open_automation_documents == 0 else "FAIL",
                expected=0, actual=evidence.open_automation_documents)
     actual_files = {p.resolve() for p in root.rglob("*") if p.is_file()}
-    expected_files = {Path(p).resolve() for p in evidence.expected_outputs}
+    undeclared = sorted(str(p) for p in required_files - expected_files)
+    result.add("REQUIRED_OUTPUTS", "Required artifacts are declared", True,
+               "FAIL" if undeclared else "PASS", actual=undeclared)
     unknown = sorted(str(p) for p in actual_files - expected_files)
     result.add("KNOWN_OUTPUTS", "Workspace contains only declared outputs", True,
                "PASS" if not unknown else "FAIL", actual=unknown)
@@ -100,5 +113,5 @@ def validate_delivery(evidence: DeliveryEvidence, geometry_profile: GeometryProf
                "FAIL" if evidence.overwritten_user_files else "PASS")
     result.add("VISUAL_QA", "Visual design review", False, "NOT_EXECUTED",
                message="Objective PDF checks do not establish visual design quality")
-    result.artifacts = sorted(str(p) for p in expected_files if p.is_file())
+    result.artifacts = sorted(str(p) for p in expected_files & actual_files if p.is_relative_to(root))
     return result

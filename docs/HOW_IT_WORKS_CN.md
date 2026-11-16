@@ -1,5 +1,7 @@
 # Landscape Agent Pack 是怎么工作的？
 
+本页讲解规则/MCP 使用架构，末尾保留早期 RC 的边界说明。当前 v0.2.0 的 Core/QA/Bridge、安装路径和验证范围见 [首页](../README.md) 与 [安装指南](INSTALL_WINDOWS.md)，不能按早期 RC 状态判断后续正式版。
+
 你提出设计意图，AI负责理解与规划，Agent负责操作软件，Landscape Agent Pack提供景观工作流与安全规则，MCP负责连接AutoCAD或可选的SketchUp。AI再根据实际文件检查结果，你决定是否继续修改。
 
 ## 核心架构
@@ -67,7 +69,7 @@ AI模型可以是GPT、豆包、Claude、Gemini等符合所用Agent要求的模�
 
 普通豆包网页聊天可以帮助想方案、整理任务，但未必能操作本机AutoCAD。要让豆包模型参与本机绘图，需要符合条件的Agent环境及已配置的本地工具；仅在聊天框发送仓库链接不会自动获得这些能力。
 
-## 当前RC边界
+## 历史 RC 边界（早期规则/MCP 工作流）
 
 - AutoCAD模型空间基础工作流是主要已验证能力；完整Landscape绘图仍为实验阶段。
 - SketchUp为Experimental / optional，当前RC未完成运行时Smoke Test；默认不启动、不连接。

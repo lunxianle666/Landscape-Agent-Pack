@@ -2,6 +2,8 @@
 
 > 面向普通用户。告诉你 MCP 片段在哪、怎么合并、怎么不覆盖原配置、怎么让 Agent 读取规则、怎么确认真的连上了 AutoCAD。
 
+本页适用于规则/MCP 安装器生成的配置片段；当前版本及 Python Core/QA/Bridge 的独立环境见 [安装指南](INSTALL_WINDOWS.md)。客户端配置重载仍需人工实测，不由历史 SketchUp 冷启动通过替代。
+
 ## 先理解一件事：普通聊天 AI ≠ 能画图的 Agent
 
 - 普通豆包网页聊天、普通对话 AI 只能给建议。
@@ -25,7 +27,7 @@ Agent 环境就绪后，第一步永远是让它读 `AGENT_CONTEXT.md`（仓库�
 
 ## TRAE / 豆包
 
-1. **前置**：豆包模型要跑在支持本地 MCP 的 TRAE（或同类 Agent 客户端）里，不能只在网页聊天里用。当前 RC **未完成 TRAE 客户端运行验收**，菜单路径以你版本为准。
+1. **前置**：豆包模型要跑在支持本地 MCP 的 TRAE（或同类 Agent 客户端）里，不能只在网页聊天里用。仍 **未完成 TRAE 客户端运行验收**，菜单路径以你版本为准。
 2. **安装器生成片段**：`runs\<时间戳>\config\trae-autocad.json`。
 3. **导入**：在 TRAE 的 MCP / 本地 MCP 设置里导入这段 JSON，**只合并 `autocad` 这一个 server**，保留其他已有配置；先备份。
 4. **让 Agent 读规则**：在对话里同样让它读 `AGENT_CONTEXT.md` 并输出确认块。

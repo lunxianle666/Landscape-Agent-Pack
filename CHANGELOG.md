@@ -1,6 +1,29 @@
 # Changelog
 
-## v0.2.0 — release preparation, 2026-09-30
+## Unreleased
+
+Development snapshot `v0.2.1-dev` combines the v0.2.0 documentation updates
+with the validation fixes below.
+
+- Keep the published Release, fixed tag/commit and official ZIP as the
+  installation entry. Document the separate installer and Python workflows,
+  add historical evidence cases, and explain the frozen standalone Skill.
+- Fix DXF duplicate checks for different polyline bulges, widths and elevations;
+  reject invalid numerical input and compute reported bounds in a single pass.
+- Require scoped, unique plot/inspection pairs and complete DWG readback
+  evidence before the delivery gate can pass.
+- Reject malformed Ringo envelopes without replaying uncertain mutations;
+  reject nonfinite geometry and changed bounds in SKP persistence readback.
+- Add Windows offline CI, a synthetic Unicode-path geometry example, contributor
+  instructions and a five-candidate review. No new Skill or live capability claim.
+- Clarify third-party notices and local artifact exclusions.
+- Regenerate the integrity manifest and checksums from the integrated tree.
+  The development package uses its own version and ZIP name.
+
+## v0.2.0 — released, 2026-09-30
+
+Published [Release](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.2.0)
+and tag resolve to `ac378d84ce4bbb9489ee4664b0db3e498e0359fa`.
 
 - Verified AutoCAD Core, Geometry QA, PDF plotting, CAD→SketchUp Bridge,
   SKP persistence and save/close/reopen/readback on the tested workstation.
@@ -17,8 +40,8 @@
   full width semantics. SPLINE/ELLIPSE/XREF/arbitrary 3D remain unverified.
 - No full lossless CAD conversion, finished 3D landscape generation, pristine
   machine installation or all-version AutoCAD/SketchUp compatibility claim.
-- Deterministic official v0.2.0 package is rebuilt from the release-prep commit.
-  RC1/RC2/RC3 and their historical evidence remain intact. No remote publication.
+- Official v0.2.0 package was published from the release-prep commit above.
+  RC1/RC2/RC3 and their historical evidence remain intact.
 
 ### Historical prerelease records
 

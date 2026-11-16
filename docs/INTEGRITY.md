@@ -1,4 +1,28 @@
-# Beta candidate integrity contract
+# Source and installed-rule integrity contract
+
+## Snapshot identity and candidate packaging
+
+The official v0.2.0 tag resolves to `ac378d84ce4bbb9489ee4664b0db3e498e0359fa`.
+Its published ZIP and checksum belong to that snapshot. The integrated source
+has its own version, `v0.2.1-dev`, and its own manifest and ZIP name.
+Record the Git commit when citing or packaging a snapshot. See the
+[published Release](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.2.0).
+
+Stage all intended source files, generate the candidate manifest and stage the
+two resulting files with the source changes:
+
+```powershell
+py -3.12 -B installer/build-manifest.py --version v0.2.1-dev
+py -3.12 -B installer/verify-rules.py --root .
+git add -- manifest.json SHA256SUMS.txt
+```
+
+After committing, run `py -3.12 -B installer/build-v02-candidate.py outputs/v021-dev-build`
+with a fresh output path. Compare two builds, the SHA-256 sidecar, and all
+archive members with the committed Git tree. Obtain a new trusted copy when
+installation verification fails.
+
+## Verification and installer behavior
 
 Run `python installer/verify-rules.py` before installation. Installed rules: `python installer/verify-rules.py --root <installation>/pack-rules --packed`.
 

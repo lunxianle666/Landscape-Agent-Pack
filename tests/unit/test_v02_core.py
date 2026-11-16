@@ -103,6 +103,41 @@ class GeometryTests(unittest.TestCase):
             ids = {c.id for c in b.checks if c.status == "FAIL"}
             self.assertTrue({"ZERO_LINE", "TINY_SEGMENT", "OPEN_REQUIRED"} <= ids, ids)
 
+    def test_same_xy_with_different_bulge_width_or_elevation_is_not_duplicate(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "landscape.dxf"
+            doc = ezdxf.new()
+            space = doc.modelspace()
+            original = space.add_lwpolyline([(0, 0), (100, 0)])
+            space.add_lwpolyline([(0, 0, 0.25), (100, 0, 0)], format="xyb")
+            space.add_lwpolyline([(0, 0), (100, 0)], dxfattribs={"const_width": 5})
+            space.add_lwpolyline([(0, 0), (100, 0)], dxfattribs={"elevation": 50})
+            # At the final vertex of an open line, the bulge is inactive.
+            duplicate = space.add_lwpolyline([(0, 0, 0), (100, 0, 0.25)], format="xyb")
+            doc.saveas(path)
+            result = analyze_dxf(path, GeometryProfile())
+            check = next(c for c in result.checks if c.id == "DUPLICATE_GEOMETRY")
+            self.assertEqual(check.actual, [{"handle": duplicate.dxf.handle, "same_as": original.dxf.handle}])
+
+    def test_nonfinite_geometry_gets_a_failing_report(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "invalid.dxf"
+            doc = ezdxf.new()
+            line = doc.modelspace().add_line((0, 0), (float("nan"), 100))
+            doc.saveas(path)
+            result = analyze_dxf(path, GeometryProfile())
+            self.assertEqual(result.status, "FAIL")
+            check = next(c for c in result.checks if c.id == "FINITE_GEOMETRY")
+            self.assertEqual(check.actual, [line.dxf.handle])
+
+    def test_nonfinite_or_inverted_profile_bounds_rejected(self):
+        for profile in (GeometryProfile(tiny_segment_threshold=math.nan),
+                        GeometryProfile(duplicate_tolerance=math.inf),
+                        GeometryProfile(allowed_bbox=(0, 0, math.nan, 1)),
+                        GeometryProfile(allowed_bbox=(1, 0, 0, 1))):
+            with self.subTest(profile=profile), self.assertRaises(ValueError):
+                analyze_dxf("unused.dxf", profile)
+
     def test_empty_model_cannot_pass(self):
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp)/"empty.dxf"

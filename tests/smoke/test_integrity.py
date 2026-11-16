@@ -4,7 +4,7 @@ ROOT=Path(__file__).resolve().parents[2]
 spec=importlib.util.spec_from_file_location('verify',ROOT/'installer/verify-rules.py');v=importlib.util.module_from_spec(spec);spec.loader.exec_module(v)
 class IntegrityTests(unittest.TestCase):
     def setUp(self):
-        self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)/'中文 space';shutil.copytree(ROOT,self.root,ignore=shutil.ignore_patterns('outputs','__pycache__','.git'))
+        self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)/'中文 space';shutil.copytree(ROOT,self.root,ignore=shutil.ignore_patterns('outputs','runs','artifacts','.venv','venv','runtime','__pycache__','.git'))
     def tearDown(self):self.tmp.cleanup()
     def test_clean(self):self.assertEqual(v.verify(self.root),[])
     def test_deleted(self):(self.root/'standards/autocad-safety-rules.md').unlink();self.assertTrue(v.verify(self.root))

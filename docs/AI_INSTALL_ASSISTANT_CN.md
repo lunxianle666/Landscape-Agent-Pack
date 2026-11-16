@@ -2,12 +2,12 @@
 
 仅第一次安装、换电脑或修复环境时使用。日常绘图不需要重复发送安装总提示词，改用[小白使用手册](BEGINNER_USAGE_CN.md)和[提示词速查表](../prompts/QUICK_PROMPTS_CN.md)。
 
-这是基于仓库当前安装器提炼的短指令，不是用户那份未提供全文的长篇总提示词。普通聊天 AI 可以解释步骤；只有获得本机工具权限的 Agent 才能实际检查和执行。
+这是基于规则/MCP 安装器提炼的短指令；完整 v0.2.0 Core/QA/Bridge 需按 [安装指南](INSTALL_WINDOWS.md) 另建源码环境。普通聊天 AI 可以解释步骤；只有获得本机工具权限的 Agent 才能实际检查和执行。
 
 ## 直接复制给AI
 
 ```text
-请按 Landscape Agent Pack 当前RC的安装说明，协助我在Windows上安装和配置。
+请按 Landscape Agent Pack 当前正式版的 Windows 规则/MCP 安装说明，协助我安装和配置。
 先读取仓库README、docs/INSTALL_WINDOWS.md、docs/LIMITATIONS.md，不编造不存在的功能。
 先说明你能否实际访问本机；不能时给我短步骤，不声称已执行。
 检查Python、合法已安装的AutoCAD、ProgID、权限完整性和RUNASADMIN冲突，只诊断，不改注册表或关闭用户图纸。
@@ -24,7 +24,7 @@ SketchUp可选，本次默认不启动或连接；只有我明确要求并通过
 
 安装器生成配置片段，**不会自动完成 AI 客户端配置**。让 AI 根据本机安装结果找出 `runs` 下的 `codex-autocad.toml` 或 `trae-autocad.json`，检查命令路径与允许目录，再协助合并。不要把示例里的 `<PATH>` 直接当作真实路径使用。
 
-Codex 可通过 `config.toml` 中的 `[mcp_servers.autocad]` 配置本地服务；备份后仅合并这一服务，随后重载客户端。具体配置方式见[官方 OpenAI MCP 文档](https://developers.openai.com/codex/mcp/)，本仓库片段见[Codex模板](../config/codex.toml.example)。TRAE 使用[JSON模板](../config/trae-mcp.json.example)按当前版本的本地 MCP 设置导入；该客户端未完成本 RC 验收，不保证菜单或导入行为一致。
+Codex 可通过 `config.toml` 中的 `[mcp_servers.autocad]` 配置本地服务；备份后仅合并这一服务，随后重载客户端。具体配置方式见[官方 OpenAI MCP 文档](https://developers.openai.com/codex/mcp/)，本仓库片段见[Codex模板](../config/codex.toml.example)。TRAE 使用[JSON模板](../config/trae-mcp.json.example)按当前版本的本地 MCP 设置导入；该客户端仍未完成验收，不保证菜单或导入行为一致。
 
 默认允许目录仅为临时绘图测试目录。日常项目要由你明确选择并授权新的项目目录，保留正式源文件。无需开启整个磁盘的写入范围。
 
