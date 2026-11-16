@@ -6,6 +6,8 @@ Windows 景观 CAD / SketchUp 的 Agent 工作流包：保护原图和用户文�
 
 [下载正式 ZIP](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/download/v0.2.0/Landscape-Agent-Pack-v0.2.0.zip) · [SHA-256 校验文件](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/download/v0.2.0/Landscape-Agent-Pack-v0.2.0.zip.sha256) · [Windows 安装与开始](docs/INSTALL_WINDOWS.md)
 
+当前集成快照以 `v0.2.1-dev` 标识，修复内容见 [Unreleased](CHANGELOG.md#unreleased)。正式安装请使用上面的 v0.2.0 附件。
+
 ## 解决什么问题
 
 - AutoCAD 调用报错后，先验证实际新增实体，避免盲目重放写入；Guard 必须显式使用。
@@ -13,6 +15,19 @@ Windows 景观 CAD / SketchUp 的 Agent 工作流包：保护原图和用户文�
 - 将数值 QA、技术视觉 QA 和待审事项分别记录，让“调用成功”有可检查的文件与几何依据。
 
 它提供受约束的自动化和验收流程；设计参数、缺失语义与最终设计审批仍需人工判断。
+
+## 先跑一个离线示例
+
+
+在 Windows PowerShell 中，从 `v0.2.1-dev` 候选包或集成工作树的根目录运行。Python 3.12 x64 即可；离线示例只需要 ezdxf，不依赖 AutoCAD、SketchUp 或 Agent 配置。
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install ezdxf==1.4.4
+.\.venv\Scripts\python.exe -B -m examples.geometry_qa
+```
+
+[示例源码](examples/geometry_qa.py) 临时生成一份 1000 × 500 mm 的闭合矩形 DXF，用中文文件名测试读写，并输出 JSON。预期 `status: PASS`、`model_bbox: [0, 0, 1000, 500]`、`entity_count: 1`。运行结束后会清理示例 DXF。使用 v0.2.0 下载包时，按安装指南运行它已有的离线测试；这个示例随开发候选提供。
 
 ## 如何开始
 
@@ -24,7 +39,7 @@ Windows 景观 CAD / SketchUp 的 Agent 工作流包：保护原图和用户文�
 
 ## 实际验证了什么
 
-以下是 v0.2.0 所依据的历史本机验收，未在本次文档维护中重跑 CAD/SU：
+下表列出 v0.2.0 的历史本机验收范围。当前开发候选的离线回归与真实软件验收分别记录。
 
 | 范围 | 公开记录的结果 | 证据 |
 | --- | --- | --- |
@@ -47,10 +62,10 @@ Windows 景观 CAD / SketchUp 的 Agent 工作流包：保护原图和用户文�
 
 ## 维护范围与组件关系
 
-本仓库是继续维护的主项目，优先处理文档准确性、兼容性和有明确输入/步骤/证据的可复现缺陷，不承诺新增设计能力或扩大兼容矩阵。
+本仓库是继续维护的主项目，优先处理文档准确性、兼容性和有复现步骤的缺陷。当前可加载的 Skill 共 1 个，入口在 [Agent 规则](AGENT_CONTEXT.md)。
 
 [sketchup-from-cad-landscape](https://github.com/lunxianle666/sketchup-from-cad-landscape) 保留为冻结的历史独立指令型 Skill。本 Pack 已纳入其固定公开基线 `cc28ffd4b9daea890fbe78fd3737c9669d042446` 的 Skill、必要文档与 LICENSE；不是运行时追踪独立仓库 main。适配范围见 [基线报告](docs/SKILL_BASELINE_REPORT.md)。新用户需要规则、Core/QA/Bridge 和集中维护入口时选择本 Pack；已有完整工具栈、只需历史 Skill 时仍可使用独立组件，避免重复安装同名 Skill。
 
-[正式发行说明](docs/V02_RELEASE_NOTES_DRAFT.md)（保留旧文件名） · [CHANGELOG](CHANGELOG.md) · [历史验收入口](docs/HISTORY.md) · [WorkBuddy 源码审核](docs/V02_WORKBUDDY_REVIEW.md)
+[正式发行说明](docs/V02_RELEASE_NOTES_DRAFT.md) · [CHANGELOG](CHANGELOG.md) · [历史验收入口](docs/HISTORY.md) · [维护审查及 WorkBuddy 矩阵](docs/MAINTENANCE_AUDIT.md) · [贡献指南](CONTRIBUTING.md)
 
 自有代码采用 [MIT](LICENSE)，第三方见 [声明](THIRD_PARTY_NOTICES.md)。反馈请使用 [Issues](https://github.com/lunxianle666/Landscape-Agent-Pack/issues)，提供版本、软件组合、复现步骤和脱敏错误；不要上传凭据、私人配置或未获授权的项目图纸。

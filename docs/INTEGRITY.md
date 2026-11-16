@@ -1,27 +1,26 @@
 # Source and installed-rule integrity contract
 
-## Snapshot identity and documentation maintenance
+## Snapshot identity and candidate packaging
 
 The official v0.2.0 tag resolves to `ac378d84ce4bbb9489ee4664b0db3e498e0359fa`.
-Its [published ZIP and checksum](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.2.0)
-remain fixed. Later main/PR documentation snapshots have their own file hashes;
-the retained `release_version: v0.2.0` identifies the code baseline, not byte
-identity with the original archive. Record the Git commit when citing a snapshot.
-Do not mix its manifest with another checkout or the published ZIP.
+Its published ZIP and checksum belong to that snapshot. The integrated source
+has its own version, `v0.2.1-dev`, and its own manifest and ZIP name.
+Record the Git commit when citing or packaging a snapshot. See the
+[published Release](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.2.0).
 
-For authorized source maintenance, stage all intended files (including new docs),
-then run the existing maintainer tools:
+Stage all intended source files, generate the candidate manifest and stage the
+two resulting files with the source changes:
 
 ```powershell
-py -3.12 -B installer/build-manifest.py --version v0.2.0
+py -3.12 -B installer/build-manifest.py --version v0.2.1-dev
 py -3.12 -B installer/verify-rules.py --root .
+git add -- manifest.json SHA256SUMS.txt
 ```
 
-Commit the updated `manifest.json` and `SHA256SUMS.txt` with the documentation.
-All tracked files remain covered; mandatory critical files and tamper/deletion
-rejection remain unchanged. This operation does not publish a release, rebuild
-official assets or justify regenerating a downloaded failing manifest. Do not
-distribute a post-release docs snapshot under the existing official ZIP name.
+After committing, run `py -3.12 -B installer/build-v02-candidate.py outputs/v021-dev-build`
+with a fresh output path. Compare two builds, the SHA-256 sidecar, and all
+archive members with the committed Git tree. Obtain a new trusted copy when
+installation verification fails.
 
 ## Verification and installer behavior
 

@@ -4,6 +4,7 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path
+import re
 import tempfile
 import zipfile
 
@@ -16,7 +17,7 @@ def main(destination):
         raise FileExistsError(destination)
     destination.mkdir(parents=True)
     manifest=json.loads((ROOT/'manifest.json').read_text(encoding='utf-8'))
-    if manifest['release_version'] not in {'v0.2.0-rc1', 'v0.2.0-rc2', 'v0.2.0-rc3', 'v0.2.0'}:
+    if not re.fullmatch(r'v0\.2\.(?:0|[1-9][0-9]*)(?:-dev|-rc[1-9][0-9]*)?', manifest['release_version']):
         raise ValueError('Expected explicitly generated v0.2 release manifest')
     spec=importlib.util.spec_from_file_location('verify',ROOT/'installer/verify-rules.py')
     verifier=importlib.util.module_from_spec(spec); spec.loader.exec_module(verifier)

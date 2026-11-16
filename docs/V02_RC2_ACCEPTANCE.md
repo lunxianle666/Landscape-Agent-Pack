@@ -20,9 +20,9 @@ executed. Source hashes checked before/after and unchanged.
 
 | Drawing | Source entities | SU edges / faces / components | Samples | Result |
 |---|---:|---|---:|---|
-| A-01 街角口袋公园 景观总平面图 | 392 | 6655 / 0 / 1 | 18723 | PASS_WITH_WARNINGS |
-| B-01 咸宁现代居住区中庭 景观总平面图 | 117 | 5917 / 0 / 17 | 7575 | PASS_WITH_WARNINGS |
-| C-01 滨水湿地公园 景观总平面图 | 249 | 3777 / 7 / 1 | 5502 | PASS_WITH_WARNINGS |
+| A-01 街角公园总平（脱敏） | 392 | 6655 / 0 / 1 | 18723 | PASS_WITH_WARNINGS |
+| B-01 居住区中庭总平（脱敏） | 117 | 5917 / 0 / 17 | 7575 | PASS_WITH_WARNINGS |
+| C-01 滨水公园总平（脱敏） | 249 | 3777 / 7 / 1 | 5502 | PASS_WITH_WARNINGS |
 
 B covers medium complexity with 16 block references; A the largest entity
 count and detailed curves; C the largest extents and seven wide polylines.
@@ -91,7 +91,7 @@ test-client and SU process restart, not desktop discovery/config reload.
 
 ## Fresh environment
 
-**PARTIAL_FRESH_ENV**: new `D:/lap-rc2-fresh-20260930/venv`, clean local
+**PARTIAL_FRESH_ENV**: new isolated venv, clean local
 `checkout-rc2`, temporary config and new Python client processes. Same existing
 licensed AutoCAD/SketchUp and compatible local Ringo; no pristine-machine or
 unmodified-upstream-plugin installation claim.

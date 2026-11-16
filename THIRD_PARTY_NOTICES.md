@@ -1,5 +1,5 @@
 # 第三方声明
-项目根 MIT 仅覆盖 Landscape Agent Pack 自有安装器、守护和文档。SketchUp Skill 保留原 MIT 与版权声明。未分发 AutoCAD MCP Pro、Ringo、Python、Node 或其依赖源码/二进制。
+项目根 MIT 覆盖 Landscape Agent Pack 自有代码、测试、合成示例和文档。SketchUp Skill 保留原 MIT 与版权声明。源码包不捆绑 AutoCAD MCP Pro、Ringo、Python、Node 或第三方依赖的源码/二进制。
 
 | 项目 | 版本 / 许可证 | 上游 | 用途 |
 |---|---|---|---|
@@ -12,8 +12,12 @@
 | Pydantic | 2.13.5 / MIT | https://github.com/pydantic/pydantic | 数据校验 |
 | Pillow | 12.3.0 / MIT-CMU | https://github.com/python-pillow/Pillow | COM extra 图像功能 |
 | pywin32 | 312 / PSF 元数据及组件独立许可证 | https://github.com/mhammond/pywin32 | Windows COM；包内包括不同授权组件 |
-| Python MCP SDK | 本机依赖版本 / 独立元数据 | https://github.com/modelcontextprotocol/python-sdk | Smoke Test 的 MCP 客户端 |
+| Python MCP SDK | 1.30.0 / MIT | https://github.com/modelcontextprotocol/python-sdk | Smoke Test 的 MCP 客户端 |
+| NumPy | 2.5.3 / BSD-3-Clause 为主，wheel 内含其他许可组件 | https://numpy.org/doc/stable/license.html | 生产几何比对 |
+| PyMuPDF / MuPDF | PyMuPDF 1.28.2 / GNU AGPL v3 或 Artifex 商业许可 | [上游许可说明](https://pymupdf.readthedocs.io/en/latest/about.html#license-and-copyright) | PDF 检查和渲染；按需从上游安装，不由根 MIT 授权 |
 | MCP TypeScript SDK / zod | 本机 1.30.0 / 3.25.76；MIT 元数据 | https://github.com/modelcontextprotocol/typescript-sdk / https://github.com/colinhacks/zod | Ringo 运行依赖 |
+
+WorkBuddy 候选未找到明确的分发许可，没有将候选源码纳入本次维护。PDF 栈随产品再分发、预装或部署为托管服务前，请根据上游条款确定适用的授权方案。
 
 详尽的本机传递依赖版本、许可证表达式、组件许可证位置及状态在 installer/dependency-manifest.json。该清单不是所有组件完成法律审核的声明，也不锁定全部传递依赖。安装演练的新环境另行记录实际解析版本。不得将全部依赖概括为 MIT。
 

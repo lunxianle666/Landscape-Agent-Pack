@@ -18,9 +18,9 @@ def build(root, version):
                       'file_type':path.suffix.lstrip('.') or 'text','critical':True,'release_version':version})
     manifest={'schema_version':1,'release_version':version,'files':files,
               'required_directories':sorted({Path(e['relative_path']).parent.as_posix() for e in files}-{'.'})}
-    (root/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
+    (root/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8',newline='\r\n')
     (root/'SHA256SUMS.txt').write_text(''.join(f"{e['sha256']}  {e['relative_path']}\n" for e in files)+
-                                    hashlib.sha256((root/'manifest.json').read_bytes()).hexdigest()+'  manifest.json\n',encoding='utf-8')
+                                    hashlib.sha256((root/'manifest.json').read_bytes()).hexdigest()+'  manifest.json\n',encoding='utf-8',newline='\r\n')
     return manifest
 
 

@@ -16,7 +16,7 @@ Landscape Agent Pack 是 AI Agent 与 AutoCAD / 可选 SketchUp 之间的景观�
 1. `standards/autocad-safety-rules.md` — AutoCAD 操作风险与必读检查项。
 2. `standards/landscape-workflow.md` — 统一工作流与状态判定（PASS / WARNING / FAIL / PARTIAL / REVIEW_REQUIRED）。
 3. `guards/README.md` — Creation Guard 用法。
-4. `docs/LIMITATIONS.md` — 当前 RC 限制。
+4. `docs/LIMITATIONS.md` — 当前支持范围和历史 RC 限制。
 5. `docs/THREE_STEP_CHECK_CN.md` — 三步验收清单。
 
 用户明确要求 CAD→SketchUp 时，再读 `skills/sketchup-from-cad-landscape/SKILL.md`。
@@ -28,7 +28,7 @@ Landscape Agent Pack 是 AI Agent 与 AutoCAD / 可选 SketchUp 之间的景观�
 - **创建必走 Guard**：Line / Polyline / Circle / Text / Block Ref / Hatch / Linear Dimension 必须经 `guards/creation_guard.py` 的 `guarded_create` 包装，传唯一 `operation_id`；`SUCCESS_WITH_FALSE_ERROR` 表示对象已核实创建但原 MCP 报错仍保留，**禁止重复创建**。
 - **保存≠持久化**：保存后必须关闭并重开，回读实体、参数、单位，确认磁盘 DWG 正确。
 - **不自动关闭用户图纸**：检测到用户已有打开文档时，测试类操作拒绝继续。
-- **Layout / PDF 是 Beta**：截图不稳定，不以截图代替几何验收；不为自动出图无限调试，先交付正确模型空间 DWG。
+- **Layout / PDF 按已验证范围使用**：AutoCAD 2025 已有隔离出图复验，其他组合先测试。数值和视觉 QA 分开；不为自动出图无限调试，先交付正确模型空间 DWG。
 - **歧义即 REVIEW_REQUIRED**：缺单位、缺边界、语义不明时询问用户，不猜测。
 
 ## 4. Guard 的真实能力边界（防止虚假声称）

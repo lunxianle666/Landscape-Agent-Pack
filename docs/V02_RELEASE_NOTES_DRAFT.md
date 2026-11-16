@@ -85,8 +85,8 @@ unchanged and tied to their original snapshots.
 Manifest generation is a release-author operation, never a repair for downloaded
 integrity failures. ZIP excludes runs, private credentials and production files.
 The commands above describe the original release-author process, not an install
-repair or instructions to republish later main. For current documentation-only
-manifest maintenance, see [integrity contract](INTEGRITY.md).
+repair or instructions to republish later main. For the current development candidate and its own manifest version, see the
+[integrity contract](INTEGRITY.md).
 
 ## Published artifact identity
 

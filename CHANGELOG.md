@@ -1,16 +1,24 @@
 # Changelog
 
-## Unreleased — documentation maintenance, 2026-10-30
+## Unreleased
 
-- Make the published v0.2.0 Release, fixed tag/commit and official ZIP the primary
-  entry; distinguish the rule/MCP installer from the Python Core/QA/Bridge workflow.
-- Add concise evidence cases and a historical Beta/RC index without changing
-  historical acceptance conclusions or distributing private artifacts.
-- Document the maintained Pack and frozen standalone SketchUp Skill relationship,
-  prioritizing documentation, compatibility and reproducible defects.
-- Refresh source manifest/checksum hashes using the existing maintainer generator;
-  retain v0.2.0 baseline metadata. This is an unreleased documentation snapshot,
-  not a replacement official ZIP or a new release. Published assets are unchanged.
+Development snapshot `v0.2.1-dev` combines the v0.2.0 documentation updates
+with the validation fixes below.
+
+- Keep the published Release, fixed tag/commit and official ZIP as the
+  installation entry. Document the separate installer and Python workflows,
+  add historical evidence cases, and explain the frozen standalone Skill.
+- Fix DXF duplicate checks for different polyline bulges, widths and elevations;
+  reject invalid numerical input and compute reported bounds in a single pass.
+- Require scoped, unique plot/inspection pairs and complete DWG readback
+  evidence before the delivery gate can pass.
+- Reject malformed Ringo envelopes without replaying uncertain mutations;
+  reject nonfinite geometry and changed bounds in SKP persistence readback.
+- Add Windows offline CI, a synthetic Unicode-path geometry example, contributor
+  instructions and a five-candidate review. No new Skill or live capability claim.
+- Clarify third-party notices and local artifact exclusions.
+- Regenerate the integrity manifest and checksums from the integrated tree.
+  The development package uses its own version and ZIP name.
 
 ## v0.2.0 — released, 2026-09-30
 

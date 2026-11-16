@@ -1,13 +1,16 @@
 """Failure-only transport tests; real SketchUp acceptance lives in integration/."""
+from copy import deepcopy
 from dataclasses import replace
 import hashlib
 import json
+import os
 from pathlib import Path
 import socket
 import tempfile
 import threading
 import time
 import unittest
+from unittest.mock import patch
 
 from landscape_agent_pack.bridge.client import RingoClient
 from landscape_agent_pack.bridge.contracts import BridgeRequest
@@ -16,6 +19,18 @@ from landscape_agent_pack.bridge.validation import compare_persistence
 
 
 class BridgeTests(unittest.TestCase):
+    def setUp(self):
+        self.enterContext(patch.dict(os.environ))
+        for name in ("SKETCHUP_MCP_CONFIG", "SKETCHUP_PORT", "SKETCHUP_TOKEN"):
+            os.environ.pop(name, None)
+
+    def test_port_override_does_not_require_port_in_config_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'config.json'
+            path.write_text(json.dumps({'token': 'x' * 32}), encoding='utf-8')
+            os.environ['SKETCHUP_PORT'] = '12345'
+            self.assertEqual(RingoClient(path).port, 12345)
+
     def test_persistence_rejects_missing_records_before_zip_comparison(self):
         snapshot={'edges':[], 'edge_count':1}
         with self.assertRaises(ValueError):
@@ -49,6 +64,11 @@ class BridgeTests(unittest.TestCase):
                     conn.sendall((json.dumps({'jsonrpc':'2.0','id':hello['id'],'result':{'protocol':3,'capabilities':{}}})+'\n').encode())
                     request=json.loads(f.readline()); requests.append(request['method'])
                     if mode=='timeout': time.sleep(.2)
+                    elif mode == 'non_object':
+                        conn.sendall(b'[]\n')
+                    elif mode == 'invalid_error':
+                        reply = {'jsonrpc': '2.0', 'id': request['id'], 'error': None}
+                        conn.sendall((json.dumps(reply) + '\n').encode())
                     elif mode=='mismatch': conn.sendall(b'{"jsonrpc":"2.0","id":"wrong","result":true}\n')
             thread=threading.Thread(target=serve); thread.start()
             c=RingoClient(config,timeout=.06)
@@ -56,6 +76,8 @@ class BridgeTests(unittest.TestCase):
                 expected=OutcomeUnknown if mutation else (TimeoutError if mode=='timeout' else BridgeError)
                 with self.assertRaises(expected): c.call('ruby.eval',{'code':'test'},mutation=mutation)
                 self.assertNotIn(token,json.dumps(c.history))
+                self.assertIsNone(c.sock)
+                self.assertEqual(c.history[-1]['outcome'], 'unknown' if mutation else 'failed')
             finally:
                 c.close(); thread.join(1)
             self.assertEqual(requests,['bridge.hello','ruby.eval'])
@@ -64,6 +86,28 @@ class BridgeTests(unittest.TestCase):
     def test_mutation_timeout_unknown_without_replay(self): self.failure_transport('timeout',True)
     def test_mismatched_response_rejected(self): self.failure_transport('mismatch',False)
     def test_mutation_response_mismatch_unknown(self): self.failure_transport('mismatch',True)
+
+    def test_malformed_rpc_frames_mark_submitted_mutations_unknown(self):
+        for mode in ('non_object', 'invalid_error'):
+            with self.subTest(mode=mode):
+                self.failure_transport(mode, True)
+
+    def test_persistence_accepts_reversed_edges_but_rejects_invalid_coordinates_and_bounds(self):
+        before = {'edge_count': 1, 'edges': [{'tag': 'L-SITE', 'a': [0, 0, 0], 'b': [10, 0, 0]}],
+                  'edges_by_tag': {'L-SITE': 1}, 'tags': ['L-SITE'], 'reference_transform': [],
+                  'reference_markers': {}, 'root_entities': [], 'model_units_code': 2,
+                  'curves': [], 'bbox_mm': [0, 0, 0, 10, 0, 0]}
+        after = deepcopy(before)
+        after['edges'][0]['a'], after['edges'][0]['b'] = after['edges'][0]['b'], after['edges'][0]['a']
+        self.assertEqual(compare_persistence(before, after)['maximum_edge_coordinate_change_mm'], 0)
+        for invalid in (float('nan'), float('inf')):
+            after['edges'][0]['a'][0] = invalid
+            with self.assertRaisesRegex(ValueError, 'Invalid coordinates'):
+                compare_persistence(before, after)
+        after = deepcopy(before)
+        after['bbox_mm'][3] = 20
+        with self.assertRaisesRegex(ValueError, 'Bounds changed'):
+            compare_persistence(before, after)
 
     def test_offline_and_invalid_configuration(self):
         with tempfile.TemporaryDirectory() as tmp, socket.socket() as closed:

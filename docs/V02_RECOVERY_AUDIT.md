@@ -1,7 +1,7 @@
 # v0.2 recovery audit — 2026-09-30
 
 Read-only recovery was completed before source edits. Actual repository is
-`C:\Users\33281\Documents\GitHub\Landscape-Agent-Pack`; the chat workspace is an
+the local Landscape-Agent-Pack checkout; the chat workspace is an
 unrelated unborn `master` repository with untracked prior audit material.
 
 - Initial branch: `codex/v0.2-integration`; working tree clean.
@@ -32,7 +32,7 @@ unrelated unborn `master` repository with untracked prior audit material.
 Differences from the brief: Phase 2's historical report says mandatory PASS,
 with stated environment limitations; WorkBuddy candidate handoff directory is
 absent. A filename search under Documents found no HANDOFF_TO_CODEX.md; the
-old D:\WorkBuddy_Landscape_Autonomous_Lab path is also absent. Historical audit
+old WorkBuddy lab directory is also absent. Historical audit
 recommendations do not establish current candidate acceptance.
 
 The old process exit before SKP save has no preserved crash explanation.

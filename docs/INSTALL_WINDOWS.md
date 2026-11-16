@@ -1,6 +1,6 @@
 # Windows 安装与开始：v0.2.0
 
-当前正式 Release 为 [v0.2.0](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.2.0)，Tag 对应提交 `ac378d84ce4bbb9489ee4664b0db3e498e0359fa`。下面先获取固定正式快照，再按用途选择安装路径。旧 Beta/RC 步骤见 [历史说明](HISTORY.md)。
+当前正式 Release 为 [v0.2.0](https://github.com/lunxianle666/Landscape-Agent-Pack/releases/tag/v0.2.0)，Tag 对应提交 `ac378d84ce4bbb9489ee4664b0db3e498e0359fa`。下面先获取固定正式快照，再按用途选择安装路径。开发候选可从自身 ZIP 解包后直接跳到第 2 步，并使用候选附带的校验值和独立安装根。旧 Beta/RC 步骤见 [历史说明](HISTORY.md)。
 
 ## 1. 下载并校验正式包
 
@@ -19,7 +19,7 @@ Get-Content -LiteralPath .\Landscape-Agent-Pack-v0.2.0.zip.sha256
 71f4899bb1bc88f75558ab6dff065931a34f0ef05995c6a4b47ecf9b93013422
 ```
 
-不匹配时停止，从可信 Release 重取；不要运行 manifest 生成器消除失败。完整解压到新目录（例如 `D:\GitHub\Landscape-Agent-Pack-v0.2.0`），进入含 `setup.bat` 和 `manifest.json` 的根目录，不在 ZIP 预览中运行。先执行只读完整性验证：
+不匹配时停止，从可信 Release 重取；不要运行 manifest 生成器消除失败。完整解压到新目录，进入含 `setup.bat` 和 `manifest.json` 的根目录，不在 ZIP 预览中运行。先执行只读完整性验证：
 
 ```powershell
 py -3.12 -B installer/verify-rules.py --root .
@@ -63,14 +63,14 @@ py -3.12 -B installer/verify-rules.py --root .
 DiagnosticOnly 不安装或修复文件，完整性失败会传播为 FAIL。若需要真实绘图 smoke，先自行保存并关闭所有已有 CAD 文档，保留程序运行，再执行：
 
 ```powershell
-.\setup.bat -InstallRoot 'D:\AI-Tools\LAP-v020-rules' -RunGeometrySmoke
+.\setup.bat -InstallRoot 'D:\AI-Tools\LAP-v020-rules' -RerunSmoke -RunGeometrySmoke
 ```
 
-这会在允许的测试目录创建矩形/圆并保存、关闭、重开 DWG、复核几何；它是需实际软件的测试，不属于文档/静态校验。安装器不关闭用户图纸。`-RunSketchUpSmoke` 仅检查既有 bridge/info，不是 DWG→SKP 完整验收。
+这个命令复用 A 步安装好的独立运行环境，并在允许的测试目录创建矩形/圆并保存、关闭、重开 DWG、复核几何；它是需实际软件的测试，不属于文档/静态校验。安装器不关闭用户图纸。`-RunSketchUpSmoke` 仅检查既有 bridge/info，不是 DWG→SKP 完整验收。
 
 ## B. v0.2.0 Python 源码工作流
 
-可直接使用第 1 步校验后的正式包。开发者也可获取固定 Tag，避免把后续 main 文档提交当成原始发行快照：
+可使用第 1 步校验后的正式包，也可在已独立校验的开发候选目录中使用相同的 Python 命令。开发者也可获取固定 Tag，避免把后续 main 文档提交当成原始发行快照：
 
 ```powershell
 git clone --branch v0.2.0 --depth 1 https://github.com/lunxianle666/Landscape-Agent-Pack.git D:\GitHub\Landscape-Agent-Pack-v020
@@ -80,14 +80,15 @@ cd D:\GitHub\Landscape-Agent-Pack-v020
 该方式处于 detached HEAD，适合检查固定版本；开发修改应另建分支。源码目录和 venv 均使用尚不存在的独立目录，不覆盖现有安装。在所选包/源码根目录运行：
 
 ```powershell
-py -3.12 -m venv D:\AI-Tools\Landscape-Agent-Pack\venv-v020
-& D:\AI-Tools\Landscape-Agent-Pack\venv-v020\Scripts\python.exe -B installer/verify-rules.py --root .
-& D:\AI-Tools\Landscape-Agent-Pack\venv-v020\Scripts\python.exe -m pip install -r requirements-v02-dev.txt -r installer/requirements.txt
-& D:\AI-Tools\Landscape-Agent-Pack\venv-v020\Scripts\python.exe -B -m unittest discover -s tests/unit -v
-& D:\AI-Tools\Landscape-Agent-Pack\venv-v020\Scripts\python.exe -B -m unittest discover -s tests/smoke -v
+py -3.12 -m venv .venv
+$lapPython = '.\.venv\Scripts\python.exe'
+& $lapPython -B installer/verify-rules.py --root .
+& $lapPython -m pip install -r requirements-v02-dev.txt
+& $lapPython -B -m unittest discover -s tests/unit -v
+& $lapPython -B -m unittest discover -s tests/smoke -v
 ```
 
-`installer/requirements.txt` 提供旧安装器/smoke 使用的 AutoCAD MCP；开发依赖提供几何、PDF 和测试传输模块。上述 unit/smoke 回归通过不等于真实 CAD/SU 验收。
+`requirements-v02-dev.txt` 提供几何、PDF 和测试传输模块。仅当直接运行依赖 AutoCAD MCP Pro 的旧 smoke 时，才需要给所选解释器另装 `installer/requirements.txt`。规则安装器在自己的 runtime 里安装这项依赖。开发候选另有 [离线几何示例](../README.md#先跑一个离线示例)。真实 CAD/SU 验收需具备软件、插件和授权配置。
 
 真实最小 E2E 需要 AutoCAD 没有打开的用户文档、SketchUp 打开位于唯一 `runs/` 目录中的自有且已保存空白 SKP。按 [Bridge 工作流](V02_BRIDGE.md#reproduction) 操作，并使用上面的 venv 解释器；先确认 Bridge 实例/端口与当前模型。通过 `--config` 指定隔离的 Ringo 配置，保留认证，仅在目标进程/配置中授权可信 Ruby；不要公开配置或 Token。
 
